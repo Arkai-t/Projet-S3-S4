@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fichierConsolidé>
+  <infoTraces>
+    <logiciel>
+      <HeureDebut>uneHeure</HeureDebut>
+      <HeureFin>uneHeure</HeureFin>
+      <Actions>
+        <typeAction heure="">contenuAction</typeAction>
+        ...
+      </Actions>
+    </logiciel>
+    ...
+  </infoTraces>
+  <infoEtudiant>
+    <identifiant>identifiantUser</identifiant>
+    <TP>TPX</TP>
+    <Exercice>Exo X</Exercice>
+  </infoEtudiant>
+</fichierConsolidé>
