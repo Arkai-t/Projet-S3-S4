@@ -5,7 +5,8 @@
       <HeureDebut>uneHeure</HeureDebut>
       <HeureFin>uneHeure</HeureFin>
       <Actions>
-        <typeAction heure="">contenuAction</typeAction>
+        <action type="" heure="">contenuAction</action>
+        <action type="Saisie" heureDebut="" heureFin="">contenuAction</action>
         ...
       </Actions>
     </logiciel>
