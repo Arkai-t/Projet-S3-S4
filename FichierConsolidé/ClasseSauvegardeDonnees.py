@@ -58,9 +58,16 @@ class SauvegardDonnee:
 
         acts = etree.SubElement(logiciel, "Actions")
         for uneAction in actions:
-            act = etree.SubElement(acts, uneAction.get("nomAction"))
-            act.set("heure", uneAction.get("heure"))
-            act.text = uneAction.get("valeur")
+            #On regarde si l'action est de type
+            if uneAction.get("type") == "Saisie":
+                 act.set("type", uneAction.get("type"))
+                 act.set("heureDebut", uneAction.get("heureDebut"))
+                 act.set("heureFin", uneAction.get("heureFin"))
+                 act.text = uneAction.get("valeur")
+            else:
+                 act.set("type", uneAction.get("type"))
+                 act.set("heure", uneAction.get("heure"))
+                 act.text = uneAction.get("valeur")
 
     def sauvegardeFichier(self, nomFichier = ""):
         """
