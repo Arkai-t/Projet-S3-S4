@@ -17,9 +17,10 @@ monXML.ajoutInfoEtudiant("identifiantUser", "TPX", "Exo X")
 actionsLogi1 = []
 #Création d'une action
 action1 = {}
-action1["nomAction"] = "Ecrire"
-action1["heure"] = "14:20:18"
-action1["valeur"] = "CTRL+C"
+action1["type"] = "Saisie"
+action1["heureDebut"] = "14:20:18"
+action1["heureFin"] = "16:01:12"
+action1["valeur"] = "Tu es lent"
 actionsLogi1.append(action1)
 
 #Ajout du logiciel et des informations correspondantes
@@ -29,14 +30,14 @@ monXML.ajoutLogiciel("logiciel1", "14:18:03", "16:02:54", actionsLogi1)
 actionsLogi2 = []
 #Création d'une action
 action1 = {}
-action1["nomAction"] = "Menu"
+action1["type"] = "Menu"
 action1["heure"] = "14:48:56"
 action1["valeur"] = "Compiler"
 actionsLogi2.append(action1)
 
 #Création d'une action
 action2 = {}
-action2["nomAction"] = "Menu"
+action2["type"] = "Menu"
 action2["heure"] = "15:38:33"
 action2["valeur"] = "Sauvegarder"
 actionsLogi2.append(action2)
