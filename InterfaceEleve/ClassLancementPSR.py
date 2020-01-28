@@ -38,15 +38,14 @@ class LancementPSR:
         if self.nomFichier.length > 5:
             print("Le nom du fichier est trop long !")
 
-        #Formatage de la sortie comme une expression brute
-
-
+        #C:\Windows\System32\psr.exe
         subprocess.Popen(["psr" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
 
     def arret(self):
         """
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
+        #C:\Windows\System32\psr.exe
         subprocess.Popen(["psr" , "/stop"],  shell=True)
 
         #Attendre que le fichier se créer avant de le déziper
