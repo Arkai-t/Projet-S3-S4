@@ -10,7 +10,7 @@ import subprocess
 import zipfile
 import os
 
-class LancementPSR:
+class PSR:
     """
     """
 
