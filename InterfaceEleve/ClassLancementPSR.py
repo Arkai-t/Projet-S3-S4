@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 28 18:51:51 2020
-
 @author: Louison VINCENT
 """
 
@@ -20,7 +19,7 @@ class PSR:
         """
         self.cheminEnregistrement = cheminEnregistrement
         self.nomFichier = nomFichier
-        self.estLancé = False
+        self.estLance = False
 
     @property
     def sortieFichier(self):
@@ -35,14 +34,15 @@ class PSR:
             /gui 0 : cacher l'interface de PSR
             /output dossier de sortie des fichiers
         """
-        if (self.estLancé == False):
-             if self.nomFichier.length > 5:
+        if (self.estLance == False):
+             if len(self.nomFichier) > 5:
                  print("Le nom du fichier est trop long !")
+            
+             self.estLance = True
 
              #C:\Windows\System32\psr.exe
              subprocess.Popen(["psr" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
 
-             self.estLancé == True
         else:
              print("Le logiciel PSR est déjà lancé !")
                 
@@ -73,12 +73,14 @@ class PSR:
         """
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
-        if (self.estLancé == True):
+        if (self.estLance == True):
              #C:\Windows\System32\psr.exe
              subprocess.Popen(["psr" , "/stop"],  shell=True)
 
              self.__dezipage()
 
              self.__supprimerFichierMHT()
+             
         else:
-             print("Le logiciel PSR n'est pas lancé !")
+            print("Le logiciel PSR n'est pas lancé !")
+             
