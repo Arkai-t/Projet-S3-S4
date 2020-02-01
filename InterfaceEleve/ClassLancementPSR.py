@@ -8,11 +8,9 @@ import time
 import subprocess
 import zipfile
 import os
+from shutil import rmtree
 
-class PSR:
-    """
-    """
-
+class GestionPSR:
     def __init__(self, cheminEnregistrement, nomFichier):
         """
         Définit le chemin où les fichiers produits vont être enregistrées et le nom du fichier enregistré
@@ -25,7 +23,7 @@ class PSR:
     def sortieFichier(self):
         return r'{0}\{1}.zip'.format(self.cheminEnregistrement, self.nomFichier)
 
-    def lancement(self):
+    def lancer(self):
         """
         Lance le logiciel PSR avec comme paramètres:
             /start : lancer PSR
@@ -35,9 +33,8 @@ class PSR:
             /output dossier de sortie des fichiers
         """
         if (self.estLance == False):
-             if len(self.nomFichier) > 5:
-                 print("Le nom du fichier est trop long !")
-            
+             assert(len(self.nomFichier) < 5)
+
              self.estLance = True
 
              #C:\Windows\System32\psr.exe
@@ -45,8 +42,8 @@ class PSR:
 
         else:
              print("Le logiciel PSR est déjà lancé !")
-                
-    def __dezipage(self):
+
+    def __deziper(self):
          #Attendre que le fichier se créer avant de le déziper
          time.sleep(3)
 
@@ -54,12 +51,15 @@ class PSR:
          with zipfile.ZipFile(self.sortieFichier, 'r') as zip_ref:
                zip_ref.extractall(r"{0}\unzip".format(self.cheminEnregistrement)) #CHOISIR UN NOM DE DOSSIER
 
-    def __supprimerFichierMHT(self):
+         #Supprimer le .zip
+         rmtree(self.nomFichier, ignore_errors = True)
+
+    def __supprimer(self):
          """
-         Supprimer tous les fichier .mht du zip
+         Supprimer tous les fichier .mht du dossier extrait du zip
          """
          #Supprimer .HTM
-         dossier = '{0}\\unzip'.format(self.cheminEnregistrement)
+         dossier = '{0}\\unzip'.format(self.cheminEnregistrement) #CHOISIR LE MEME NOM DE DOSSIER QU'AU DESSUS
          listeDocs = os.listdir(dossier)
 
         #Parcours des fichiers pour supprimer tous les .MHT
@@ -68,8 +68,7 @@ class PSR:
                  os.remove(os.path.join(dossier, fichier))
                  print(fichier," supprimé avec succès")
 
-
-    def arret(self):
+    def arreter(self):
         """
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
@@ -77,10 +76,9 @@ class PSR:
              #C:\Windows\System32\psr.exe
              subprocess.Popen(["psr" , "/stop"],  shell=True)
 
-             self.__dezipage()
+             self.__deziper()
 
-             self.__supprimerFichierMHT()
-             
+             self.__supprimer()
+
         else:
             print("Le logiciel PSR n'est pas lancé !")
-             
