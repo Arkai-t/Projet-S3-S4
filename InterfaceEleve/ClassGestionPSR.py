@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 28 18:51:51 2020
-@author: Louison VINCENT
+@author: Louison VINCENT, LAFOURCADE Paul
 """
 
 import time
@@ -21,7 +21,7 @@ class GestionPSR:
 
     @property
     def sortieFichier(self):
-        return r'{0}\{1}.zip'.format(self.cheminEnregistrement, self.nomFichier)
+        return r'{0}/{1}'.format(self.cheminEnregistrement, self.nomFichier)
 
     def lancer(self):
         """
@@ -33,12 +33,12 @@ class GestionPSR:
             /output dossier de sortie des fichiers
         """
         if (self.estLance == False):
-             assert(len(self.nomFichier) < 5)
+             assert(len(self.nomFichier) < 10)
 
              self.estLance = True
 
              #C:\Windows\System32\psr.exe
-             subprocess.Popen(["psr" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
+             subprocess.Popen(["psr" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.nomFichier], shell=True)
 
         else:
              print("Le logiciel PSR est déjà lancé !")
@@ -46,6 +46,13 @@ class GestionPSR:
     def __deziper(self):
          #Attendre que le fichier se créer avant de le déziper
          time.sleep(3)
+         
+         #deplacer (créer le dossier dans un premier temps) 
+         if not os.path.exists(self.cheminEnregistrement):
+             os.makedirs(self.cheminEnregistrement)
+         
+         os.replace(self.nomFichier, self.sortieFichier)
+         
 
           #Dézipage
          with zipfile.ZipFile(self.sortieFichier, 'r') as zip_ref:
@@ -82,3 +89,8 @@ class GestionPSR:
 
         else:
             print("Le logiciel PSR n'est pas lancé !")
+            
+psr = GestionPSR("./test","t.zip")
+psr.lancer()
+time.sleep(10)
+psr.arreter()
