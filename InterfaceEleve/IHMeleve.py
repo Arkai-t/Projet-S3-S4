@@ -2,11 +2,18 @@ from tkinter import *
 import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
      
-    
 
-fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
-fenetreCommencerExercice.geometry('200x50')
-fenetreCommencerExercice.title("Système d'analyse de traces - Commencer l'exercice")
+def fenetreArreterExercice():
+    """
+    Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
+    """
+    fenetreESP.destroy() #Ferme la fenêtre en savoir plus
+    fenetreArret = Tk() #Création de la fenetre
+    fenetreArret.geometry('200x50')
+    fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
+    boutonArreterExercice = Button(fenetreCommencerExercice, text="Arreter exercice", command=fenetreArret.destroy)
+    boutonArreterExercice.pack()
+
 
 def fenetreEnSavoirPlus(self):
     """
@@ -43,13 +50,31 @@ def affichageFenetreAutorisation():
     labelEnSavoirPlus.configure(font=myfont)
     labelEnSavoirPlus.bind("<Button-1>", fenetreEnSavoirPlus)
 
-    boutonAccepter = Button(fenetreAutorisation,text="J'accepte", command=fenetreAutorisation.destroy) #Création du bouton permettant à l'étudiant d'accepter la collecte des données
+    boutonAccepter = Button(fenetreAutorisation,text="J'accepte", command=fenetreArreterExercice) #Création du bouton permettant à l'étudiant d'accepter la collecte des données
     boutonAccepter.pack(side=RIGHT)
     boutonRefuser= Button(fenetreAutorisation,text="Je refuse", command=fenetreAutorisation.destroy) #Création du bouton permettant à l'étudiant de refuser la collecte des données
     boutonRefuser.pack(side=RIGHT)
 
     fenetreAutorisation.mainloop()
-     
+
+def fenetreArreterExercice():
+    """
+    Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
+    """
+    #fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
+    fenetreArret = Tk() #Création de la fenetre
+    fenetreArret.geometry('200x50')
+    fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
+    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=fenetreArret.destroy)
+    boutonArreterExercice.config(height =150,width=40)
+    boutonArreterExercice.pack()
+    fenetreArret.pack() 
+
+fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
+fenetreCommencerExercice.geometry('200x50')
+fenetreCommencerExercice.title("Système d'analyse de traces - Commencer l'exercice")
+
 boutonCommencerExercice = Button(fenetreCommencerExercice, text="Commencer exercice", command=affichageFenetreAutorisation)
+boutonCommencerExercice.config(height =150,width=40)
 boutonCommencerExercice.pack()
 fenetreCommencerExercice.mainloop()
