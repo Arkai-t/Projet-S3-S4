@@ -109,33 +109,3 @@ class BKLtoTxt:
 
 
 
-class EnregistrerText:
-    def __init__(self):
-        self.root = etree.Element("actions")
-        
-    def ajouterAction(self, action):
-        '''
-        Ajouter une phrase, ca qu'on peut voir comme une action
-        '''
-        self.brancheMere = etree.SubElement(self.root, "action")
-        self.brancheMere.set("type", "Saisie")
-        self.brancheMere.set("heureDebut", action.getHeureDebut())
-        self.brancheMere.set("heureFin", action.getHeureFin())
-        self.brancheMere.text = action.getMot()
-        
-        
-    def sauvegardeFichier(self, nomFichier):
-        etree.ElementTree(self.root).write(nomFichier, pretty_print = True, xml_declaration=True, encoding="utf-8")
-
-
-
-conversion = BKLtoTxt('kpc_log.tsv')
-enregistrement = EnregistrerText()
-
-tableau = conversion.recupererPhrases()
-
-for mot in tableau:
-    #print(mot.getHeureDebut()," -> ",mot.getHeureFin(), " : ",mot.getMot(),'\n')
-    enregistrement.ajouterAction(mot)
-
-enregistrement.sauvegardeFichier("TestKPClogToXML1.xml")
