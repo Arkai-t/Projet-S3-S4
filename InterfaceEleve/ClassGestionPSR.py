@@ -4,12 +4,10 @@ Created on Tue Jan 28 18:51:51 2020
 @author: Louison VINCENT, Paul LAFOURCADE
 """
 
-import time
 import subprocess
 import zipfile
 import os
 from os import path
-from shutil import rmtree
 
 class GestionPSR:
     def __init__(self, cheminEnregistrement, nomFichier):
