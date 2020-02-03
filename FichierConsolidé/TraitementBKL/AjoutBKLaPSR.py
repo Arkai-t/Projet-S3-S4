@@ -28,10 +28,13 @@ tree = etree.parse("testBKL_PSR.xml")
 root = tree.getroot()
 etree.tostring(root)
 
-for action in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
+for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
     #print(action)
-    if action == "Saisie au clavier":
-        parent = action.getparent().getparent() #Balise EachAction associée
+    if texteAction == "Saisie au clavier":
+        parent = texteAction.getparent().getparent() #Balise EachAction associée
+        
+        action = texteAction.getParent()
+        
         debutActionPSR = parent.get("Time")
         
         for mot in tableauMots:
@@ -43,17 +46,9 @@ for action in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action
                 baliseTxt.set("heureDebut", mot.getHeureDebut())
                 baliseTxt.set("heureFin", mot.getHeureFin())
                 baliseTxt.text = mot.getMot()
+
+                action.insert(action.index("Action")+1, baliseTxt)
                 
-                print(etree.tostring(baliseTxt))
-            
-        
-        #tableauActionsTxt.append(parent)
-            
-            
-            
-        
-        #baliseTxt = etree.Element("texte")
-        
-        #parent.insert(parent.index(name)+1, etree.XML('<name>testage</name>'))
+                print(etree.tostring(baliseTxt), " inséré")
         
 
