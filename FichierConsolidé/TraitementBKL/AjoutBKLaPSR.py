@@ -23,7 +23,7 @@ tableauMots = conversion.recupererPhrases()
 tableauActionsTxt = []
 
 
-tree = etree.parse("testing.xml")
+tree = etree.parse("testBKL_PSR.xml")
 
 root = tree.getroot()
 etree.tostring(root)
@@ -35,7 +35,7 @@ for action in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action
         debutActionPSR = parent.get("Time")
         
         for mot in tableauMots:
-            if not (heureToNb(mot.getHeureDebut()) < heureToNb(debutActionPSR) or heureToNb(mot.getHeureFin()) > heureToNb(debutActionPSR)):
+            if not (heureToNb(mot.getHeureDebut()) < heureToNb(debutActionPSR) and heureToNb(mot.getHeureFin()) > heureToNb(debutActionPSR)):
                 print("Ajouter le texte au BKL")
             
             
