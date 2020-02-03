@@ -19,7 +19,7 @@ def fenetreEnSavoirPlus(self):
     """
     Cette méthode permet d'afficher la fenêtre montrant la charte juridique du projet
     """
-    monFichier = open("charteJuridique.txt","r") #Ouverture en mode lecture du fichier contenant la charte juridique
+    monFichier = open("charteJuridique.txt","r",encoding="utf-8") #Ouverture en mode lecture du fichier contenant la charte juridique
     fenetreESP = Tk() #création de la fenêtre
     fenetreESP.attributes("-topmost",True) #Permet de donner le focus à cette fenêtre
     fenetreESP.title("En savoir plus")
@@ -50,18 +50,18 @@ def affichageFenetreAutorisation():
     labelEnSavoirPlus.configure(font=myfont)
     labelEnSavoirPlus.bind("<Button-1>", fenetreEnSavoirPlus)
 
-    boutonAccepter = Button(fenetreAutorisation,text="J'accepte", command=fenetreArreterExercice) #Création du bouton permettant à l'étudiant d'accepter la collecte des données
+    boutonAccepter = Button(fenetreAutorisation,text="J'accepte", command=lambda: fenetreArreterExercice(fenetreAutorisation)) #Création du bouton permettant à l'étudiant d'accepter la collecte des données
     boutonAccepter.pack(side=RIGHT)
     boutonRefuser= Button(fenetreAutorisation,text="Je refuse", command=fenetreAutorisation.destroy) #Création du bouton permettant à l'étudiant de refuser la collecte des données
     boutonRefuser.pack(side=RIGHT)
 
     fenetreAutorisation.mainloop()
 
-def fenetreArreterExercice():
+def fenetreArreterExercice(fenetreAutorisation):
     """
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
-    #fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
+    fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
@@ -69,6 +69,7 @@ def fenetreArreterExercice():
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
     fenetreArret.pack() 
+    fenetreArret.mainloop()
 
 fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
 fenetreCommencerExercice.geometry('200x50')
