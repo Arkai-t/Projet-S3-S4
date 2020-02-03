@@ -33,7 +33,7 @@ for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/A
     if texteAction == "Saisie au clavier":
         parent = texteAction.getparent().getparent() #Balise EachAction associée
         
-        action = texteAction.getParent()
+        action = texteAction.getparent()
         
         debutActionPSR = parent.get("Time")
         
