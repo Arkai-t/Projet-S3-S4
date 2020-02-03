@@ -7,6 +7,8 @@ Created on Mon Feb  3 13:07:46 2020
 
 import os
 from lxml import etree
+from RecuperationDonneesPSR_BKL import RecuperationDonneesPSR_BKL
+from FormatageDonneesPSR_BKL import FormatageDonneesPSR_BKL
 
 
 #root = etree.parse(r'leTestXml.xml')
