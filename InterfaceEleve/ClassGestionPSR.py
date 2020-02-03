@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 28 18:51:51 2020
-@author: Louison VINCENT, Paul LAFOURCADE
+@author: Louison VINCENT
 """
 
 import subprocess
@@ -36,8 +36,7 @@ class GestionPSR:
 
              self.estLance = True
 
-             #C:\Windows\System32\psr.exe
-             subprocess.Popen(["psr" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
+             subprocess.Popen(["C:/Windows/System32/psr.exe" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
 
         else:
              print("Le logiciel PSR est déjà lancé !")
@@ -66,7 +65,6 @@ class GestionPSR:
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
         if (self.estLance == True):
-             #C:\Windows\System32\psr.exe
              subprocess.Popen(["C:/Windows/System32/psr.exe" , "/stop"],  shell=True)
 
              #Attendre que PSR créé le fichier
