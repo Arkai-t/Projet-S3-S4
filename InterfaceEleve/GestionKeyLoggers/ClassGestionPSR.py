@@ -16,7 +16,6 @@ class GestionPSR:
         """
         self.cheminEnregistrement = cheminEnregistrement
         self.nomFichier = nomFichier
-        self.estLance = False
 
     @property
     def sortieFichier(self):
@@ -31,20 +30,17 @@ class GestionPSR:
             /gui 0 : cacher l'interface de PSR
             /output dossier de sortie des fichiers
         """
-        if (self.estLance == False):
-             assert(len(self.nomFichier) < 5)
+        assert(len(self.nomFichier) <= 5)
 
-             self.estLance = True
-
-             subprocess.Popen(["C:/Windows/System32/psr.exe" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
-
-        else:
-             print("Le logiciel PSR est déjà lancé !")
+        subprocess.Popen(["C:/Windows/System32/psr.exe" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieFichier], shell=True)
 
     def __deziper(self):
          #Dézipage
          with zipfile.ZipFile(self.sortieFichier, 'r') as zip_ref:
                zip_ref.extractall(r"{0}/unzip".format(self.cheminEnregistrement)) #CHOISIR UN NOM DE DOSSIER
+
+         #Suppression du .zip
+         os.remove(self.sortieFichier)
 
     def __supprimer(self):
          """
@@ -58,22 +54,17 @@ class GestionPSR:
          for fichier in listeDocs:
              if fichier.endswith(".mht"):
                  os.remove(os.path.join(dossier, fichier))
-                 print(fichier," supprimé avec succès")
 
     def arreter(self):
         """
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
-        if (self.estLance == True):
-             subprocess.Popen(["C:/Windows/System32/psr.exe" , "/stop"],  shell=True)
+        subprocess.Popen(["C:/Windows/System32/psr.exe" , "/stop"],  shell=True)
 
-             #Attendre que PSR créé le fichier
-             while path.isfile(self.sortieFichier) != True:
-                 pass
+        #Attendre que PSR créé le fichier
+        while path.isfile(self.sortieFichier) != True:
+            pass
 
-             self.__deziper()
+        self.__deziper()
 
-             self.__supprimer()
-
-        else:
-            print("Le logiciel PSR n'est pas lancé !")
+        self.__supprimer()
