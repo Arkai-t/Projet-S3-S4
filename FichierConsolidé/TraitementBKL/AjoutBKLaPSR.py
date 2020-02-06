@@ -9,7 +9,6 @@ Created on Sat Feb  1 22:45:00 2020
 
 from lxml import etree
 from TraitementBasicKeyLogger import BKLtoTxt
-from TraitementBasicKeyLogger import Mot
 
 
 def heureToNb(heure):
@@ -23,10 +22,13 @@ tableauMots = conversion.recupererPhrases()
 tableauActionsTxt = []
 
 
-tree = etree.parse("testBKL_PSR.xml")
+tree = etree.parse("test.xml")
 
 root = tree.getroot()
 etree.tostring(root)
+
+previousDebutActionPSR = root.findall('/Report/UserActionData/RecordSession').attrib['StartTime']
+print(heureToNb(previousDebutActionPSR))
 
 for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
     #print(action)
@@ -37,8 +39,10 @@ for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/A
         
         debutActionPSR = parent.get("Time")
         
+        
+        
         for mot in tableauMots:
-            if not (heureToNb(mot.getHeureDebut()) < heureToNb(debutActionPSR) and heureToNb(mot.getHeureFin()) > heureToNb(debutActionPSR)):
+            if (heureToNb(mot.getHeureDebut()) >= heureToNb(previousDebutActionPSR) and (heureToNb(mot.getHeureFin()) <= heureToNb(debutActionPSR))):
                 print("Ajouter le texte au BKL")
             
             
@@ -47,8 +51,12 @@ for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/A
                 baliseTxt.set("heureFin", mot.getHeureFin())
                 baliseTxt.text = mot.getMot()
 
-                action.insert(action.index("Action")+1, baliseTxt)
+                parent.insert(parent.index(action)+1, baliseTxt)
                 
-                print(etree.tostring(baliseTxt), " inséré")
-        
+                #print(etree.tostring(baliseTxt), " inséré")
+                
+        previousDebutActionPSR = debutActionPSR
+                
+                
+etree.ElementTree(root).write("xmlModifie", pretty_print = True, xml_declaration=True, encoding="utf-8")
 
