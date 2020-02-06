@@ -9,6 +9,9 @@ import zipfile
 import os
 from os import path
 
+#Location de PSR
+pathPSR = "C:/Windows/System32/psr.exe"
+
 class GestionPSR:
     def __init__(self, cheminEnregistrement, nomFichier):
         """
@@ -36,7 +39,7 @@ class GestionPSR:
         """
         assert(len(self.nomFichier) <= 5)
 
-        subprocess.Popen(["C:/Windows/System32/psr.exe" , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieZip], shell=True)
+        subprocess.Popen([pathPSR , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieZip], shell=True)
 
     def __deziper(self):
          #Dézipage
@@ -73,7 +76,7 @@ class GestionPSR:
         """
         Arrête PSR, et prépare les fichiers produits pour la fusion avec BKL
         """
-        subprocess.Popen(["C:/Windows/System32/psr.exe" , "/stop"],  shell=True)
+        subprocess.Popen([pathPSR , "/stop"],  shell=True)
 
         #Attendre que PSR créé le zip
         while path.isfile(self.sortieZip) != True:
