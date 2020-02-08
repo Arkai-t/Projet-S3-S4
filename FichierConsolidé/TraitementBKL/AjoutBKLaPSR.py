@@ -27,8 +27,8 @@ tree = etree.parse("test.xml")
 root = tree.getroot()
 etree.tostring(root)
 
-previousDebutActionPSR = root.findall('/Report/UserActionData/RecordSession').attrib['StartTime']
-print(heureToNb(previousDebutActionPSR))
+for balise in root.xpath('/Report/UserActionData/RecordSession'):
+    previousDebutActionPSR = balise.attrib['StartTime']
 
 for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
     #print(action)
@@ -42,6 +42,7 @@ for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/A
         
         
         for mot in tableauMots:
+            print(mot.getHeureDebut(), " >= ", previousDebutActionPSR, " ", mot.getHeureFin(), " <= ", debutActionPSR)
             if (heureToNb(mot.getHeureDebut()) >= heureToNb(previousDebutActionPSR) and (heureToNb(mot.getHeureFin()) <= heureToNb(debutActionPSR))):
                 print("Ajouter le texte au BKL")
             
@@ -56,7 +57,7 @@ for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/A
                 #print(etree.tostring(baliseTxt), " inséré")
                 
         previousDebutActionPSR = debutActionPSR
+        print ("now")
                 
                 
 etree.ElementTree(root).write("xmlModifie", pretty_print = True, xml_declaration=True, encoding="utf-8")
-
