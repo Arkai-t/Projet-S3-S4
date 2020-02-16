@@ -1,18 +1,12 @@
 from tkinter import *
 import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
-     
+from ClassGestionBKL import GestionBKL
+import time
 
-def fenetreArreterExercice():
-    """
-    Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
-    """
-    fenetreESP.destroy() #Ferme la fenêtre en savoir plus
-    fenetreArret = Tk() #Création de la fenetre
-    fenetreArret.geometry('200x50')
-    fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
-    boutonArreterExercice = Button(fenetreCommencerExercice, text="Arreter exercice", command=fenetreArret.destroy)
-    boutonArreterExercice.pack()
+
+
+
 
 
 def fenetreEnSavoirPlus(self):
@@ -61,20 +55,29 @@ def fenetreArreterExercice(fenetreAutorisation):
     """
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
+    print("yousk")
+    monBKL = GestionBKL()
+    print("yousk2")
+
     fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
-    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=fenetreArret.destroy)
+    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monBKL,fenetreArret))
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
+    monBKL.lancer()
+    print("yousk3")
     fenetreArret.pack() 
     fenetreArret.mainloop()
+
+def arreterExercice(monBKL,fenetreArret):
+    monBKL.arreter()
+    fenetreArret.destroy()
 
 fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
 fenetreCommencerExercice.geometry('200x50')
 fenetreCommencerExercice.title("Système d'analyse de traces - Commencer l'exercice")
-
 boutonCommencerExercice = Button(fenetreCommencerExercice, text="Commencer exercice", command=affichageFenetreAutorisation)
 boutonCommencerExercice.config(height =150,width=40)
 boutonCommencerExercice.pack()
