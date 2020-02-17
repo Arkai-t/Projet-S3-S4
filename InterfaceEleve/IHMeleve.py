@@ -1,9 +1,9 @@
-from tkinter import *
+from tkinter import Tk,Button,Label,LEFT,RIGHT,WORD,BOTH,INSERT
 import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
-from ClassGestionBKL import GestionBKL
+from GestionBKL import GestionBKL
+from ClassGestionPSR import GestionPSR
 import time
-
 
 
 
@@ -55,24 +55,23 @@ def fenetreArreterExercice(fenetreAutorisation):
     """
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
-    print("yousk")
-    monBKL = GestionBKL()
-    print("yousk2")
-
+    #monBKL = GestionBKL()
+    monPSR = GestionPSR("C:/Users/esteb/Desktop/Projet","bite9")
+    monPSR.lancer()
     fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
-    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monBKL,fenetreArret))
+    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monPSR,fenetreArret))
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
-    monBKL.lancer()
-    print("yousk3")
+    #monBKL.lancer()
     fenetreArret.pack() 
     fenetreArret.mainloop()
 
-def arreterExercice(monBKL,fenetreArret):
-    monBKL.arreter()
+def arreterExercice(monPSR,fenetreArret):
+    #monBKL.arreter()
+    monPSR.arreter()
     fenetreArret.destroy()
 
 fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
