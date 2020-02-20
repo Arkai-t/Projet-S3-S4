@@ -5,59 +5,47 @@ Created on Sat Feb  1 22:45:00 2020
 """
 
 
-#RIEN N'EST FINI ICI ! TOUTE LA PARTIE D'AJOUT EST ENCORE A FAIRE
-
 from lxml import etree
 from TraitementBasicKeyLogger import BKLtoTxt
 
 
-def heureToNb(heure):
+
+def heureToNb(heure): #string sous forme de date en nb
     (h, m, s) = heure.split(':')
     return int(h) * 3600 + int(m) * 60 + int(s)
 
-conversion = BKLtoTxt('kpc_log.tsv')
-
+ #Conversion tsv en objets mot
+conversion = BKLtoTxt('kpcd_log.tsv')
 tableauMots = conversion.recupererPhrases()
 
-tableauActionsTxt = []
-
-
-tree = etree.parse("test.xml")
-
+ #initialisation du xml
+tree = etree.parse("test.xml") 
 root = tree.getroot()
 etree.tostring(root)
 
-for balise in root.xpath('/Report/UserActionData/RecordSession'):
-    previousDebutActionPSR = balise.attrib['StartTime']
 
 for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
-    #print(action)
     if texteAction == "Saisie au clavier":
-        parent = texteAction.getparent().getparent() #Balise EachAction associée
+        parent = texteAction.getparent().getparent() #Balise EachAction de l'action récupérée
         
-        action = texteAction.getparent()
+        action = texteAction.getparent() #Balise action en elle meme
         
+        #temp de debut de l'action et fin (debut de la suivante)
         debutActionPSR = parent.get("Time")
-        
+        parentSuivant = parent.getnext()
+        nextActionPSR = parentSuivant.get("Time")
         
         
         for mot in tableauMots:
-            print(mot.getHeureDebut(), " >= ", previousDebutActionPSR, " ", mot.getHeureFin(), " <= ", debutActionPSR)
-            if (heureToNb(mot.getHeureDebut()) >= heureToNb(previousDebutActionPSR) and (heureToNb(mot.getHeureFin()) <= heureToNb(debutActionPSR))):
-                print("Ajouter le texte au BKL")
-            
-            
+            if (heureToNb(mot.getHeureDebut()) >= heureToNb(debutActionPSR) and (heureToNb(mot.getHeureFin()) <= heureToNb(nextActionPSR))):
+                
+                #creation de l'element de texte
                 baliseTxt = etree.Element("texte")
                 baliseTxt.set("heureDebut", mot.getHeureDebut())
                 baliseTxt.set("heureFin", mot.getHeureFin())
                 baliseTxt.text = mot.getMot()
 
-                parent.insert(parent.index(action)+1, baliseTxt)
+                parent.insert(parent.index(action)+1, baliseTxt) #insertion après l'action
                 
-                #print(etree.tostring(baliseTxt), " inséré")
-                
-        previousDebutActionPSR = debutActionPSR
-        print ("now")
-                
-                
-etree.ElementTree(root).write("xmlModifie", pretty_print = True, xml_declaration=True, encoding="utf-8")
+#enregistrement de l'xml modifié
+etree.ElementTree(root).write("xmlModifie.xml", pretty_print = True, xml_declaration=True, encoding="utf-8")
