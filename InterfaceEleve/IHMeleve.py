@@ -56,7 +56,7 @@ def fenetreArreterExercice(fenetreAutorisation):
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
     #monBKL = GestionBKL()
-    monPSR = GestionPSR("C:/Users/esteb/Desktop/Projet","bite9")
+    monPSR = GestionPSR("C:/Users/esteb/Desktop/Projet","test1")
     monPSR.lancer()
     fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
