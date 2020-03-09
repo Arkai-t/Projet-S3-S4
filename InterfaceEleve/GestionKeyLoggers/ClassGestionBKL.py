@@ -4,20 +4,20 @@ Created on Thu Feb  6 19:08:37 2020
 @author: Louison VINCENT
 """
 
+import subprocess
 import os
-
 #Location de BKL
-pathBKL = r"C:/Users/Moi/Documents/DUT Projet/basicKeyLogger/"
 
 class GestionBKL:
     def __init__(self):
-        pass
+        os.chdir(r".\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
 
     def lancer(self):
         """
         Lance le logiciel BKL
         """
-        os.system("startHidden.exe")
+        subprocess.Popen(["startHidden.exe"], shell=True)
+
 
 
 
@@ -25,5 +25,4 @@ class GestionBKL:
         """
         Arrête BKL
         """
-        os.system("stopKeyLogger.exe")
-
+        subprocess.Popen(["stopKeyLogger.exe"], shell=True)
