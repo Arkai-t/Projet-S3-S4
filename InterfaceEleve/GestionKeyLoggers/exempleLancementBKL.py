@@ -6,12 +6,11 @@ Created on Thu Feb  6 19:22:34 2020
 """
 
 from ClassGestionBKL import GestionBKL
-import time
 
 monBKL = GestionBKL()
 
 monBKL.lancer()
 
-time.sleep(3)
+input("Press enter to continue")
 
 monBKL.arreter()
