@@ -1,13 +1,11 @@
 from tkinter import Tk,Button,Label,LEFT,RIGHT,WORD,BOTH,INSERT
 import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
-from GestionBKL import GestionBKL
+from ClassGestionBKL import GestionBKL
 from ClassGestionPSR import GestionPSR
-import time
 
-
-
-
+cheminDossierPSR = r"C:\Users\Moi\Documents\DUT\DUT Projet\Code\Partie élève"
+nomFicSauvegardePSR = "test1"
 
 def fenetreEnSavoirPlus(self):
     """
@@ -36,7 +34,7 @@ def affichageFenetreAutorisation():
     fenetreAutorisation.title("New Window")
     label = Label(fenetreAutorisation, text="Acceptez-vous que vos données soient enregistrées dans un cadre pédagogique ?")
     label.pack()
-    
+
     labelEnSavoirPlus = Label(fenetreAutorisation, text="En savoir plus",fg="blue") #Création du lien hypertexte qui ouvrira la fenêtre avec la charte juridique
     labelEnSavoirPlus.pack(side = LEFT)
     myfont = tkFont.Font(labelEnSavoirPlus, labelEnSavoirPlus.cget("font"))
@@ -55,22 +53,22 @@ def fenetreArreterExercice(fenetreAutorisation):
     """
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
-    #monBKL = GestionBKL()
-    monPSR = GestionPSR("C:/Users/esteb/Desktop/Projet","test1")
+    monBKL = GestionBKL()
+    monPSR = GestionPSR(cheminDossierPSR,nomFicSauvegardePSR)
     monPSR.lancer()
     fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
-    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monPSR,fenetreArret))
+    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monPSR,monBKL,fenetreArret))
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
-    #monBKL.lancer()
-    fenetreArret.pack() 
+    monBKL.lancer()
+    fenetreArret.pack()
     fenetreArret.mainloop()
 
-def arreterExercice(monPSR,fenetreArret):
-    #monBKL.arreter()
+def arreterExercice(monPSR,monBKL,fenetreArret):
+    monBKL.arreter()
     monPSR.arreter()
     fenetreArret.destroy()
 
