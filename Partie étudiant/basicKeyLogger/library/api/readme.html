@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body>
+The API Package contains a general class
+(Utilities) and specific classes, External, Librarian, etc.
+Organization: <br>
+<br>
+<div style="margin-left: 40px;">file Xyz.py contains class Xyz.py, only
+one class per file.<br>
+some files, e.g., Utilities, External, create a singleton.&nbsp; The
+singleton created by class Xyz.py is named xyz.<br>
+some classes are multi-hierarchical, e.g., Utilities ( Files, Texts,
+... )<br>
+some classes have a configuration file, e.g., Xyz.py -&gt;
+xyz_configuration.py. it is embedded directly in
+the class (from ..._configuration import *)<br>
+files in lower case are scripts, e.g., to launch a class.<br>
+<br>
+</div>
+<br>
+<br>
+To use the package (interactive version. You can do the
+same from a script)<br>
+<br>
+<div style="margin-left: 40px;">go to parent directory of library
+(xxx/library/ -&gt; xxx/), <br>
+run python (global installation or local copy library/python/python ) <br>
+import library (configures the sys.path, os.environ variables)<br>
+from guiPygame.Xyz import *<br>
+<br>
+# here, singleton xyz is created)<br>
+</div>
+<br>
+<br>
+General purpose class:<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">Utilities </span>(superclasses
+Texts, PathNames, Files, Classes, Items) : wraps string and list
+methods (to capture exceptions),&nbsp; path naming (names, extensions,
+etc.). Provides advanced functions for text processing (e.g., searches)
+files and directories (e.g., instantiation).classes used specifically
+in FTK Doc</li>
+</ul>
+Useful classes:<br>
+<ul>
+  <li><span style="font-weight: bold;">Archiver:</span> backups in zip
+format.</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">AdhocNetwork, BasicNetwork,
+NetworkNode</span>: ad-hoc network using udp and tcp (designed for
+domestic WIFI).</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">BasicWebServer, HttpHandler</span>.
+simple HTTP server</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Benchmark</span>. CPU benchmark
+on typical Python operations<br>
+  </li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Clock</span>: time and date
+functions, timers.</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Documentation</span> (all files
+documentation*.* (can be used standalone) : on-line help and
+documentation (files in diffent formats: html, ascii, tab-separated).</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">External</span> : access to
+external files. Wraps OS and external processes commands), overrides
+file extension associations of the OS.</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Logger</span> : logs in
+tab-separated format.</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Setup</span> : functions to
+install and deinstall a software</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Sound</span> : functions to play
+sound files</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">TableFile, TableData,
+AttributeValueList</span>: formatted files IO (tab-separated,
+read/writes matrices or lists..)</li>
+</ul>
+Specific of documentation application FTK Doc<br>
+<ul>
+  <li><span style="font-weight: bold;">Book</span> : manages
+directories of notes (laboratory book, pending notes..)<br>
+  </li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Context </span>(superclasses
+Paths,
+Messages, Rights, Types, Variables, uses TypeNode) : context of
+execution. a class (and a singleton) containing a set of standard
+paths, text messages, access rights, predefined types of documents
+(with templates), predefined access rights, context variables (e.g., to
+instantiate in texts).</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Converter, BibFile, Html,
+PdfFile, Wiki, XmlFile</span>: file converter (ascii, wiki, html), and
+read/write functions for specific formats<br>
+  </li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">Librarian</span>: manages a
+bookcase, i.e., a volume used as document repository.</li>
+</ul>
+Sandbox<br>
+<br>
+<ul>
+  <li>Serial, I2C</li>
+</ul>
+<ul>
+  <li>Statistics</li>
+</ul>
+Others<br>
+<br>
+<ul>
+  <li>compile,py, findLibrary.py...: should not be used.</li>
+  <li>documentation*.html, *.txt, *.tsv: templates for documentation.<br>
+  </li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
