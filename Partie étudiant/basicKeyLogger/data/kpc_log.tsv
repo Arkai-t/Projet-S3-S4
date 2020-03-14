@@ -1,0 +1,10 @@
+P	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:10	timeStampS	1299061210.093	durationS	6.172	overlapS	0.000	xPix	227	yPix	261	xFinalPix	225	yFinalPix	279	distancePix	18.11	lengthPix	1997.1	
+C	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:16	timeStampS	1299061216.265	durationS	0.062	overlapS	0.000	xPix	225	yPix	279	button	left	
+P	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:16	timeStampS	1299061216.327	durationS	0.078	overlapS	0.000	xPix	225	yPix	279	xFinalPix	225	yFinalPix	279	distancePix	0.0	lengthPix	0.0	
+C	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:16	timeStampS	1299061216.405	durationS	0.125	overlapS	0.000	xPix	225	yPix	279	button	left	
+P	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:16	timeStampS	1299061216.530	durationS	7.453	overlapS	4.599	xPix	226	yPix	279	xFinalPix	227	yFinalPix	346	distancePix	67.01	lengthPix	501.19	
+Q	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:21	timeStampS	1299061217.056	durationS	4.599	overlapS	0.000	
+C	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:23	timeStampS	1299061223.983	durationS	0.157	overlapS	0.000	xPix	227	yPix	346	button	left	
+C	window	FolderView	widget	3342984	date	2011 03 02 - 11:20:24	timeStampS	1299061224.140	durationS	0.843	overlapS	0.000	xPix	227	yPix	346	button	left	
+stopLogger	window	C:\root\projects\basic_key_logger\basicKeyLogger	widget	852562	date	2011 03 02 - 11:20:24	timeStampS	1299061224.983	durationS	0.000	overlapS	0.000	session	0	block	0	trial	0	
+#
