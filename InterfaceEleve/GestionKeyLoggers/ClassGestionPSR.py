@@ -21,10 +21,6 @@ class GestionPSR:
     def sortieZip(self):
         return r'{0}/{1}.zip'.format(self.cheminEnregistrement, self.nomFichier)
 
-    @property
-    def sortieFichier(self):
-        return r"{0}/{1}/".format(self.cheminEnregistrement, self.nomFichier)
-
     def lancer(self):
         """
         Lance le logiciel PSR avec comme paramètres:
