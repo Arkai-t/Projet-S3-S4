@@ -1,0 +1,8 @@
+Lib/
+DLLs/
+Lib/idlelib/
+Lib/site-packages/
+Lib/site-packages/win32/
+Lib/site-packages/win32/lib/
+Lib/site-packages/pythonwin/
+
