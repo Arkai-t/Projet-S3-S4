@@ -4,6 +4,8 @@ Created on Mon Mar  9 12:42:44 2020
 @author: Moi
 """
 
+#tester avec le supprimerLogBKL
+
 import os
 import zipfile
 import shutil #Cette bibliothèque est basée sur celle d'os
@@ -105,6 +107,11 @@ class PreparationFichiers:
         self.__deplacerFicBKL()
 
         self.__clearRepertoireDataBKL()
+        
+        self.__supprimerLogBKL()
+        
+     def __supprimerLogBKL(self)
+        os.remove(repertoireStockageFichiers + '\\' + nomFicBKL)
 
      def preparerFichiers(self):
         if (self.fichierTracesCreer()):
