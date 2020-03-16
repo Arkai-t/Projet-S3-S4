@@ -100,7 +100,7 @@ class GestionBKL:
             Seule fonction a lancer
         """
         
-        self.listeMots = self.__recupererPhrases()
+        self.__recupererPhrases()
         
         #initialisation du xml
         tree = etree.parse(nomFichierPSR) 
@@ -160,3 +160,6 @@ class GestionBKL:
     def __isFirst(self):
         return self.first
 
+
+#bkl = GestionBKL("kpc_log.tsv")
+#bkl.ajoutDuBKLaPSR("xmlatraiter.xml","wow.xml")
