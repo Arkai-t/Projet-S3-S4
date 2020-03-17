@@ -110,7 +110,7 @@ class PreparationFichiers:
         
         self.__supprimerLogBKL()
         
-     def __supprimerLogBKL(self)
+     def __supprimerLogBKL(self):
         os.remove(repertoireStockageFichiers + '\\' + nomFicBKL)
 
      def preparerFichiers(self):
