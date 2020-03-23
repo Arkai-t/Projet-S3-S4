@@ -3,8 +3,15 @@ import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
 from ClassGestionBKL import GestionBKL
 from ClassGestionPSR import GestionPSR
+from json import load
 
-cheminDossierPSR = r"C:\Users\Moi\Documents\DUT\DUT Projet\Code\Partie élève"
+pathConfig = r"D:\Documents\Python Scripts\Config.json"
+
+#Récupérer la configuration
+file = open(pathConfig)
+data = load(file)
+file.close()
+cheminDossierPSR = data["repertoirePartieEtudiant"]
 nomFicSauvegardePSR = "test1"
 
 def fenetreEnSavoirPlus(self):
@@ -54,7 +61,7 @@ def fenetreArreterExercice(fenetreAutorisation):
     Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
     """
     monBKL = GestionBKL()
-    monPSR = GestionPSR(cheminDossierPSR,nomFicSauvegardePSR)
+    monPSR = GestionPSR(cheminDossierPSR)
     monPSR.lancer()
     fenetreAutorisation.destroy() #Ferme la fenêtre en savoir plus
     fenetreArret = Tk() #Création de la fenetre
