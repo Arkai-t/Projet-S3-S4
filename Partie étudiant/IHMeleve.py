@@ -12,7 +12,6 @@ file = open(pathConfig)
 data = load(file)
 file.close()
 cheminDossierPSR = data["repertoirePartieEtudiant"]
-nomFicSauvegardePSR = "test1"
 
 def fenetreEnSavoirPlus(self):
     """
