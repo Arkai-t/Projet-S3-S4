@@ -46,7 +46,8 @@ for action in listeEachActions:
     for balise in balisesDeEachAction:
         if balise.tag == "Action":
             nouvelleAction.type = balise.text
-            break
+        if balise.tag == "Description":
+            nouvelleAction.description = balise.text
         
     nouvelleAction.heureDebut = heureAction
     
@@ -71,6 +72,8 @@ for action in listeEachActions:
         
 
 for logiciel in sessionTP.listeLogiciels:
+    print("------------------------------------")
     print("Logiciel : ", logiciel.nom, " (", logiciel.heureDebut,")")
     for action in logiciel.listeActions:
-        print("Nom de l'action: ", action.type, " (", action.heureDebut,")")
+        print("- Nom de l'action: ", action.type, " (", action.heureDebut,")")
+        print("   Description: ", action.description)
