@@ -1,100 +1,76 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Feb  3 13:07:46 2020
-@author: Malo
+Created on Tue Mar 24 11:28:03 2020
+
+@author: paul6
 """
-
-#import os #pas utilisée
 from lxml import etree
-#from RecuperationDonneesPSR_BKL import RecuperationDonneesPSR_BKL
-#from FormatageDonneesPSR_BKL import FormatageDonneesPSR_BKL
+
+from classLogiciels import Logiciel
+from classLogiciels import Action
+from classLogiciels import Session
 
 
-#root = etree.parse(r'leTestXml.xml')
-#print etree.tostring(root)
 
-print("---------------------------------------------------------------------")
-#creation de la liste de logiciels
-listeDeLogiciels = []
-listeDeLogiciels.append(3)
-print(len(listeDeLogiciels))
-#creation du dictionnaire regroupant les informations des sessions
-infoSession = {}
+sessionTP = Session()
 
-#parssage du fichier XML
-tree = etree.parse("leTestXml.xml")
+#ouverture du xml
 
-for session in  tree.xpath("/Report/UserActionData/RecordSession"): #on se positionne au niveau de la balise <RecordSession>
-    attrSession = session.items() 
+tree = etree.parse("wow.xml")
+
+#infos de session
+session = tree.xpath("/Report/UserActionData/RecordSession")
+attrSession = session[0].items() #get all recordsession attributes
+
+
+sessionTP.heureDebut = attrSession[1][1]
+sessionTP.heureFin = attrSession[2][1]
+sessionTP.actionCount = attrSession[3][1]
+
+listeEachActions = session[0].getchildren()
+
+for action in listeEachActions:
+    attributsActions = action.items()
     
-    #affichage des attribus de la balise <RecordSession>
-    for attribut in attrSession: 
-        print("Attribut session "+" : ")
-        #print ("   "+str(attrSession[i][0]))
-        #print ("   "+str(attrSession[i][1]))
-        clefSession = attribut[0]
-        valueSession = attribut[1]
-        infoSession[clefSession] = valueSession
-        print (attribut[0])
-        print(infoSession[attribut[0]])        
+    #get nom et creation du logiciel
+    nomLogiciel = attributsActions[6][1]
+    heureAction = attributsActions[1][1]
+    nouveauLogiciel = Logiciel(nomLogiciel)
+    
+    #remplir les actions
+    
+    nouvelleAction = Action()
+    
+    balisesDeEachAction = action.getchildren()
+    
+    for balise in balisesDeEachAction:
+        if balise.tag == "Action":
+            nouvelleAction.type = balise.text
+            break
+        
+    nouvelleAction.heureDebut = heureAction
     
     
+    nouveauLogiciel.listeActions.append(nouvelleAction)
+    nouveauLogiciel.setHeureDebut()
     
-    for action in tree.xpath("/Report/UserActionData/RecordSession/EachAction"):#on se positionne au niveau de la balise <EachAction>
-        print("\n")
-        attrAction = action.items()
+    #ajout (ou modif du logiciel)
+    if (sessionTP.listeLogiciels):
+        if(nouveauLogiciel.nom in sessionTP.getNoms()):
+            #Ajouter les actions de nouveauLogiciel au logiciel déjà présent dans listeLogiciels
+            for logiciel in sessionTP.listeLogiciels:
+                if logiciel.nom == nomLogiciel:
+                    logiciel.setHeureDebut()
+                    logiciel.listeActions += nouveauLogiciel.listeActions
+                    break
+        else:
+            sessionTP.listeLogiciels.append(nouveauLogiciel)        
+    else:
+        sessionTP.listeLogiciels.append(nouveauLogiciel)
         
-        l = 1
         
-        for attribut in attrAction:
-            
-            #for i in range(0,len(listeDeLogiciels)):
-               # print('')
-            if str(attribut[0]) == "ProgramId" or str(attribut[0]) == "FileId" or str(attribut[0]) == "FileVersion" or str(attribut[0]) == "FileCompany" or str(attribut[0]) == "CommandLine": 
-                l -= 1
-            else: 
-                print("Attribut action "+ str(l)+" : ")
-                print (attribut[0])
-                print (attribut[1])
-            print("\n")
-            l += 1
-            #creation du dico action
-            #for i in range (0,len(listeDeLogiciels)):
-             #   if attrAction[k][0] == listeDeLogiciels[i]:
-              #      print('')
-                    
-   
-        enfants = action.getchildren()
-        for enfant in enfants: 
-            if enfant.tag != "CursorCoordsXY" and enfant.tag != "ScreenCoordsXYWH" and enfant.tag != "ScreenshotFileName":
-                print(enfant.tag+" : ")
-                print(enfant.text)
-                if enfant.tag == "UIAStack":
-                    #récupérer tous les attributs de la balise UIAStack
-                    enfantsDeUIAStack = enfant.getchildren()
-                    
-                    for enfantUIAStack in enfantsDeUIAStack :
-                        print(enfantUIAStack.tag+" : ")
-                        attrUIAStack = enfantUIAStack.items()
-                        
-                        for attribut in attrUIAStack:
-                            print("   Attribut "+ str(j)+" : ")
-                            print ("                "+str(attribut[0]))
-                            if attribut[0] == "BoundingRectangle":
-                                s = str(attribut[1]);
-                                l = s.split(',');
-                                for i in range(0,len(l)):
-                                    print("                 "+str(l[i]));
-                                    
-                                
-                            else:
-                                print ("                 "+str(attribut[1]))
-                        print("\n")  
-                print("\n")
-        
-print(infoSession)        
-        
-#embouteillage des données dans une liste (logiciels) de dictionnaires
-                #pour chaque balise EachAction : prendre (nom du logiciel, description, action, contenu de UIASTACK et texte )
-                
-#affichage de la liste d'action                
+
+for logiciel in sessionTP.listeLogiciels:
+    print("Logiciel : ", logiciel.nom, " (", logiciel.heureDebut,")")
+    for action in logiciel.listeActions:
+        print("Nom de l'action: ", action.type, " (", action.heureDebut,")")
