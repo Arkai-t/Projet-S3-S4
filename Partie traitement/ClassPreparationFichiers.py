@@ -46,7 +46,7 @@ class PreparationFichiers:
             - nomFicBKL
             - .xml dans le zip généré par PSR
         """
-        return ((os.path.exists(self.pathToBKL + r"\{0}".format(nomFicBKL))) and (os.path.exists(self.pathToPSR)))
+        return ((os.path.exists(self.pathToBKL + '\\' + nomFicBKL)) and (os.path.exists(self.pathToPSR + '\\' + self.nomZipPSR)))
 
      def __deziperPSR(self):
          #Dézipage du fichier de PSR
@@ -90,7 +90,7 @@ class PreparationFichiers:
 
         self.__deplacerFicPSR()
 
-        self.__supprimerRepertoirePSR
+        self.__supprimerRepertoirePSR()
 
      def __deplacerFicBKL(self):
         """
