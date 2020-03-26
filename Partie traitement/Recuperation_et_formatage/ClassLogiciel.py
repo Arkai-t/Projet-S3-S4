@@ -1,34 +1,76 @@
-class Logiciel:
-    
-    def __init__(self,nom):
-        self.nom = nom
-        self.heureDebut = ""
-        self.heureFin = ""
-        self.listeAction = []
-        
-    def addAction(self,action):
-        self.listeAction.append(action)
-    
-    def setHeures(self): #Récupère l'heure min et max et les met dans heureDebut et heureFin
-        self.heureDebut = self.listeAction[0].heureDebut
-        for action in self.listeAction:
-            if self._heureToNb(action.heureDebut) < self._heureToNb(self.heureDebut):
-                self.heureDebut = action.heureDebut
-            if self._heureToNb(action.heureFin) < self._heureToNb(self.heureFin):
-                self.heureFin = action.heureFin
-    def _heureToNb(self,heure):
-        (h, m, s) = heure.split(':')
-        return int(h) * 3600 + int(m) * 60 + int(s)    
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 24 11:28:03 2020
 
-class Action:
+@author: paul6
+"""
+from lxml import etree
+
+from classLogiciels import Logiciel
+from classLogiciels import Action
+from classLogiciels import Session
+
+
+
+sessionTP = Session()
+
+#ouverture du xml
+
+tree = etree.parse("wow.xml")
+
+#infos de session
+session = tree.xpath("/Report/UserActionData/RecordSession")
+attrSession = session[0].items() #get all recordsession attributes
+
+
+sessionTP.heureDebut = attrSession[1][1]
+sessionTP.heureFin = attrSession[2][1]
+sessionTP.actionCount = attrSession[3][1]
+
+listeEachActions = session[0].getchildren()
+
+for action in listeEachActions:
+    attributsActions = action.items()
     
-    def __init__(self):
-        self.type = ""
-        self.heureDebut = ""
-        self.heureFin = ""
-        self.infosComplementaires = ""
+    #get nom et creation du logiciel
+    nomLogiciel = attributsActions[6][1]
+    heureAction = attributsActions[1][1]
+    nouveauLogiciel = Logiciel(nomLogiciel)
+    
+    #remplir les actions
+    
+    nouvelleAction = Action()
+    
+    balisesDeEachAction = action.getchildren()
+    
+    for balise in balisesDeEachAction:
+        if balise.tag == "Action":
+            nouvelleAction.type = balise.text
+            break
         
+    nouvelleAction.heureDebut = heureAction
     
     
+    nouveauLogiciel.listeActions.append(nouvelleAction)
+    nouveauLogiciel.setHeureDebut()
     
+    #ajout (ou modif du logiciel)
+    if (sessionTP.listeLogiciels):
+        if(nouveauLogiciel.nom in sessionTP.getNoms()):
+            #Ajouter les actions de nouveauLogiciel au logiciel déjà présent dans listeLogiciels
+            for logiciel in sessionTP.listeLogiciels:
+                if logiciel.nom == nomLogiciel:
+                    logiciel.setHeureDebut()
+                    logiciel.listeActions += nouveauLogiciel.listeActions
+                    break
+        else:
+            sessionTP.listeLogiciels.append(nouveauLogiciel)        
+    else:
+        sessionTP.listeLogiciels.append(nouveauLogiciel)
         
+        
+
+for logiciel in sessionTP.listeLogiciels:
+    print("Logiciel : ", logiciel.nom, " (", logiciel.heureDebut,")")
+    for action in logiciel.listeActions:
+        print("Nom de l'action: ", action.type, " (", action.heureDebut,")")
