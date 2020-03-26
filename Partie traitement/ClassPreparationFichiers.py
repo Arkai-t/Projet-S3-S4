@@ -9,14 +9,19 @@ Created on Mon Mar  9 12:42:44 2020
 import os
 import zipfile
 import shutil #Cette bibliothèque est basée sur celle d'os
+from json import load
 
 """
-Chemins paramètrables du projet
-    - repertoireParteEleve designe le dossier où est stocker l'interface de l'étudiant
-    - repertoireStockageFichiers designe l'endroit où sont stocker les traces brutes de l'étudiant
+Chemins des paramètres du projet
 """
-repertoirePartieEtudiant = r"C:\Users\Moi\Documents\DUT\DUT Projet\Code\Partie Élève"
-repertoireStockageFichiers = r"C:\Users\Moi\Documents\DUT\DUT Projet\Code\Stockage Traces"
+pathConfig = r"D:\Documents\Python Scripts\Config.json"
+
+#Récupérer la configuration
+file = open(pathConfig)
+data = load(file)
+file.close()
+repertoirePartieEtudiant = data["repertoirePartieEtudiant"]
+repertoireStockageFichiers = data["repertoireStockageFichiers"]
 
 """
 Nom du fichier BKL
@@ -28,11 +33,11 @@ class PreparationFichiers:
      Cette classe sert à préparer les fichiers générés par l'interface élève, et à les déplacer
      dans le repertoireStockageFichiers
      """
-     def __init__(self, nomFicPSR):
+     def __init__(self):
         #Le nom du fichier de PSR pourra peut être être lue depuis un fichier de configuration/information
-        self.nomZipPSR = nomFicPSR + ".zip"
-        self.nomFicPSR = nomFicPSR
-        self.pathToPSR = repertoirePartieEtudiant #+ r"\{0}".format(self.nomFicPSR)
+        self.nomZipPSR = data["PSR"]["nomFicTempPSR"]
+        self.nomFic = data["nomFic"]
+        self.pathToPSR = repertoirePartieEtudiant
         self.pathToBKL = repertoirePartieEtudiant + r"\basicKeyLogger\data"
 
      def fichierTracesCreer(self):
@@ -46,7 +51,7 @@ class PreparationFichiers:
      def __deziperPSR(self):
          #Dézipage du fichier de PSR
          with zipfile.ZipFile(self.pathToPSR + "\\" + self.nomZipPSR, 'r') as zip_ref:
-               zip_ref.extractall(self.pathToPSR + "\\" + self.nomFicPSR) #Prend en paramètre le dossier où va les fichiers
+               zip_ref.extractall(self.pathToPSR + "\\" + self.nomFic) #Prend en paramètre le dossier où va les fichiers
 
          #Suppression du .zip
          os.remove(self.pathToPSR + "\\" + self.nomZipPSR)
@@ -55,11 +60,11 @@ class PreparationFichiers:
         """
         Renomme l'unique fichier XML généré
         """
-        listeDocs = os.listdir(self.pathToPSR + "\\" + self.nomFicPSR)
+        listeDocs = os.listdir(self.pathToPSR + "\\" + self.nomFic)
 
         for fichier in listeDocs:
              if fichier.endswith(".xml"):
-                 os.rename((self.pathToPSR + "\\" + self.nomFicPSR + "\\" + fichier), (self.pathToPSR + "\\" + self.nomFicPSR + "\\" + self.nomFicPSR + ".xml"))
+                 os.rename((self.pathToPSR + "\\" + self.nomFic + "\\" + fichier), (self.pathToPSR + "\\" + self.nomFic + "\\" + self.nomFic + ".xml"))
                  #Génére une erreur si abscence de break => essaye de renommer le fichier qui vient d'être renommé
                  break
 
@@ -67,13 +72,13 @@ class PreparationFichiers:
         """
         Déplace le fichier XML dans le repertoire de stockage des traces
         """
-        shutil.move(self.pathToPSR + '\\' + self.nomFicPSR + '\\' + self.nomFicPSR + '.xml', repertoireStockageFichiers)
+        shutil.move(self.pathToPSR + '\\' + self.nomFic + '\\' + self.nomFic + '.xml', repertoireStockageFichiers)
 
      def __supprimerRepertoirePSR(self):
         """
         Supprime le répertoire de PSR dézippé
         """
-        shutil.rmtree(self.pathToPSR + '\\' + self.nomFicPSR)
+        shutil.rmtree((self.pathToPSR + '\\' + self.nomFic), True)
 
      def __preparerFicPSR(self):
         """
@@ -100,6 +105,12 @@ class PreparationFichiers:
         for fichier in os.listdir(self.pathToBKL):
             os.remove(self.pathToBKL + '\\' + fichier)
 
+     def __renommerFicBKL(self):
+          """
+          Renomme le fichier key_log.tsv contenu dans Stockage fichiers
+          """
+          os.rename((repertoireStockageFichiers + '\\' + nomFicBKL), (repertoireStockageFichiers + '\\' + self.nomFic))
+
      def __preparerFicBKL(self):
         """
         Prépare les fichiers de Basic Key Logger pour leurs traitements ultérieurs
@@ -107,11 +118,8 @@ class PreparationFichiers:
         self.__deplacerFicBKL()
 
         self.__clearRepertoireDataBKL()
-        
-        self.__supprimerLogBKL()
-        
-     def __supprimerLogBKL(self):
-        os.remove(repertoireStockageFichiers + '\\' + nomFicBKL)
+
+        self.__renommerFicBKL()
 
      def preparerFichiers(self):
         if (self.fichierTracesCreer()):
