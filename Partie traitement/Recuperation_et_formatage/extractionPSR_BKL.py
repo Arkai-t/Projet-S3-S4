@@ -48,6 +48,23 @@ for action in listeEachActions:
             nouvelleAction.type = balise.text
         if balise.tag == "Description":
             nouvelleAction.description = balise.text
+        if balise.tag == "UIAStack":
+            #Traitement du UIAStack
+            levels = balise.getchildren()
+            for level in levels: #parcours de toutes les balises level   any('Name' in attr[0] for attr in levelAttributs
+                levelAttributs = level.items()
+                if nouvelleAction.localisationAction == "": #prendre le premier qui a une balise Name
+                    for attribut in levelAttributs:
+                        if attribut[0] == "Name":
+                            nouvelleAction.localisationAction = attribut[1]
+                if nouvelleAction.nomPage == "":
+                    for i, attribut in enumerate(levelAttributs):
+                        if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre":
+                            nouvelleAction.nomPage = levelAttributs[i-1][1]
+        if balise.tag == "texte":
+            texteAttributs = balise.items()
+            nouvelleAction.addMot(balise.text, texteAttributs[0][1], texteAttributs[1][1])
+            
         
     nouvelleAction.heureDebut = heureAction
     
@@ -77,3 +94,8 @@ for logiciel in sessionTP.listeLogiciels:
     for action in logiciel.listeActions:
         print("- Nom de l'action: ", action.type, " (", action.heureDebut,")")
         print("   Description: ", action.description)
+        print("   Localisation: ", action.localisationAction)
+        print("   Nom de la Page: ", action.nomPage)
+        print("   Mots: ")
+        for mot in action.mots:
+            print("     ", mot[0], " (", mot[1], " - ", mot[2], ")")
