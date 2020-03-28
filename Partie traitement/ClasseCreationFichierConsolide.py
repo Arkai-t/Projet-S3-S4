@@ -6,6 +6,13 @@ Created on Thu Jan 23 10:53:41 2020
 """
 
 from lxml import etree
+from ClassSession import Session
+from json import load
+
+"""
+Chemins des paramètres du projet
+"""
+pathConfig = r"D:\Documents\Python Scripts\Config.json"
 
 class SauvegardDonnee:
     """
@@ -17,65 +24,47 @@ class SauvegardDonnee:
         - de l'effacement de valeurs'
     """
 
-    def __init__(self,nomUser,numTP,nomExo):
+    def __init__(self):
         """
         Définit la racine du fichier consolidé et les informations concernant les traces
-        Prend en paramètre:
-             - le nom/identifiant de l'étudiant ayant fait l'exercice
-             - son numéro de TP
-             - le nom/identifiant de l'exercice réalisé'
         """
         #Création de la racine
-        self.root = etree.Element("fichierConsolidé")
+        self.root = etree.Element("Session")
 
-        #Creation du noeud infoTraces qui contiendra toutes les informations des traces
-        self.infoTraces = etree.SubElement(self.root, "infoTraces")
-        #Creation du noeud infoEtudiant qui contiendra toutes les informations de l'étudiant
-        self.infoEtud = etree.SubElement(self.root, "infoEtudiant")
+    def creerArborescence(self, maSession):
+        heureDebut = etree.SubElement(self.root, "HeureDebut")
+        heureDebut.text = maSession.getHeureDebut()
 
-        identifiant = etree.SubElement(self.infoEtud, "identifiant")
-        identifiant.text = nomUser
+        heureFin = etree.SubElement(self.root, "HeureFin")
+        heureFin.text = maSession.getHeureFin()
 
-        tp = etree.SubElement(self.infoEtud, "TP")
-        tp.text = numTP
+        logiciels = etree.SubElement(self.root, "Logiciels")
 
-        exo = etree.SubElement(self.infoEtud, "Exercice")
-        exo.text = nomExo
+        for logicielCourant in maSession.getLogiciels():
+             #Créer un logiciel
+             logiciel = etree.SubElement(logiciels, logicielCourant.getNom())
 
-    def ajoutLogiciel(self, nomLogiciel, hDeb, hFin, actions):
-        """
-        Ajoute un logiciel à l'arborescence XML et ses informations associées:
-            - son nom
-            - son heure de début d'utilisation
-            - son heure de fin d'utilisation
-            - ses actions associées, contenu dans une liste de dictionnaire
-        """
-        logiciel = etree.SubElement(self.infoTraces, nomLogiciel)
-        tpsDeb = etree.SubElement(logiciel, "HeureDebut")
-        tpsDeb.text = hDeb
-        tpsFin = etree.SubElement(logiciel, "HeureFin")
-        tpsFin.text = hFin
+             heureDebutLogiciel = etree.SubElement(logiciel, "HeureDebut")
+             heureDebutLogiciel.text = logicielCourant.getHeureDebut()
 
-        acts = etree.SubElement(logiciel, "Actions")
-        for uneAction in actions:
-            #On regarde si l'action est de type
-            if uneAction.get("type") == "Saisie":
-                 act.set("type", uneAction.get("type"))
-                 act.set("heureDebut", uneAction.get("heureDebut"))
-                 act.set("heureFin", uneAction.get("heureFin"))
-                 act.text = uneAction.get("valeur")
-            else:
-                 act.set("type", uneAction.get("type"))
-                 act.set("heure", uneAction.get("heure"))
-                 act.text = uneAction.get("valeur")
+             heureFinLogiciel = etree.SubElement(logiciel, "HeureFin")
+             heureFinLogiciel.text = logicielCourant.getHeureFin()
+
+             actions = etree.SubElement(logiciel, "Actions")
+
+             for actionCourante in logicielCourant.getActions():
+                  action = etree.SubElement(actions, actionCourante.getType()) #Nom de l'action peut être fait autrement
+
+                  heureDebut = etree.SubElement(action, "HeureDebut")
+                  heureDebut.text = actionCourante.getHeureDebut()
+
 
     def sauvegardeFichier(self, nomFichier = ""):
         """
         Permet la sauvegarde de l'arborescence créée dans un fichier
-        Si aucun nom de fichier n'est donné, le nom par défaut est:
-             identifiantEtudiant_FichierConsolide.xml
         """
-        #Nom par défaut si il n'est pas définit
-        if nomFichier == "":
-             nomFichier = self.infoEtud[0].text + "_FichierConsolide.xml"
-        etree.ElementTree(self.root).write(nomFichier, pretty_print = True, xml_declaration=True, encoding="utf-8")
+        #Récupérer la configuration
+        file = open(pathConfig)
+        data = load(file)
+        file.close()
+        etree.ElementTree(self.root).write((data["nomFic"] + "_FichierConsolide.xml"), pretty_print = True, xml_declaration=True, encoding="utf-8")
