@@ -88,6 +88,8 @@ class GestionBKL:
                     if self.nouveauMot is not None:
                         self.listeMots.append(self.nouveauMot)
                         self.nouveauMot = None
+            
+            self.listeMots.reverse() #Permet de mettre dans l'ordre chronologique
     
     def __heureToNb(self,heure): #string sous forme de date en nb
         (h, m, s) = heure.split(':')
