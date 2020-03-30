@@ -5,11 +5,32 @@ Created on Thu Jan 23 19:03:22 2020
 """
 
 
-
 from lxml import etree
 import csv #utilisation de la bibliothèque native csv
+from json import load
+import os
 
-class Mot:
+
+
+"""
+Chemins des paramètres du projet
+"""
+pathConfig = r".\..\Config.json"
+
+#Récupérer la configuration
+file = open(pathConfig)
+data = load(file)
+file.close()
+repertoire = data["repertoireStockageFichiers"]
+
+nomLogTSV = repertoire + "\\" + data["nomFic"] + ".tsv"
+nomXMLPSR = repertoire + "\\" + data["nomFic"] + ".xml" 
+nomFichierFusionne = repertoire + "\\" +data["nomFic"] + "_FichierFusionne.xml"
+
+
+
+
+class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
         
         self.charInvisibles = ['Rshift', 'Lcontrol', 'Rcontrol', 'Lshift'] #Ces caractères ne seront pas affichés
@@ -55,9 +76,11 @@ class Mot:
 
 class GestionBKL:
 
-    def __init__(self,nomFichier):
+    def __init__(self):
         
-        self.nomFic = nomFichier
+        self.nomFicTSV = nomLogTSV
+        self.nomFichierPSR = nomXMLPSR
+        self.nomNouveauFichierXML = nomFichierFusionne
         
         # FIRST OU PAS
         self.first = False
@@ -66,6 +89,37 @@ class GestionBKL:
         self.nouveauMot = None #contiendra le mot qui sera en train d'etre créé dans la boucle
         self.listeMots = []
     
+       
+    def ajoutDuBKLaPSR(self):
+        """
+            Seule fonction a lancer
+        """
+        
+        self.__recupererPhrases()
+        
+        #initialisation du xml
+        tree = etree.parse(self.nomFichierPSR) 
+        root = tree.getroot()
+        etree.tostring(root)
+        
+        for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
+            if texteAction == "Saisie au clavier":
+                self.__traitementDeUnePhrase(root, texteAction)
+                        
+        #enregistrement de l'xml modifié
+        etree.ElementTree(root).write(self.nomNouveauFichierXML, pretty_print = True, xml_declaration=True, encoding="utf-8")
+        
+        #supprimer le TSV
+        self.__supprimerTSV()
+    
+    
+    def __supprimerTSV(self):
+        """
+        Supprimer le TSV originel
+        """
+        os.remove(self.nomFicTSV)
+    
+
 
     def __recupererPhrases(self):
         
@@ -73,7 +127,7 @@ class GestionBKL:
         On parcours le tableau  entièrement afin d'en récupérer les suites de lettres qui formeront des phrases
         """
         
-        with open(self.nomFic,encoding="utf8", errors='ignore') as tsvfile:
+        with open(self.nomFicTSV,encoding="utf8", errors='ignore') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t') #ouverture en tsv
         
             for row in reader:
@@ -91,30 +145,11 @@ class GestionBKL:
             
             self.listeMots.reverse() #Permet de mettre dans l'ordre chronologique
     
+    
+    
     def __heureToNb(self,heure): #string sous forme de date en nb
         (h, m, s) = heure.split(':')
         return int(h) * 3600 + int(m) * 60 + int(s)    
-         
-
-       
-    def ajoutDuBKLaPSR(self,nomFichierPSR, nomNouveauFichierXML):
-        """
-            Seule fonction a lancer
-        """
-        
-        self.__recupererPhrases()
-        
-        #initialisation du xml
-        tree = etree.parse(nomFichierPSR) 
-        root = tree.getroot()
-        etree.tostring(root)
-        
-        for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
-            if texteAction == "Saisie au clavier":
-                self.__traitementDeUnePhrase(root, texteAction)
-                        
-        #enregistrement de l'xml modifié
-        etree.ElementTree(root).write(nomNouveauFichierXML, pretty_print = True, xml_declaration=True, encoding="utf-8")
     
     
     
@@ -163,5 +198,5 @@ class GestionBKL:
         return self.first
 
 
-#bkl = GestionBKL("kpc_log.tsv")
-#bkl.ajoutDuBKLaPSR("xmlatraiter.xml","wow.xml")
+#bkl = GestionBKL()
+#bkl.ajoutDuBKLaPSR()
