@@ -70,7 +70,6 @@ def fenetreArreterExercice(fenetreAutorisation):
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
     monBKL.lancer()
-    fenetreArret.pack()
     fenetreArret.mainloop()
 
 def arreterExercice(monPSR,monBKL,fenetreArret):
