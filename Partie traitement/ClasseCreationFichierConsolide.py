@@ -6,15 +6,16 @@ Created on Thu Jan 23 10:53:41 2020
 """
 
 from lxml import etree
-from ClassSession import Session
+from ClassSession import ActionSaisie
 from json import load
+from shutil import move
 
 """
 Chemins des paramètres du projet
 """
 pathConfig = r"D:\Documents\Python Scripts\Config.json"
 
-class SauvegardDonnee:
+class FichierConsolide:
     """
     Classe qui permet l'écriture d'un fichier consolidé
     Pour l'instant elle ne se préocupe pas que :
@@ -42,24 +43,38 @@ class SauvegardDonnee:
 
         for logicielCourant in maSession.getLogiciels():
              #Créer un logiciel
-             logiciel = etree.SubElement(logiciels, logicielCourant.getNom())
+             logiciel = etree.SubElement(logiciels, "Logiciel")
+             logiciel.set("nom", logicielCourant.getNom())
 
              heureDebutLogiciel = etree.SubElement(logiciel, "HeureDebut")
              heureDebutLogiciel.text = logicielCourant.getHeureDebut()
 
-             heureFinLogiciel = etree.SubElement(logiciel, "HeureFin")
-             heureFinLogiciel.text = logicielCourant.getHeureFin()
+             tempsPasse = etree.SubElement(logiciel, "TempsPasse")
+             tempsPasse.text = logicielCourant.getTempsPasse()
 
              actions = etree.SubElement(logiciel, "Actions")
 
              for actionCourante in logicielCourant.getActions():
-                  action = etree.SubElement(actions, actionCourante.getType()) #Nom de l'action peut être fait autrement
+                  action = etree.SubElement(actions, "Action")
+                  action.set("nom", actionCourante.getNom())
+
+                  typeAction = etree.SubElement(action, "TypeAction")
+                  typeAction.text = actionCourante.getType()
+
+                  description = etree.SubElement(action, "Description")
+                  description.text = actionCourante.getDescription()
 
                   heureDebut = etree.SubElement(action, "HeureDebut")
                   heureDebut.text = actionCourante.getHeureDebut()
 
+                  nomPage = etree.SubElement(action, "NomPage")
+                  nomPage.text = actionCourante.getNomPage()
 
-    def sauvegardeFichier(self, nomFichier = ""):
+                  if isinstance(actionCourante, ActionSaisie):
+                       saisie = etree.SubElement(action, "Saisie")
+                       saisie.text = actionCourante.getPhrase()
+
+    def sauvegardeFichier(self):
         """
         Permet la sauvegarde de l'arborescence créée dans un fichier
         """
@@ -67,4 +82,10 @@ class SauvegardDonnee:
         file = open(pathConfig)
         data = load(file)
         file.close()
-        etree.ElementTree(self.root).write((data["nomFic"] + "_FichierConsolide.xml"), pretty_print = True, xml_declaration=True, encoding="utf-8")
+
+        #Créer le fichier
+        nomFic = (data["nomFic"] + "_FichierConsolide.xml")
+        etree.ElementTree(self.root).write(nomFic, pretty_print = True, xml_declaration=True, encoding="utf-8")
+
+        #Deplacer fichier dans StockageFichier
+        move(nomFic, data["repertoireStockageFichiers"] + '\\' + nomFic)
