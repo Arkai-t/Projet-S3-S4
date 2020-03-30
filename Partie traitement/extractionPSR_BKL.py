@@ -7,7 +7,7 @@ Created on Tue Mar 24 11:28:03 2020
 from lxml import etree
 
 
-from classLogiciels import *
+from classLogiciel import *
 
 
 def isEnregistrer(texte):
