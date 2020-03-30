@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 24 11:28:03 2020
-
 @author: paul6
 """
 from lxml import etree
-
+import datetime
 
 from ClassLogiciel import *
 
@@ -109,7 +108,6 @@ for i,action in enumerate(listeEachActions):
         nouvelleAction.setNom()
         if i != 0:
             nouveauLogiciel.addAction(nouvelleAction,heureToNb(heureAction)-heureToNb(getSpecificAttribute(action.getprevious(),"Time")))
-            print(heureToNb(heureAction)-heureToNb(getSpecificAttribute(action.getprevious(),"Time")))
         nouveauLogiciel.setHeureDebut()
         
     #Si c'est un texte
@@ -135,7 +133,6 @@ for i,action in enumerate(listeEachActions):
                 nouveauLogiciel.setHeureDebut()
                 
                 
-                print("Action saisie cree")
                 
                 #Determiner si c'est un enregistrement en cherchant "CTRL-S" dans la chaine de caracteres
                 if "Ctrl+S" in baliseTexte.text:
@@ -163,9 +160,9 @@ for i,action in enumerate(listeEachActions):
             #Ajouter les actions de nouveauLogiciel au logiciel déjà présent dans listeLogiciels
             for logiciel in sessionTP.listeLogiciels:
                 if logiciel.nom == nomLogiciel:
-                    logiciel.tempsPasse += nouveauLogiciel.getTempsPasse()
                     logiciel.setHeureDebut()
                     logiciel.listeActions += nouveauLogiciel.listeActions
+                    logiciel.tempsPasse = str(datetime.timedelta(seconds=   (  heureToNb(logiciel.tempsPasse) + heureToNb(nouveauLogiciel.getTempsPasse()) )  )) #Permet d'additionner deux heures de formes hh:mm:ss
                     break
         else:
             sessionTP.listeLogiciels.append(nouveauLogiciel)        
@@ -178,7 +175,7 @@ for i,action in enumerate(listeEachActions):
 for logiciel in sessionTP.listeLogiciels:
     print("------------------------------------")
     print("Logiciel : ", logiciel.nom, " (", logiciel.heureDebut,")")
-    print("Temps passé : ",logiciel.tempsPasse, "seconde(s)")
+    print("Temps passé sur le logiciel: ",logiciel.tempsPasse)
     for action in logiciel.listeActions:
         print("-  Nom de l'action: ", action.nom, " ")
         print("   Type de l'action: ", action.type, " (", action.heureDebut,")")
@@ -187,5 +184,3 @@ for logiciel in sessionTP.listeLogiciels:
         if isinstance(action ,ActionSaisie):
             print("   Phrase: ", action.phrase)     
         print("--")
-        
-                
