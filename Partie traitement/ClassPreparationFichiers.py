@@ -109,7 +109,7 @@ class PreparationFichiers:
           """
           Renomme le fichier key_log.tsv contenu dans Stockage fichiers
           """
-          os.rename((repertoireStockageFichiers + '\\' + nomFicBKL), (repertoireStockageFichiers + '\\' + self.nomFic))
+          os.rename((repertoireStockageFichiers + '\\' + nomFicBKL), (repertoireStockageFichiers + '\\' + self.nomFic + '.tsv'))
 
      def __preparerFicBKL(self):
         """
