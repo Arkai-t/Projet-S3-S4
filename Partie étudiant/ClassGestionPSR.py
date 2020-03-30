@@ -26,7 +26,6 @@ def genererNomFicTemp(pathSauvegarde):
           while (True):
                while (True):
                     while (True):
-                         print(nomFicTemp + ' : ' + str(exists(pathComplet)))
                          if not (exists(pathComplet)):
                              break
                          #Incrémenter le caractère courant
