@@ -33,6 +33,16 @@ def getSpecificChild(element, tag):
        if child.tag == tag:
            return child
        
+def heureToNb(heure):
+        (h, m, s) = heure.split(':')
+        return int(h) * 3600 + int(m) * 60 + int(s)    
+    
+def getSpecificAttribute(element, nomAttribut): 
+    for attribut in element.items():
+        if attribut[0] == nomAttribut:
+            return attribut[1]
+        
+       
        
 sessionTP = Session()
 
@@ -50,7 +60,8 @@ sessionTP.heureFin = attrSession[2][1]
 
 listeEachActions = session[0].getchildren()
 
-for action in listeEachActions:
+for i,action in enumerate(listeEachActions):
+    
     attributsActions = action.items()
     
     #get nom et creation du logiciel
@@ -92,17 +103,13 @@ for action in listeEachActions:
         nouvelleAction.description = balise.text
         balise = getSpecificChild(action,"UIAStack")
         #Traitement du UIAStack
-        levels = balise.getchildren()
-        for level in levels: #parcours de toutes les balises level   any('Name' in attr[0] for attr in levelAttributs
-            levelAttributs = level.items()
-            if nouvelleAction.nomPage == "":
-                for i, attribut in enumerate(levelAttributs):
-                    if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre":
-                        nouvelleAction.nomPage = levelAttributs[i-1][1]
+        nouvelleAction.setNomPageFromUIAStack(balise)
         
         nouvelleAction.heureDebut = heureAction
         nouvelleAction.setNom()
-        nouveauLogiciel.listeActions.append(nouvelleAction)
+        if i != 0:
+            nouveauLogiciel.addAction(nouvelleAction,heureToNb(heureAction)-heureToNb(getSpecificAttribute(action.getprevious(),"Time")))
+            print(heureToNb(heureAction)-heureToNb(getSpecificAttribute(action.getprevious(),"Time")))
         nouveauLogiciel.setHeureDebut()
         
     #Si c'est un texte
@@ -118,18 +125,13 @@ for action in listeEachActions:
                 nouvelleAction.description = balise.text
                 balise = getSpecificChild(action,"UIAStack")
                 #Traitement du UIAStack
-                levels = balise.getchildren()
-                for level in levels: #parcours de toutes les balises level   any('Name' in attr[0] for attr in levelAttributs
-                    levelAttributs = level.items()
-                    if nouvelleAction.nomPage == "":
-                        for i, attribut in enumerate(levelAttributs):
-                            if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre":
-                                nouvelleAction.nomPage = levelAttributs[i-1][1]
+                nouvelleAction.setNomPageFromUIAStack(balise)
                 
                 nouvelleAction.heureDebut = attributsTextes[0][1]  
                 nouvelleAction.phrase = baliseTexte.text
                 nouvelleAction.setNom()
-                nouveauLogiciel.listeActions.append(nouvelleAction)
+                if i != 0:
+                    nouveauLogiciel.addAction(nouvelleAction,heureToNb(heureAction)-heureToNb(getSpecificAttribute(action.getprevious(),"Time")))
                 nouveauLogiciel.setHeureDebut()
                 
                 
@@ -145,13 +147,7 @@ for action in listeEachActions:
                     balise = getSpecificChild(action,"UIAStack")
 
                     #Traitement du UIAStack
-                    levels = balise.getchildren()
-                    for level in levels: #parcours de toutes les balises level   any('Name' in attr[0] for attr in levelAttributs
-                        levelAttributs = level.items()
-                        if nouvelleActionEnregistrer.nomPage == "":
-                            for i, attribut in enumerate(levelAttributs):
-                                if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre":
-                                    nouvelleActionEnregistrer.nomPage = levelAttributs[i-1][1]
+                    nouvelleAction.setNomPageFromUIAStack(balise)
                                             
                     nouvelleActionEnregistrer.setNom()                    
                     nouveauLogiciel.listeActions.append(nouvelleActionEnregistrer)
@@ -167,6 +163,7 @@ for action in listeEachActions:
             #Ajouter les actions de nouveauLogiciel au logiciel déjà présent dans listeLogiciels
             for logiciel in sessionTP.listeLogiciels:
                 if logiciel.nom == nomLogiciel:
+                    logiciel.tempsPasse += nouveauLogiciel.getTempsPasse()
                     logiciel.setHeureDebut()
                     logiciel.listeActions += nouveauLogiciel.listeActions
                     break
@@ -181,6 +178,7 @@ for action in listeEachActions:
 for logiciel in sessionTP.listeLogiciels:
     print("------------------------------------")
     print("Logiciel : ", logiciel.nom, " (", logiciel.heureDebut,")")
+    print("Temps passé : ",logiciel.tempsPasse, "seconde(s)")
     for action in logiciel.listeActions:
         print("-  Nom de l'action: ", action.nom, " ")
         print("   Type de l'action: ", action.type, " (", action.heureDebut,")")
@@ -189,4 +187,5 @@ for logiciel in sessionTP.listeLogiciels:
         if isinstance(action ,ActionSaisie):
             print("   Phrase: ", action.phrase)     
         print("--")
+        
                 
