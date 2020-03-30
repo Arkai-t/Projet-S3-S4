@@ -2,7 +2,7 @@
 """
 Created on Tue Mar 24 11:28:03 2020
 
-@author: Paul Lafourcade, Malo Le Mestre
+@author: paul6
 """
 from lxml import etree
 
@@ -27,8 +27,13 @@ def isCompiler(texte):
         return True
     else:
         return False
-
-
+    
+def getSpecificChild(element, tag):
+   for child in element.getchildren():
+       if child.tag == tag:
+           return child
+       
+       
 sessionTP = Session()
 
 #ouverture du xml
@@ -66,27 +71,23 @@ for action in listeEachActions:
             typeAction = baliseAction.text.split(" ",1)[0]
             if typeAction == "Clic": #Savoir si c'est clic
                 #Savoir de quel type d'action de clic est l'action
-                for UIAStack in balisesDeEachAction: 
-                    if UIAStack.tag == "UIAStack":
-                        for level in UIAStack.getchildren(): #Chaque balise level
-                            for attribut in level.items():  #chaque attributs de la balise level
-                                if attribut[0] == "Name":
-                                    if isEnregistrer(attribut[1]):
-                                        nouvelleAction = ActionEnregistrer()
-                                        print("L'action est un enregistrement")
-                                        isActionSpeciale = True
-                                        break
-                                    if isCompiler(attribut[1]):
-                                        nouvelleAction = ActionCompiler()
-                                        print("L'action est une compilation")
-                                        isActionSpeciale = True
-                                        break
-                            
-                        break
+                UIAStack = getSpecificChild(action, "UIAStack")
+                for level in UIAStack.getchildren(): #Chaque balise level
+                    for attribut in level.items():  #chaque attributs de la balise level
+                        if attribut[0] == "Name":
+                            if isEnregistrer(attribut[1]):
+                                nouvelleAction = ActionEnregistrer()
+                                isActionSpeciale = True
+                                break
+                            if isCompiler(attribut[1]):
+                                nouvelleAction = ActionCompiler()
+                                isActionSpeciale = True
+                                break
+                    
+                
                     
                 if isActionSpeciale == False:
-                    nouvelleAction = ActionClic()              
-                    print("L'action est un clic simple")
+                    nouvelleAction = ActionClic()          
                     
                 #Remplir
                 for balise in balisesDeEachAction:
@@ -149,7 +150,6 @@ for action in listeEachActions:
                             nouvelleActionEnregistrer.setType("Enregistrement") #Sera set grace à l'héritage à Enregistrement quoi que ce soit
                             nouvelleActionEnregistrer.setDescription("L'utilisateur a enregistré en appuyant sur Ctrl+S")
                             nouvelleActionEnregistrer.heureDebut = attributsTextes[0][1]
-                            print("Action enregistrement saisie cree")
                             for balise in balisesDeEachAction:   
                                 if balise.tag == "UIAStack":
                                     #Traitement du UIAStack
