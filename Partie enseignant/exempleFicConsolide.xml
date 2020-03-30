@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Session>
+    <HeureDebut>9h30</HeureDebut>
+    <HeureFin>10h55</HeureFin>
+    <Logiciels>
+        <CodeBlocks>
+            <HeureDebut>9h35</HeureDebut>
+            <HeureFin>10h20</HeureFin>
+            <Actions>
+                <Saisie>
+                    <HeureDebut>9h45</HeureDebut>
+                    <HeureFin>9h50</HeureFin>
+                    <Description>if (x>0) {x=2;}</Description>
+                    <autresTrucs></autresTrucs>
+                </Saisie>
+            </Actions>
+        </CodeBlocks>
+        <Word>
+            <HeureDebut>9h40</HeureDebut>
+            <HeureFin>10h00</HeureFin>
+            <Actions>
+                <Sauvegarde>
+                    <HeureDebut>uneHeure</HeureDebut>
+                    <HeureFin>uneHeure</HeureFin>
+                    <Description>uneDescription</Description>
+                    <autresTrucs></autresTrucs>
+                </Sauvegarde>
+            </Actions>
+        </Word>
+        <GoogleChrome>
+            <HeureDebut>9h45</HeureDebut>
+            <HeureFin>9h55</HeureFin>
+            <Actions>
+                <Compilation>
+                    <HeureDebut>uneHeure</HeureDebut>
+                    <HeureFin>uneHeure</HeureFin>
+                    <Description>uneDescription</Description>
+                    <autresTrucs></autresTrucs>
+                </Compilation>
+            </Actions>
+        </GoogleChrome>
+    </Logiciels>
+</Session>
