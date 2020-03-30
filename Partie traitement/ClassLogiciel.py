@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 
-
+import datetime
 
 class Action:
     
@@ -26,8 +27,18 @@ class Action:
             levelAttributs = level.items()
             if self.nomPage == "":
                 for i, attribut in enumerate(levelAttributs):
-                    if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre":
-                        self.nomPage = levelAttributs[i-1][1] 
+                    if attribut[0] == "LocalizedControlType" and attribut[1] == "fenêtre" :
+                        if levelAttributs[i-1][0] == "Name": 
+                            self.nomPage = levelAttributs[i-1][1] 
+        for level in levels: #parcours de toutes les balises level   any('Name' in attr[0] for attr in levelAttributs
+            levelAttributs = level.items()   
+            if self.nomPage == "":
+                for i, attribut in enumerate(levelAttributs):
+                    if attribut[0] == "LocalizedControlType" and attribut[1] == "volet" :
+                        if levelAttributs[i-1][0] == "Name": 
+                            self.nomPage = levelAttributs[i-1][1]
+                        
+                        
     def getNom(self):
          return self.nom
 
@@ -100,7 +111,7 @@ class Logiciel:
         self.nom = nom
         self.heureDebut = "24:00:00"
         self.listeActions = []
-        self.tempsPasse = 0
+        self.tempsPasse = "00:00:00"
     
     def setHeureDebut(self):
         heurePlusPetite = "24:00:00"
@@ -111,8 +122,10 @@ class Logiciel:
         
     def addAction(self, action, temps):
         self.listeActions.append(action)
-        self.tempsPasse = self.tempsPasse + temps
-        print ("temps passé depuis addaction : ",self.tempsPasse, "pour l'action : ", action.type)
+        secondesPassees = self._heureToNb(self.tempsPasse)
+        secondesPassees += temps
+        self.tempsPasse = str(datetime.timedelta(seconds=secondesPassees)) #convertir les secondes en HH:MM:SS
+        
         
     
     def _heureToNb(self,heure):
@@ -145,6 +158,8 @@ class Session:
         self.listeLogiciels = []
         self.heureDebut = ""
         self.heureFin = ""
+        self.nomEtudiant = "Nom"
+        self.prenomEtudiant = "Prenom" 
         
     def addLogiciel(self,logiciel):
         self.listeLogiciels.append(logiciel)
@@ -164,4 +179,8 @@ class Session:
     def getLogiciels(self):
          return self.listeLogiciels
         
+    def getNom(self):
+         return self.nom
         
+    def getPrenom(self):
+         return self.prenom
