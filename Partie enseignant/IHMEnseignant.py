@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
 from tkinter import ttk,Button
+from lxml import etree
+
 
 fichierLabel = open("InfosLabel.txt",'r')
+tree = etree.parse("exempleFicConsolide.xml")
 
 menu = tk.Tk() #Création de la fenêtre pour commencer l'exercice
-menu.geometry("500x300")
+
+
+#menu.geometry("500x300")
 menu.title("Système d'analyse de traces - Enseignant")
 tab_parent = ttk.Notebook(menu)
 
@@ -25,23 +30,39 @@ tab_parent.add(tabReplay,text="Replay")
 ONGLET SYNTHESE
 Ajout des éléments
 """
+heureDebut = tree.xpath("/Session/HeureDebut")
 labelDebut = tk.Label(tabSynthese,text="Début de l'exercice :")
-labelHeureDebut = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelHeureDebut = tk.Label(tabSynthese,text=heureDebut[0].text+'.')
 
+heureFin = tree.xpath("/Session/HeureFin")
+tabHeureDebut = heureDebut[0].text.split("h")
+tabHeureFin = heureFin[0].text.split("h")
+dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
+dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
+duree = str(dureeHeure)+"h"+str(dureeMinute)
 labelDuree = tk.Label(tabSynthese,text="Durée de l'exercice :")
-labelDureeExo = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelDureeExo = tk.Label(tabSynthese,text=duree)
 
 labelFin = tk.Label(tabSynthese,text="Fin de l'exercice :")
-labelHeureFin = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelHeureFin = tk.Label(tabSynthese,text=heureFin[0].text)
 
+logiciels = tree.find('Logiciels')
+nomsLogiciel = logiciels.getchildren()
+listeLogiciel = []
+for i in range(len(nomsLogiciel)):
+    listeLogiciel.append(nomsLogiciel[i].tag)
+stringLogiciels = ', '.join(listeLogiciel)+'.'
 labelLogiciel = tk.Label(tabSynthese,text="Logiciels utilisés :")
-labelListeLogiciel = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelListeLogiciel = tk.Label(tabSynthese,text=stringLogiciels)
+
 
 labelPremierLogiciel = tk.Label(tabSynthese,text="Premier logiciel utilisé :")
-labelNomPremierLogiciel = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelNomPremierLogiciel = tk.Label(tabSynthese,text=listeLogiciel[0]+'.')
 
+actions = tree.find(".//Actions")
+jsp = actions[0].getchildren()
 labelPremiereAction = tk.Label(tabSynthese,text="Premiere action faite :")
-labelNomPremiereAction = tk.Label(tabSynthese,text=fichierLabel.readline())
+labelNomPremiereAction = tk.Label(tabSynthese,text=actions[0].tag+', '+jsp[2].text)
 """
 Placement des éléments
 """
@@ -75,10 +96,19 @@ tab.heading("#0",text="Nom du logiciel",anchor=tk.W)
 tab.heading("un",text="Durée d'utilisation",anchor=tk.W)
 tab.heading("deux",text="Heure de lancement",anchor=tk.W)
 
-tab.insert("","end",None,text="Mozilla Firefox", values=("30 min 57 sec","15:15"))
-tab.insert("","end",None,text="R Studio", values=("59 min 23 sec","15:45"))
-tab.insert("","end",None,text="CodeBlocks", values=("43 min 20 sec","15:56"))
-tab.insert("","end",None,text="Google Chrome", values=("1 h 10 min 20 sec","15:15"))
+for i in range(len(listeLogiciel)):
+    fabrice = nomsLogiciel[i].getchildren()
+    tabHeureDebut = fabrice[0].text.split("h")
+    tabHeureFin = fabrice[1].text.split("h")
+    dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
+    dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
+    if dureeMinute < 0:
+        dureeHeure = dureeHeure - 1
+        dureeMinute = 60 + dureeMinute
+        
+    duree = str(dureeHeure)+"h"+str(dureeMinute)
+    tab.insert("","end",None,text=listeLogiciel[i], values=(duree,fabrice[0].text))
+
 
 
 tab.pack(side=tk.TOP,fill=tk.X)
@@ -88,7 +118,7 @@ ONGLET INTERROGATION
 """
 
 labelLogiciel = tk.Label(tabInterrogation,text="Logiciel :")
-comboLogiciel = ttk.Combobox(tabInterrogation,values=["Tous","a","b","c"])
+comboLogiciel = ttk.Combobox(tabInterrogation,values=listeLogiciel)
 
 labelLogiciel.grid(sticky="W",row=0,column=0,padx=15,pady=5)
 comboLogiciel.grid(sticky="W",row=0,column=1,pady=5)
