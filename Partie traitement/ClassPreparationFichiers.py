@@ -53,7 +53,7 @@ class PreparationFichiers:
             - nomFicBKL
             - .xml dans le zip généré par PSR
         """
-        assert self.nomFic != ""
+        assert self.nomFic != "" #Si le nom de fichier est vide, le repertoire de la partie étudiante est supprimée
         return ((path.exists(self.pathToBKL + '\\' + nomFicBKL)) and (path.exists(self.pathToPSR + '\\' + self.nomZipPSR)))
 
      def __deziperPSR(self):
