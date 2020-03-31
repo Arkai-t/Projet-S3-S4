@@ -177,6 +177,3 @@ class FichierFusionne:
     def __isFirst(self):
         return self.first
 
-
-#bkl = FichierFusionne()
-#bkl.ajoutDuBKLaPSR()
