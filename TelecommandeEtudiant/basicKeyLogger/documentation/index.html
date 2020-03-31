@@ -1,0 +1,1928 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Documentation Basic Key Logger</title>
+  <meta content="Eric Fimbel" name="author">
+</head>
+<body>
+<br>
+<div style="text-align: center;"><big><big><big
+ style="font-weight: bold;"><big>Basic Key Logger </big><br>
+<br>
+&nbsp; Documentation</big><br>
+</big></big><span style="font-weight: bold;"></span><span
+ style="font-weight: bold;"><br>
+</span>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><small>Eric Fimbel, Copyright
+(C)
+2006, 2011 . Contact: <a href="mailto:basiclabbook@gmail.com">basicLabBook@gmail.com</a>
+      <br>
+Web site: <a
+ href="http://basiclabbook.googlepages.com/keyloggerbasiclabbook">http://basiclabbook.googlepages.com/keyloggerbasiclabbook/</a><br>
+      <br>
+This program is free software; you can redistribute it and/or
+modify&nbsp; it under the terms of the GNU General Public License as
+published by&nbsp; the Free Software Foundation version 2 of the
+License. <span style="text-decoration: underline;"></span>This program
+is distributed in the hope that it will be
+useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the <a
+ href="license/licenseGpl.txt">GNU
+General
+Public License</a> for
+more details<small>.<br>
+      <br>
+      </small>Open source software and icons used here<br>
+      </small>
+      <div style="margin-left: 40px;"><small>Python &nbsp; <a
+ href="http://www.python.org/">www.python.org</a>&nbsp;&nbsp; <a
+ href="http://www.python.org/download/releases/2.3.2/license/">license</a>
+      <br>
+Ctypes &nbsp; <a href="http://sourceforge.net/projects/ctypes">sourceforge.net/projects/ctypes</a>
+&nbsp; <a href="http://www.opensource.org/licenses/mit-license.php">MIT
+license</a><br>
+Pywin32 <a href="http://sourceforge.net/projects/pywin32/">sourceforge.net/projects/pywin32</a>&nbsp;&nbsp;
+      <a href="license/licensePywin32.txt">license</a><br>
+Pyhook&nbsp; <a href="http://sourceforge.net/projects/pyhook/">sourceforge.net/projects/pyhook/</a>
+&nbsp; <a href="http://www.opensource.org/licenses/mit-license.php">MIT
+license</a><br>
+Pygame <a href="http://www.pygame.org/">www.pygame.org</a> &nbsp; <a
+ href="http://www.gnu.org/copyleft/lesser.html">LGPL license</a><br>
+MouseRunner&nbsp; <a href="http://www.mouserunner.net/">www.mouserunner.net</a>.&nbsp;
+      <a href="http://www.mouserunner.net/MR_Graphics_Usage_Agreement">Creative
+Common License</a></small> <br>
+      <br>
+      </div>
+      <small style="background-color: rgb(255, 255, 102);">Warning.
+Links are disabled in PDF format</small><br>
+      <small> </small><small> </small> </td>
+    </tr>
+  </tbody>
+</table>
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><br>
+<div style="text-align: left;"><big style="font-weight: bold;"><big><big>Content<br>
+</big></big></big></div>
+<div style="text-align: left;"><br>
+<ul id="mozToc">
+<!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6--><li><a href="#mozTocId880014">What
+is Basic Key Logger ? </a></li>
+  <li><a href="#mozTocId889606">What
+is NOT Basic Key Logger?</a></li>
+  <li><a href="#mozTocId372097">Project
+history </a></li>
+  <li><a href="#mozTocId197492">Hardware
+and software requirements</a></li>
+  <li><a href="#mozTocId909078">Installation
+and uninstallation </a></li>
+  <li><a href="#mozTocId573329">Getting started</a></li>
+  <li><a href="#mozTocId875980">Plumbing (content of
+the folder) </a></li>
+  <li><a href="#mozTocId777764">Commands (control key logger from
+outside) </a></li>
+  <li><a href="#mozTocId101623">Command line (overriding configuration
+parameters)</a></li>
+  <li><a href="#mozTocId749895">Key
+logs</a>
+    <ul>
+      <li><a href="#mozTocId291779">Where are Key Logs ?</a></li>
+      <li><a href="#mozTocId143616">Events</a></li>
+      <li><a href="#mozTocId448212">Fields </a></li>
+    </ul>
+  </li>
+  <li><a href="#mozTocId511020">KPC
+logs</a>
+    <ul>
+      <li><a href="#mozTocId788542">Where are KPC Logs ?</a></li>
+      <li><a href="#mozTocId518071">Operations</a></li>
+      <li><a href="#mozTocId922238">Conversion from Key logs to KPC
+logs</a></li>
+      <li><a href="#mozTocId265027">Fields of the operations and lines
+format</a></li>
+    </ul>
+  </li>
+  <li><a href="#mozTocId217631">Configuration</a></li>
+  <li><a href="#mozTocId714258">Program documentation</a></li>
+  <li><a href="#mozTocId158533">Troubleshooting</a></li>
+  <li><a href="#mozTocId808869">Version information </a></li>
+</ul>
+<br>
+<h1><a class="mozTocH1" name="mozTocId880014"></a><span class="mozTocH2"></span>What
+is Basic Key Logger ?<br>
+</h1>
+Basic Key Logger is a <span style="font-weight: bold;">standalone </span><span
+ style="font-weight: bold;">key logger</span> that captures
+keyboard and mouse inputs from any application running in parallel. <br>
+<br>
+<table
+ style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;"
+ border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 255);">
+      <div style="text-align: center;"><big><span
+ style="font-weight: bold;">FEATURES</span></big><br>
+      <span style="font-weight: bold;"></span></div>
+      <span style="font-weight: bold;"><br>
+Temporal resolution</span>: 10-15ms (depends on CPU and active services)<br>
+      <span style="font-weight: bold;">Events storage</span>: in memory
+during the recording (so that there is
+no disk access), written to disk at the end.<br>
+      <span style="font-weight: bold;">Log files</span>:<br>
+      <div style="margin-left: 40px;"><span style="font-weight: bold;">key
+log</span>: input events, e.g., key press, key release, mouse move.<br>
+      <span style="font-weight: bold;">KPC log</span>: operations,
+e.g., Key typing, Pointing movements,
+Clicks. <br>
+      </div>
+      <div style="margin-left: 40px;">Operations are more concise than
+input events and they show clearly
+what a user is doing.<br>
+      </div>
+      <span style="font-weight: bold;">Size of log files</span>: key
+log, typically 150k/minute; KPC log,
+15-20k/minute (depends on what you are doing).<br>
+      <span style="font-weight: bold;">Format of&nbsp; log files</span>:
+TSV, i.e., tab-separated values. Can
+be opened
+in spreadsheets (Open Office, Excel(r) ) or in any text editor.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<small><font size="+1"><small><br>
+</small></font></small>
+<div dir="ltr">
+<p><small><font size="+1"><small>Basic Key Logger is<span
+ style="font-weight: bold;">&nbsp;an evaluation tool for human-computer
+interaction</span>.&nbsp;</small></font></small></p>
+</div>
+<blockquote
+ style="border-style: none; margin: 0px 0px 0px 40px; padding: 0px;">
+  <div dir="ltr">
+  <p><small><font size="+1"><small>Basic Key Logger is suitable for
+software development:&nbsp;you can test prototypes as well as final
+applications without modifying your sources.</small></font></small></p>
+  </div>
+</blockquote>
+<div dir="ltr"><small><font size="+1"><small>Example of analyses</small></font></small><br>
+<p style="margin-left: 40px;"><small><font size="+1"><small>From the
+KPC log: number of operations per task, duration of operations, typing
+rates, length of pointing movements, pauses...<br>
+</small></font></small></p>
+<p style="margin-left: 40px;"><small><font size="+1"><small>From the
+Key log: mouse trajectories, kinematics (velocity, acceleration, jerk
+), density of mouse movements and mouse clicks in determined regions,
+etc.<br>
+</small></font></small></p>
+<p style="margin-left: 40px;"><small><font size="+1"><small><a
+ href="processedLog.xls"
+ style="color: rgb(0, 0, 204); text-decoration: none;">example of
+processed logs (xls)</a>. Take a look at sheet#2 for basic statistics
+and at sheet 3 for
+a plot of the mouse movements.<br>
+<br>
+</small></font></small></p>
+</div>
+<big><span class="Apple-style-span"
+ style="border-collapse: separate; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span
+ class="Apple-style-span"
+ style="font-size: 13px; line-height: 16px; text-align: left;">
+<div dir="ltr">
+<p><small><font size="+1"><small>Basic Key Logger is also<span
+ style="font-weight: bold;"> a tool to build KPC models</span>. A KPC
+model predicts the&nbsp;average execution time of a task from the
+number of operations of an expert user.&nbsp;</small></font></small></p>
+</div>
+<blockquote
+ style="border-style: none; margin: 0px 0px 0px 40px; padding: 0px;">
+  <div dir="ltr">
+  <p><small><font size="+1"><small><a
+ href="https://sites.google.com/site/skilledusers/kpc"
+ style="color: rgb(0, 0, 204); text-decoration: none;">more about KPC
+models</a></small></font></small></p>
+  </div>
+</blockquote>
+<div dir="ltr"><big><br class="Apple-interchange-newline">
+</big></div>
+</span></span><br>
+</big>
+<div style="margin-left: 40px;"><br>
+</div>
+<h1><a class="mozTocH1" name="mozTocId889606"></a><span class="mozTocH2"></span>What
+is NOT Basic Key Logger?</h1>
+<br>
+Basic Key Logger is<span style="font-weight: bold;"> not a spyware</span>
+(yeark!). <br>
+<br>
+<div style="margin-left: 40px;">In normal mode, there is a blue led on
+the task bar
+when Basic Key Logger is recording. In hidden mode, the program is
+visible in the Task Manager (hidden mode is available from release 2011
+03 01).<br>
+</div>
+<br>
+<div style="margin-left: 40px;">There are no hidden files or data
+transmissions (easy to check: it is open source).<br>
+<br>
+</div>
+<br>
+Basic Key Logger is<span style="font-weight: bold;"> not a backup
+system.</span> You cannot play back the logs.<br>
+<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId372097"></a><span class="mozTocH2"></span>Project
+history<br>
+</h1>
+In march 2007, we needed a key logger for an experiment with commercial
+software. We needed to record <span style="font-style: italic;">KPC
+logs</span>, i.e. sequences of Key presses, Pointing
+movements and button Clicks. <br>
+<br>
+<div style="margin-left: 40px;">KPC was initially developed by
+Pierre-Samuel
+Dub&eacute; and Eric Fimbel (2005-2006)
+at the LESIA laboratory, Ecole de technologie sup&eacute;rieure,
+Montr&eacute;al.. <br>
+</div>
+<br>
+Most of the keyloggers we found on the web were spyware (
+spy-your-children spy-your-spouse, hack-web-users, etc. ) Yeark. Plus,
+none of the freeware&nbsp; we tested produced what we needed.<br>
+<br>
+Thus we developed Basic Key Logger.<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId197492"></a><span class="mozTocH2"></span>Hardware
+and software requirements</h1>
+Windows XP and further, 25 Mb free disk space.<br>
+<br>
+No additional requirement. Basic Lab Book is written in Python
+but it contains its own copy, i.e., it is <span
+ style="font-weight: bold;">standalone</span>.<br>
+<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId909078"></a><span class="mozTocH2"></span>Installation
+and uninstallation<br>
+</h1>
+<span style="font-weight: bold;"></span><br>
+<span style="font-weight: bold;">Installation</span>. Download the zip
+file and unzip it in any folder.<br>
+<br>
+<span style="font-weight: bold;">Uninstallation</span>. Delete the
+installation folder.<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId573329"></a>Getting started</h1>
+<br>
+Go to the installation directory and execute <span
+ style="font-style: italic;">startKeyLogger.exe</span>. There is now a
+blue led in the task bar that indicates recording<br>
+<br>
+<div style="margin-left: 40px;"><img alt=""
+ src="pictures/key_logger_task_bar.jpg"
+ style="width: 175px; height: 34px;"><br>
+<br>
+If you want to hide the icon, execute <span style="font-style: italic;">startHidden.exe</span>
+instead of startKeyLogger.exe<br>
+<br>
+</div>
+Do whatever you want (click click key key mouse move click click....)<br>
+<br>
+To stop recording, click on the task bar icon (the led). The following
+window appears.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;"></span><img
+ alt="" src="pictures/key_logger_window.jpg"
+ style="width: 489px; height: 50px;"><br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;"></span>In
+versions 2009 12 31 and following, the window displays the path to
+the root directory of Basic Key Logger<br>
+<br>
+If the icon is not visible, execute <span style="font-style: italic;">stopKeyLogger.exe</span>.<br>
+</div>
+<br>
+Click in the blue panel. The window disappears and the log are
+generated in subfolder <span style="font-style: italic;">data/</span><br>
+<br>
+Open the logs with a spreadsheet (Open
+Office or Excel(r)). The format is tab-delimited.<br>
+<br>
+<div style="margin-left: 40px;">See examples&nbsp; <a
+ href="key_log.tsv">key_log.tsv</a>&nbsp;&nbsp; <a href="kpc_log.tsv">kpc_log.tsv</a><br>
+<br>
+See an <a href="processedLog.xls">example of processed logs (xls)</a> <br>
+</div>
+<br>
+<span style="font-weight: bold;"></span><br>
+<br style="font-weight: bold;">
+<h1><a class="mozTocH1" name="mozTocId875980"></a>Plumbing (content of
+the folder)<br>
+</h1>
+<br>
+<table
+ style="width: 100%; text-align: left; background-color: rgb(204, 204, 255);"
+ border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">root<br>
+      </td>
+      <td style="vertical-align: top;">commands<br>
+      <div style="margin-left: 40px;">startKeyLogger.exe,
+stopKeyLogger.exe... <br>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 40px;">configuration<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">configuration:<br>
+      <div style="margin-left: 40px;">&nbsp;file
+keylogger_configuration.py<br>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 40px;">data<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">log files<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 40px;">documentation<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">this document<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 40px;">library<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">software (in Python). loader of
+standalone library is in __init__.py <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 80px;">keylog<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">this program. KeyLogger.py(main
+class), configuration files .py, scripts startKeyLogger.pyw ..., icons
+*.png (Icons from <a href="http://www.mouserunner.net/">www.mouserunner.net</a>)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 80px;">guiPygame<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">graphical interface in Pygame.
+StateWindow.py (finite states window), configuration files .py.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 80px;">api<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">utilities<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 80px;">python<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">standalone installation of
+python 2.4 (from <a href="http://www.python.org/">www.python.org</a>).
+Unused files deleted, external files replaced here (e.g., python24.dll)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 80px;">...Lib/site-packages<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">additional libraries<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 120px;">pygame<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">graphical interface (from <a
+ href="http://www.pygame.org">www.pygame.org</a>)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 120px;">pyhook<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">captures events in Windows'
+thread (from <a href="http://sourceforge.net/projects/pyhook/">sourceforge.net/projects/pyhook/</a>)</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 120px;">pywin32<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">extensions of Python for Windows
+(from <a href="http://sourceforge.net/projects/pywin32/">sourceforge.net/projects/pywin32/</a>.
+)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <div style="margin-left: 120px;">ctypes<br>
+      </div>
+      </td>
+      <td style="vertical-align: top;">C wrapper for Python, Part of
+python 5 (from <a href="http://sourceforge.net/projects/ctypes">sourceforge.net/projects/ctypes</a>)</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<span style="font-weight: bold;"></span><br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId777764"></a><span class="mozTocH1"></span>Commands
+(control key logger from outside)<br>
+</h1>
+The commands are executable files in the root directory.<br>
+<span style="font-weight: bold;"><br>
+Start Basic Key Logger </span>(command <span
+ style="font-style: italic;">startKeyLogger.exe</span>). An icon will
+appear in the task bar. Click to view the window of
+Basic Key Logger<br>
+<br>
+<table
+ style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;"
+ border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><img alt=""
+ src="pictures/key_logger_task_bar.jpg"
+ style="width: 175px; height: 34px;"><br>
+      </td>
+      <td style="text-align: center; vertical-align: top;"><img alt=""
+ src="pictures/key_logger_window.jpg"
+ style="width: 489px; height: 50px;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: center;">Figure 1. Icon and window of basic Key
+Logger<br>
+</div>
+<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Note</span>.
+startKeyLogger accepts configuration parameters on the command line
+(see below)<br>
+<br>
+</div>
+<br>
+<span style="font-weight: bold;">Start Basic Key Logger without
+icon&nbsp; </span>(command <span style="font-style: italic;">startHidden.exe</span>).
+There is no icon in the task bar. However, Basic Key Logger is visible
+in the Task Manager.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">only
+from&nbsp; release 2011 03 01.</span><br>
+</div>
+<br>
+<span style="font-weight: bold;">Stop Basic Key Logger.</span> (command
+<span style="font-style: italic;">stopKeyLogger.exe</span>). The logs
+are written in the <span style="font-weight: bold;">data/</span>
+folder (this can be
+redirected, see Section Configuration). If there was an icon, it
+disappears.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Alternative</span>.
+when there is an icon in the task bar, open the window and click in the
+panel&nbsp; to stop
+recording.<span style="font-style: italic;"></span><br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">Suspend and resume recording</span>.
+(commands<span style="font-style: italic;"> suspendKeyLogger.exe </span>and
+<span style="font-style: italic;">resumeKeyLogger.exe</span>). <br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Note</span>.
+When suspended, the icon becomes grey. Basic Key Logger does not
+record until <span style="font-style: italic;">resume</span> is
+executed.<br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">Insert markers in the log files</span>
+(commands<span style="font-style: italic;"> startSession.exe,
+startBlock.exe, startTrial.exe </span>and <span
+ style="font-style: italic;">stopSession.exe, stopBlock.exe,
+stopTrial.exe</span>). These commands insert special lines in the logs.
+<br>
+<br>
+<div style="margin-left: 40px;">They are aimed at test protocols
+composed of one or several sessions, where blocks of trials (elementary
+tasks) are executed. These tags simplify data processing.<br>
+<br>
+</div>
+<br>
+<span style="font-weight: bold;">Generate additional KPC logs</span>&nbsp;
+(command <span style="font-style: italic;">kpcLog.exe</span>).<span
+ style="font-weight: bold;"></span>
+Change the configuration file, then run this command to generate a new
+KPC log from the last key log.<br>
+<br>
+<div style="margin-left: 40px;">This allows obtaining KPC logs with
+different parameters from the same recording (see parameters in Section
+Configuration).<br>
+<br>
+Warning. <span style="font-style: italic;">kpcLog.exe</span> <span
+ style="font-weight: bold;">overwrites </span>the current <span
+ style="font-style: italic;">data/kpc_log.tsv</span>. <br>
+<br>
+Warning 2. There is no feedback. Look at the date of <span
+ style="font-style: italic;">data/kpc_log.tsv</span> to check that this
+is a new log.<br>
+</div>
+<br>
+<span style="font-weight: bold;"><br>
+Controlling Basic Key Logger from a Python
+application.</span> Start Basic Key Logger and execute the commands
+from your application.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">To
+start Basic Key Logger</span> execute the
+command from your application. For instance in Python use instruction <span
+ style="font-style: italic;">os.system( "startkeyLogger.exe" )</span>.<br>
+<br>
+Then, you can pause or resume recording and/or set markers for session,
+block, trials, synchronizations in 3 ways:<br>
+<br>
+<div style="margin-left: 40px;">&nbsp;<span style="font-style: italic;">the
+slow way</span>: execute the commands.
+For instance in Python, use instruction <span
+ style="font-style: italic;">os.system( "stopKeyLogger.exe" )</span>.
+However, this introduces a lag.<br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">the
+fast way</span> : generate a
+key press event with a special key.&nbsp; For instance in
+Python,&nbsp; use the instruction <span style="font-style: italic;">win32api.keybd_event(
+233, 0 ) .</span> <br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">the
+hacker way</span>: mimick the commands (e.g., <a
+ href="../library/keylog/startTrial.pyw">library/keylog/startTrial.pyw</a>)<br>
+</div>
+</div>
+<br>
+<div style="margin-left: 40px;">To stop Basic Key Logger, execute the
+command<span style="font-style: italic;"> stopKeyLogger.exe</span> from
+your application. For instance in Python <span
+ style="font-style: italic;">os.system( "stopkeyLogger.exe" )</span>.</div>
+<br>
+<div style="text-align: center;">Table 1. Command keys to control Basic
+Key Logger<br>
+</div>
+<table
+ style="width: 70%; text-align: left; margin-left: auto; margin-right: auto; background-color: rgb(204, 204, 255);"
+ border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; font-weight: bold; text-align: center;">Command<br>
+      </td>
+      <td
+ style="vertical-align: top; font-weight: bold; text-align: center;">Value
+of the key<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Start session<br>
+      </td>
+      <td style="vertical-align: top;">232<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Stop session<br>
+      </td>
+      <td style="vertical-align: top;">233<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Start block<br>
+      </td>
+      <td style="vertical-align: top;">234<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Stop block<br>
+      </td>
+      <td style="vertical-align: top;">235<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Start trial<br>
+      </td>
+      <td style="vertical-align: top;">236<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Stop trial<br>
+      </td>
+      <td style="vertical-align: top;">237<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Suspend logger<br>
+      </td>
+      <td style="vertical-align: top;">238<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Resume logger<br>
+      </td>
+      <td style="vertical-align: top;">239<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Stop Basic Key Logger</td>
+      <td style="vertical-align: top;">240<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Synchronization key&nbsp;
+(additional tag)<br>
+      </td>
+      <td style="vertical-align: top;">241<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Synchronization key 1
+(additional tag)<br>
+      </td>
+      <td style="vertical-align: top;">242<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Synchronization key 2
+(additional tag)<br>
+      </td>
+      <td style="vertical-align: top;">243<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Internally generated - have no
+effect if you generate them. Versions 2010 03 31 and further<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Start time of disk write<br>
+      </td>
+      <td style="vertical-align: top;">244<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">End time of&nbsp; disk write<br>
+      </td>
+      <td style="vertical-align: top;">245<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: center;"><br>
+</div>
+<br>
+<h1><a class="mozTocH1" name="mozTocId101623"></a>Command line
+(overriding configuration parameters)</h1>
+<div style="text-align: left; margin-left: 40px;"><big><small><span
+ style="font-weight: bold;">In versions 2010 03 31 and further</span></small><br
+ style="font-weight: bold;">
+</big></div>
+<br>
+The command startKeyLogger.exe accepts arguments to override the
+configuration files (see Section Configuration below). The command line
+can be of the form<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">startKeyLogger
+argument1=value1 argument2=value2</span>...<br>
+<br>
+also accepted: <span style="font-style: italic;">argumentX = valueX</span>
+(with space) or simple <span style="font-style: italic;">argumentX
+valueX</span><br>
+</div>
+<br>
+The arguments must be parameters as defined in the configuration files,
+and the values must be of the correct type : boolean, integer, float or
+string. For instance:<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">startKeyLogger
+writePeriodS=120 writeMode=append</span><br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Warning.
+the arguments are case-sensitive</span><br>
+</div>
+<br>
+Here are examples of <span style="font-style: italic;">invalid</span>
+command lines <br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">startKeyLogger
+toto=12 (undefined argument)<br>
+<br>
+startKeyLogger writeperiods=12 (case sensitive)<br
+ style="font-style: italic;">
+</span><br style="font-style: italic;">
+<span style="font-style: italic;">startKeyLogger writePeriodS=120
+writeMode (unbalanced command line)<br>
+</span></div>
+<br>
+<h1><a class="mozTocH1" name="mozTocId749895"></a><span class="mozTocH1"></span>Key
+logs</h1>
+<br>
+<h2><a class="mozTocH2" name="mozTocId291779"></a>Where are Key Logs ?</h2>
+The Key log is in <span style="font-style: italic;">data/log_key.tsv</span>.
+This path can be changed in the configuration file (see Section
+Configuration). <br>
+<br>
+By default, key logs are <span style="font-style: italic;">appended</span>
+to this file. This can also be changed in the configuration file.<br>
+<br>
+<h2><a class="mozTocH2" name="mozTocId143616"></a>Events</h2>
+<br>
+Key logs contain the following <span style="font-weight: bold;">events</span>
+<br>
+<ul>
+  <li>key press or release</li>
+  <li>mouse move</li>
+  <li>mouse wheel</li>
+  <li>mouse button press and release</li>
+  <li>start* and stop* , injected events that indicate start and stop
+of test sessions, blocks trials.</li>
+</ul>
+Each event corresponds to <span style="font-weight: bold;">one line of
+the log file</span>.&nbsp; The first word is the type of event:<br>
+<div style="margin-left: 40px;">
+<div>
+<div>
+<div>keyDown,&nbsp;&nbsp;keyUp: keyboard &nbsp;&nbsp;&nbsp;</div>
+</div>
+</div>
+<div>
+<div>
+<div>mouseLeftDown,&nbsp;mouseLeftUp : left mouse button&nbsp;&nbsp;</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>mouseMiddleDown,&nbsp;mouseMiddleUp: middle mouse button</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>mouseRightDown,&nbsp;mouseRightUp: right mouse button
+&nbsp;&nbsp;&nbsp;</div>
+</div>
+</div>
+<div>
+<div>
+<div>mouseMove : mouse displacement&nbsp;&nbsp;</div>
+</div>
+</div>
+<div>
+<div>
+<div>mouseWheel : scroll of mouse wheel.<br>
+<br>
+note. The first word can also be a <span style="font-weight: bold;">tag
+</span>injected by an external command (see above).<br>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+The log file is in <span style="font-weight: bold;">TSV format</span>
+( tab-separated
+values), i.e., each field of a line is separated by a tab. CSV files
+can be opened with text editors and spreadsheets.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Note</span>.
+you can change the field delimiter to comma, but this may be a problem
+with Excel(r) (Excel ' understands' as comma&nbsp; the regional
+delimiter, ';' or ',').<br>
+</div>
+<br>
+If you
+open a key log file with a text editor, you will see something like
+this (note that tabs are not always aligned)<br>
+<br>
+<table style="width: 90%; text-align: left;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 255);"><small>mouseMove&nbsp;&nbsp;
+window&nbsp;&nbsp; FolderView widget 262544&nbsp;&nbsp;
+date&nbsp;&nbsp; 2007
+03 12 - 08:32:02&nbsp;&nbsp; timeStampMs&nbsp;&nbsp; 0&nbsp;&nbsp;
+injected&nbsp;&nbsp; 0&nbsp;&nbsp; xPix&nbsp;&nbsp; 135&nbsp;&nbsp;
+yPix&nbsp;&nbsp; 348&nbsp;&nbsp; wheel&nbsp;&nbsp; 0&nbsp; <br>
+mouseRightDown&nbsp;&nbsp; window&nbsp;&nbsp; FolderView&nbsp;&nbsp;
+widget&nbsp;&nbsp; 262544&nbsp;&nbsp; date&nbsp;&nbsp; 2007 03 12 -
+08:32:07&nbsp;&nbsp; timeStampMs&nbsp;&nbsp; 5148&nbsp;&nbsp;
+injected&nbsp;&nbsp; 0&nbsp;&nbsp; xPix&nbsp;&nbsp; 283&nbsp;&nbsp;
+yPix&nbsp;&nbsp; 603&nbsp;&nbsp; wheel&nbsp;&nbsp; 0&nbsp; <br>
+mouseRightUp&nbsp;&nbsp; window FolderView&nbsp;&nbsp;
+widget&nbsp;&nbsp; 262544&nbsp;&nbsp; date&nbsp;&nbsp; 2007 03 12 -
+08:32:07&nbsp;&nbsp; timeStampMs&nbsp;&nbsp; 5388&nbsp;&nbsp;
+injected&nbsp;&nbsp; 0&nbsp;&nbsp; xPix&nbsp;&nbsp; 283&nbsp;&nbsp;
+yPix&nbsp;&nbsp; 603&nbsp;&nbsp; wheel&nbsp;&nbsp; 0&nbsp; </small><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2><a class="mozTocH2" name="mozTocId448212"></a><span
+ style="font-weight: bold;">Fields <br>
+</span></h2>
+<span style="font-weight: bold;">Comments</span>. Comment lines start
+with #.<br>
+<br>
+<span style="font-weight: bold;">Event lines</span> contain the type of
+event, followed by pairs attribute, value separated by tabs<br>
+<br>
+The beginning of the line is common to all the types of events:<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">event
+type</span>:&nbsp; a string.<br>
+<div style="margin-left: 40px;">keyDown, keyUp,<br>
+mouse(Button)Down (Button = Left Center or Right), mouse(Button)Up,
+mouseMove, mouseWheel,<br>
+start(Activity) (Activity = Session, Block. Trial), stop(Activity),<br>
+stopLogger, suspendLogger, resumeLogger<br>
+</div>
+<br>
+<span style="font-weight: bold;">window</span> : the name of the window
+in which the event generates.<br>
+<br>
+<span style="font-weight: bold;">widget </span>: the numerical Id of
+the widget in which the event generate ( coded by Windows )<br>
+<br>
+<span style="font-weight: bold;">date</span> : the data and time of
+event in format yyyy mm dd - hh:MM:SS<br>
+<br>
+<span style="font-weight: bold;">timeStampS</span> : the time at which
+the event occurred counted in seconds (floating point). By default,
+starts on 1/1/1970. Can be configured to start at the beginning of the
+recording session (see Section Configuration).<br>
+<br>
+<span style="font-weight: bold;">injected</span>: 0 for events produced
+by the devices ( mouse or keyboard ), any positive number for events<br>
+created by software ( e.g., for the events start* and stop*. injected
+is 16.<br>
+</div>
+<br>
+The remainder of the line is event specific<br>
+<br>
+<span style="font-weight: bold;">keyDown, keyUp events</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">key</span>
+: the name of the key. Uppercase letter or identifier, e.g., Lshift.<br>
+<br>
+<span style="font-weight: bold;">ascii </span>: ascii code, or 0 when
+the key produces no ascii code.<br>
+<br>
+<span style="font-weight: bold;">scanCode</span> : code of the physical
+key that have been touched (refers to the physical layout of keys)<br>
+<br>
+<span style="font-weight: bold;">keyId</span> : identifier of the key (
+numerical )<br>
+<br>
+<span style="font-weight: bold;">extended</span> : 0 if the key comes
+from the main keyboard, positive integer otherwise (e.g., numerical pad)<br>
+<br>
+<span style="font-weight: bold;">alt</span> : 0 if alt key is not
+currently pressed, positive integer otherwise<br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">mouse(Button)Down, mouse(Button)Up,
+mouseMove, mouseWheel</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">xPix</span>
+: horizontal position of pointer in pixels ( 0 = left )<br>
+<br>
+<span style="font-weight: bold;">yPix</span> : vertical position of
+pointer in pixels ( 0 = top ; has to be inverted for plots, e.g.,
+768-yPix)<br>
+<br>
+<span style="font-weight: bold;">wheel</span> : current movement of the
+wheel: 0 for all events, -1 +1 for mouseWheel events.<br>
+<br>
+</div>
+<br>
+<span style="font-weight: bold;">start(Activity), stop(Activity)</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">session
+</span>: session number incremented at each startSession event. "0"
+means that no startSession occurred before.<br>
+<br>
+<span style="font-weight: bold;">block </span>: block number
+incremented at each startBlock event, and resetted at each startSession
+event.. "0: means that no startBlock occurred in the current session.<br>
+<br>
+</div>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">trial </span>:
+trial number incremented at each startTrial event, and resetted at each
+startBlock and startSession events. "0" means that no startTrial
+occurred in the current block.<br>
+<br>
+<span style="font-weight: bold;">write</span> : start and stop of write
+operations. Useful when logs are written periodically (during the
+writing, the operations are lagged) (versions 2010 03 31 and further)<br>
+<br>
+<div style="margin-left: 40px;"><br>
+</div>
+</div>
+<span style="font-weight: bold;">startLogger, suspendLogger,
+resumeLogger</span><br>
+<br>
+<div style="margin-left: 40px;">void.<br>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+.<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId511020"></a><span class="mozTocH1"></span>KPC
+logs</h1>
+<h2><a class="mozTocH2" name="mozTocId788542"></a>Where are KPC Logs ?</h2>
+The KPC log is in <span style="font-style: italic;">data/log_kpc.tsv</span>.
+This path can be changed in the configuration file (see Section
+Configuration). <br>
+<br>
+By default, key logs are <span style="font-style: italic;">appended</span>
+to this file. This can also be changed in the configuration file.<br>
+<br>
+Unless you decide otherwise a KPC log is generated conjointly with the
+Key log as soon as the log stops, i.e., by the command
+stopKeyLogger.pyw or by clicking the window of Basic Key Logger.
+However, it may be of interest changing some parameters like the
+minimal duration to detect pauses (see below), and generate different
+KPC logs. This is done by the command kpcLog.pyw.<br>
+<h2><a class="mozTocH2" name="mozTocId518071"></a>Operations</h2>
+<br>
+KPC logs contains <span style="font-weight: bold;">operations</span>,
+i.e., interaction from a user's viewpoint (whereas events are from the
+computer's viewpoint) :<br>
+<ul>
+  <li>P = point at a position x,y,</li>
+  <li>C = click a mouse button</li>
+  <li>K = enter key or press function key</li>
+  <li>A = automatic key, e.g., auto repeat</li>
+  <li>W = rolls mouse wheel</li>
+</ul>
+You also find in KPC logs:<br>
+<ul>
+  <li>Q = quiet period, mouse and keyboard are idle ( equivalent to
+pauses, or M operations in KLM models )</li>
+  <li>the same tags than in key logs (startSession, stopSession, etc.),
+    <br>
+  </li>
+</ul>
+Each operation corresponds to <span style="font-weight: bold;">one
+line of the log file</span>.&nbsp; The first word is the type of event
+(P, X, K, A, W, Q) or it is a tag.<br>
+<br>
+Like Key logs, KPC logs are in <span style="font-weight: bold;">TSV
+format</span>.&nbsp; If you open a KPC log file with a text editor,
+you will
+see
+something like this.<br>
+<br>
+<table style="width: 90%; text-align: left;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 255);"><small>P&nbsp;&nbsp;
+window&nbsp;&nbsp; FolderView&nbsp;&nbsp; widget&nbsp;&nbsp;
+262544&nbsp;&nbsp; date&nbsp;&nbsp; 2007
+03 12 - 08:32:02&nbsp;&nbsp; timeStampS &nbsp; 0. &nbsp; durationS
+&nbsp; 2.013&nbsp;&nbsp; overlapS &nbsp; 1.562&nbsp; &nbsp;
+xPix&nbsp;&nbsp; 135&nbsp;&nbsp; yPix&nbsp;&nbsp; 348&nbsp; &nbsp; .. <br>
+Q&nbsp;&nbsp; window&nbsp;&nbsp;
+FolderView&nbsp;&nbsp;
+widget&nbsp;&nbsp; 3212198&nbsp;&nbsp; date&nbsp;&nbsp; 2007
+03 12 - 08:32:04&nbsp;&nbsp; timeStampS&nbsp; .451&nbsp;&nbsp;
+durationS &nbsp; 1.703&nbsp;&nbsp; overlapS &nbsp; 1.41&nbsp; <br>
+K&nbsp;&nbsp; window&nbsp;&nbsp; &nbsp;&nbsp;
+FolderView&nbsp;&nbsp;
+widget&nbsp;&nbsp; 3212198&nbsp;&nbsp; date&nbsp;&nbsp; 2007
+03 12 - 08:32:04&nbsp;&nbsp; timeStampS &nbsp; 2.013&nbsp;&nbsp;
+durationS &nbsp; 0.331&nbsp;&nbsp; overlapS &nbsp; 0. &nbsp;
+key&nbsp;&nbsp; l&nbsp; <br>
+K&nbsp;&nbsp; window&nbsp;&nbsp; &nbsp;&nbsp;
+FolderView&nbsp;&nbsp;
+widget&nbsp;&nbsp; 3212198&nbsp;&nbsp; date&nbsp;&nbsp; 2007
+03 12 - 08:32:04&nbsp;&nbsp; timeStampS &nbsp; 2.344&nbsp;&nbsp;
+durationS&nbsp;&nbsp; 0.1322&nbsp;&nbsp; overlapS&nbsp;&nbsp;
+1.172&nbsp;&nbsp; key&nbsp;&nbsp; l&nbsp; </small><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The operations are composed of multiple events, e.g., a Pointing
+movement is a sequence of mouse move events. See next section for
+details.<br>
+<br>
+The quiet periods <span style="font-style: italic;">are not </span>events.
+They indicate a pause in the interface entry that can occur between
+and/or during operations, e.g., during a pointing movement or between
+key presses.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Note</span>.
+A pause does not mean that the user does nothing or that he/she is
+thinking. It only indicates that there are no entries.<br>
+<br>
+</div>
+<br>
+it is worth underlining that <span style="font-weight: bold;">the KPC
+logs are not fully sequential.</span> Consecutive operations can
+overlap.<br>
+<br>
+<div style="margin-left: 40px;">For instance you move the mouse with
+one hand and you write with the other: you do not stop moving the mouse
+at each key press.<br>
+</div>
+<br>
+The KPC logs contain the operations in order of increasing start time.
+When operations do not overlap, the end time of operation n is the
+start time of operation n+1. When operations overlap, the operation n
+ends after operation n+1 started.<br>
+&nbsp; <br>
+<h2><a class="mozTocH2" name="mozTocId922238"></a><span
+ style="font-weight: bold;">Conversion from Key logs to KPC
+logs</span></h2>
+The following rules are used to generate KPC operations from sequences
+of events.<br>
+<br>
+<div style="text-align: center;">Table 2. Rules of conversion
+events-operations<br>
+<table
+ style="width: 80%; background-color: rgb(204, 204, 255); text-align: left; margin-left: auto; margin-right: auto;"
+ border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; font-weight: bold; text-align: center;">operation<br>
+      </td>
+      <td
+ style="vertical-align: top; font-weight: bold; text-align: center;">description<br>
+      </td>
+      <td
+ style="vertical-align: top; font-weight: bold; text-align: center;">rules
+of start and stop<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">A<br>
+      </td>
+      <td style="vertical-align: top;">automatic key press<br>
+(keyboard auto-repeat)</td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:&nbsp;</span>event&nbsp;<span
+ style="font-style: italic;">key X down </span>when X was
+already pressed.<br>
+      <br>
+      <span style="font-weight: bold;">stop:</span>&nbsp;next
+event&nbsp;<span style="font-style: italic;">key X up</span> or&nbsp;<span
+ style="font-style: italic;">key X down</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">C<br>
+      </td>
+      <td style="vertical-align: top;">mouse button click <br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:</span>&nbsp;event&nbsp;<span
+ style="font-style: italic;">button X down</span><br>
+      <br>
+      <span style="font-weight: bold;">stop:</span>&nbsp;next
+event&nbsp;<span style="font-style: italic;">button X up</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">K<br>
+      </td>
+      <td style="vertical-align: top;">key press <br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:</span>&nbsp;event&nbsp;<span
+ style="font-style: italic;">key X down </span>when X was&nbsp;<span
+ style="font-style: italic;">not</span>&nbsp;already pressed.<br>
+      <br>
+      <span style="font-weight: bold;">stop: </span>next event<span
+ style="font-style: italic;"> key X up.</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">P<br>
+      </td>
+      <td style="vertical-align: top;">pointing<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:
+      </span>event&nbsp;<span style="font-style: italic;">mouse move</span>
+event
+when there is not a P operation already started.<br>
+      <br>
+      <span style="font-weight: bold;">stop:</span> next event&nbsp;<span
+ style="font-style: italic;">mouse move</span> that verifies:<br>
+      <br>
+      <blockquote
+ style="border-style: none; margin: 0px 0px 0px 40px; padding: 0px;">1)
+the previous&nbsp;<span style="font-style: italic;">mouse move</span>
+occurred
+more than 100ms before (duration is adjustable)&nbsp;AND<br>
+        <br>
+2) there is an intermediary event (different from <span
+ style="font-style: italic;">mouse move</span>) after the
+previous&nbsp;<span style="font-style: italic;">move move</span>.</blockquote>
+      <br>
+      <span style="font-weight: bold;">comment.</span> A P stops when
+there is a pause in mouse movement and something occurs during this
+pause.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Q<br>
+      </td>
+      <td style="vertical-align: top;">quiet period<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:</span>&nbsp;the
+previous event occurred more than 1s ago (duration is adjustable).<br>
+      <br>
+      <span style="font-weight: bold;">stop:</span> next event.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">W<br>
+      </td>
+      <td style="vertical-align: top;">scroll of mouse wheel.</td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">start:</span>
+event&nbsp;<span style="font-style: italic;">mouse wheel&nbsp;</span>when
+there is not a W operation already started.<br>
+      <br>
+      <span style="font-weight: bold;">stop:</span> next event&nbsp;<span
+ style="font-style: italic;">mouse wheel&nbsp;</span>that verifies:<br>
+      <br>
+      <blockquote
+ style="border-style: none; margin: 0px 0px 0px 40px; padding: 0px;">1)
+the previous&nbsp;<span style="font-style: italic;">mouse wheel</span>&nbsp;occurred
+more than 100ms before (duration is adjustable)&nbsp;AND<br>
+        <br>
+2) there is an intermediary event (different from <span
+ style="font-style: italic;">mouse wheel</span>) after the
+previous&nbsp;<span style="font-style: italic;">mouse wheel</span>.</blockquote>
+      <br>
+      <span style="font-weight: bold;">comment.</span> A W stops when
+there is a pause in mouse wheel scrolling and something occurs during
+this pause</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+</div>
+<br class="Apple-interchange-newline">
+<br>
+<span style="font-weight: bold;">Q ( quiet period )</span><br>
+<br>
+<span style="font-weight: bold;">Q </span>operation is inserted
+when the difference between the time Tn of current event En and time
+Tn-1 of event En-1 is above <span style="font-weight: bold;">pauseThresholdS
+</span>(default 1s).<br>
+<br>
+<div style="margin-left: 40px;">The start time is Tn-1&nbsp; + sampling
+period (10ms).<br>
+<br>
+&nbsp;The end time is
+the time Tn+1 of next event, En+1<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Note that a Q event may end before the
+start time of the next operation
+of the KPC log (because some key events do not start operations)<br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">K (type&nbsp; key of keyboard )</span><br>
+<br>
+<span style="font-weight: bold;">K </span>operation is inserted
+when there is a key press event that corresponds to a key that was not
+already pressed.&nbsp; <br>
+<br>
+<div style="margin-left: 40px;">The start time of a K event is the time
+Tn of event En of the key
+press. The end time it the start time of the next operation in the KPC
+log.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">A combination shift+a
+corresponds to 2
+K operations. Among the attributes of a K operation, we have the key
+that has been typed ( see next section for details ). <br>
+</div>
+<br>
+<span style="font-weight: bold;">Note</span>. When the parameter
+keyRelease is set to 1, K operations are also generated when a key is
+released.<br>
+<br>
+<br>
+<span style="font-weight: bold;">A ( automatic key )</span><br>
+<br>
+<span style="font-weight: bold;">A</span> operation is inserted when
+there is a key press event that corresponds to a key that 1) is already
+pressed, 2) is not a special key, CONTROL, SHIFT or ALT.<br>
+<br>
+<div style="margin-left: 40px;">The corresponding key, the start time
+and the endtime are determined
+like for K events.<br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">C (click mouse button )</span><br>
+<br>
+<span style="font-weight: bold;">C</span> operation is inserted when
+there is a mouse pressed event. Among the attributes of a C operation,
+there is the mouse button that has been used ( see next section for
+details).<br>
+<br>
+<div style="margin-left: 40px;">The start time is the time Tn of event
+En of the button press. <br>
+<br>
+The end
+time it the start time of the next operation in the KPC log.<br>
+</div>
+<br>
+<span style="font-weight: bold;">Note</span>. When the parameter
+buttonRelease is set to 1, C operations are also generated when a
+button is released. <br>
+<br>
+<br>
+<span style="font-weight: bold;">P ( pointing )</span><br>
+<br>
+<span style="font-weight: bold;">P </span>operation is inserted when
+ther is a mouse move event and there is no P operation in execution
+(see below). Among the attributes of a P operation, there are the
+initial and final position, the distance and the length of the
+trajectory of the mouse ( see next section for details ).<br>
+<br>
+<div style="margin-left: 40px;">The start time of the P operation is:
+the time Tn of the mouse move
+event. <br>
+</div>
+<br>
+<div style="margin-left: 40px;">The end time is&nbsp; the start time of
+the operation in the KPC
+log that <span style="font-weight: bold;">follows the end</span> of
+the pointing. <br>
+<br>
+Note that there may be several operations during the
+pointing, e.g., pressing Keys while moving the mouse..<br>
+</div>
+<br>
+<span style="font-weight: bold;">Comment</span>. A P operation
+ends&nbsp; when the delay between two mouse move events
+is larger than a <span style="font-weight: bold;">continuity threshold
+</span>(100 ms) and when a different event occurs meanwhile, e.g.,<br>
+<br>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; "mouse
+move&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mouse move" is OK ( a Q period occurs, but the P operation follows)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp; 10 seconds&nbsp; ...&nbsp;&nbsp;&nbsp; &gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; "mouse move&nbsp; click&nbsp;&nbsp;&nbsp; mouse
+move" is OK ( a C operation occurs, but the P operation follows)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp; 50 ms &gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; "mouse move&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Click&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mouse move" is not OK:
+the P operation ends.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp;&nbsp;&nbsp; 200 ms&nbsp;&nbsp; &gt;<br>
+</div>
+<br>
+<br>
+<br>
+<span style="font-weight: bold;">W ( scrolling mouse wheel )</span><br>
+<br>
+<span style="font-weight: bold;">W</span> operation is inserted when
+there is: a mouse wheel event and there is no Wheel operation in
+execution (see below). Among the attributes of a W operation, there are
+the distance that has been scrolled ( sum of the wheel movements
+upwards
++1 or downwards -1) and the total number of wheel movements ( may be
+higher than distance, if user went back and forth). See next
+section&nbsp; for details.<br>
+<br>
+<div style="margin-left: 40px;">The start time is: the time Tn of the
+mouse wheel event. <br>
+<br>
+The end time
+is&nbsp; the start time of theoperation in the KPC log that <span
+ style="font-weight: bold;">follows the end</span> of the Wheel
+rolling. <br>
+<br>
+Note that there may be several operations during the wheel
+rolling, e.g., pressing Keys while using the wheel.<br>
+</div>
+<br>
+<span style="font-weight: bold;">Comment.</span> A W operation ends:
+when the delay between two mouse wheel events is
+larger than a continuity threshold (100 ms)<br>
+and when a different event occurs meanwhile, e.g.,<br>
+<br>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; "mouse
+wheel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mouse wheel" is OK ( a Q period occurs, but the W operation follows)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp; 10 seconds&nbsp; ...&nbsp;&nbsp;&nbsp; &gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; "mouse wheel&nbsp; mouse move&nbsp;&nbsp; mouse
+wheel" is OK ( a P operation starts, but the W operation follows)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp; 50 ms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; "mouse wheel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Click&nbsp;&nbsp;&nbsp;&nbsp; mouse wheel" is not OK: the W operation
+ends.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&nbsp;&nbsp;&nbsp; 200 ms&nbsp;&nbsp; &gt;<br>
+</div>
+<br>
+<br>
+<br>
+<br>
+<span style="font-weight: bold;">Duration and overlap</span><br>
+<br>
+The <span style="font-weight: bold;">duration</span> of an operation
+is the difference end time - start time ( in fact, the duration is
+stored but not the end time. We only used the end time for simplifity
+in the foregoing explanations)<br>
+<br>
+The<span style="font-weight: bold;"> overlap</span> of operation X is
+the sum of the time intervals in which some other operation occurs.<br>
+<br>
+There is a simple relation between overlap and duration: <br>
+<br>
+<table
+ style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;"
+ border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr style="font-weight: bold;" align="center">
+      <td
+ style="vertical-align: top; background-color: rgb(255, 255, 153);"><big>total
+time = sum( durations of all events ) - sum ( overlaps of all events ).</big></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h2><a class="mozTocH2" name="mozTocId265027"></a><span
+ style="font-weight: bold;">Fields of the operations and lines
+format</span></h2>
+<br>
+<span style="font-weight: bold;">Comment lines</span> start with #.<br>
+<br>
+<span style="font-weight: bold;">Operation lines</span> contain the
+type of operation, followed by pairs attribute, value separated by
+commas.<br>
+<br>
+The beginning of the line is common to all the types of operations:<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">type
+of operation:</span> a string<br>
+</div>
+<div style="margin-left: 80px;">K ( type a key of keyboard )<br>
+A ( key that is automatically generated, e.g., autorepeat )<br>
+P ( point )<br>
+C ( click a mouse button )<br>
+W ( rolls the mouse wheel )<br>
+Q ( quiet period )<br>
+start(Activity) (Activity = Session, Block. Trial), stop(Activity),<br>
+stopLogger, suspendLogger, resumeLogger<br>
+</div>
+<div style="margin-left: 40px;"><br>
+<span style="font-weight: bold;">window </span>: the name of the
+window in which the event generates<br>
+<br>
+<span style="font-weight: bold;">widget</span> : the numerical Id of
+the widget in which the event generate ( coded by Windows )<br>
+<br>
+<span style="font-weight: bold;">date</span> : the data and time of
+event in format yyyy mm dd - hh:MM:SS<br>
+<br>
+<span style="font-weight: bold;">timeStampS</span>: the time at which
+the event occurred counted in seconds (float) since 1/1/1970 (or&nbsp;
+since the beginning of the
+execution if configured so)<br>
+of the logger.<br>
+<br>
+</div>
+<div style="margin-left: 80px;">Note. Use the timeStampMs to find out
+the corresponding event(s) in the key log.<br>
+</div>
+<div style="margin-left: 40px;"><br>
+<span style="font-weight: bold;">durationS</span> : duration in seconds
+(float)<br>
+<br>
+<span style="font-weight: bold;">overlapS </span>: total duration of
+overlapping events in seconds (float)<br>
+<br>
+</div>
+<div style="margin-left: 80px;">Note. sum ( durationS ) - sum(
+overlapS ) = total duration.<br>
+</div>
+<br>
+The remainder of the line is specific of each type of operation<br>
+<br>
+<span style="font-weight: bold;">K ( type Key )</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">key</span>
+: the description of the key. <br>
+<br>
+<div style="margin-left: 40px;">If the key is visible (e.g.,&nbsp; it
+writes something when you use it in a text editor ), the key is the
+corresponding character, e.g.&nbsp; "A", "b"... In this case the key
+log contains a non-null ASCII code, and the key is the corresponding
+character.<br>
+<br>
+For invisible keys ( arrows, tabs, etc. ), the key is a string, e.g.,
+"Lshift".<br>
+<br>
+In addition, the key may have a prefix. The prefix "Alt+" is added if
+some ALT key is currently pressed, and "Ctrl+" is added if some CONTROL
+key is currently pressed, e.g., "Alt+A", "Alt+Ctrl+Tab".<br>
+<br>
+The prefix "Shift+" is added only if the key is not a letter ( and some
+SHIFT key is currently pressed). For instance,&nbsp; "Shift+1", but not
+"Shift+a". (you will have "A" instead ).<br>
+<br>
+</div>
+<span style="font-weight: bold;">releaseAfterS</span> : the duration
+of the key press in seconds. This field is generated only for the
+K operations that correspond to key releases, when parameter keyRelease
+is set to 1.<br>
+<br>
+</div>
+<br>
+<span style="font-weight: bold;">C ( mouse button click )</span><br
+ style="font-weight: bold;">
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">xPix </span>:
+horizontal position of pointer in pixels ( 0 = left )<br>
+<br>
+<span style="font-weight: bold;">yPix </span>: vertical position of
+pointer in pixels ( 0 = top ; has to be inverted for plots, e.g.,
+768-yPix)<br>
+<br>
+<span style="font-weight: bold;">button</span> : "left", "center" or
+"right"<br>
+<br>
+<span style="font-weight: bold;">releaseAfterS</span> : the duration
+of the button press in seconds. This field is generated only for
+the C operations that correspond to button releases, when parameter
+buttonRelease
+is set to 1.<br>
+<br>
+</div>
+<br>
+<span style="font-weight: bold;">P ( pointing )</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">xPix</span>
+: initial horizontal position of pointer in pixels <br>
+<br>
+<span style="font-weight: bold;">yPix </span>: initial ertical
+position of pointer in pixels<br>
+<br>
+<span style="font-weight: bold;">xFinalPix</span> : final horizontal
+position of pointer in pixels<br>
+<br>
+<span style="font-weight: bold;">yFinalPix</span> : final vertical
+position of pointer in pixels<br>
+<br>
+<span style="font-weight: bold;">distancePix </span>: distance ( in
+straight line ) between initial and final positions<br>
+<br>
+<span style="font-weight: bold;">lengthPix</span> : length of the path
+followed by mouse in pixels.<br>
+</div>
+<br>
+<span style="font-weight: bold;">W ( roll mouse wheel )</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">xPix</span>
+: initial horizontal position of pointer in pixels <br>
+<br>
+<span style="font-weight: bold;">yPix</span> : initial ertical position
+of pointer in pixels<br>
+<br>
+<span style="font-weight: bold;">movement</span> : resulting movement
+of the wheel. Integer = sum of elementary wheel movements, +1 or -1<br>
+<br>
+<span style="font-weight: bold;">number</span> : number of wheel events
+( greater than movement if user rolled up and down )<br>
+</div>
+<br>
+<span style="font-weight: bold;">Q ( quiet period )</span><br>
+<br>
+<div style="margin-left: 40px;">void.<br>
+</div>
+<br>
+<span style="font-weight: bold;">start(Activity), stop(Activity) :</span><br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">session
+</span>: session number incremented at each startSession event. "0"
+means that no startSession occurred before.<br>
+<br>
+<span style="font-weight: bold;">block </span>: block number
+incremented at each startBlock event, and resetted at each startSession
+event.. "0: means that no startBlock occurred in the current session.<br>
+</div>
+<div style="margin-left: 40px;"><br>
+</div>
+<div style="margin-left: 40px;">
+<span style="font-weight: bold;">trial </span>: trial number
+incremented at each startTrial event, and resetted at each startBlock
+and startSession events. "0" means that no startTrial occurred in the
+current block.
+</div>
+<br>
+<h1><a class="mozTocH1" name="mozTocId217631"></a>Configuration</h1>
+The configuration is in <a
+ href="../configuration/keylogger_configuration.py">configuration/keylogger_configuration.py</a>.
+This is a Python file. It contains comments (<span
+ style="font-style: italic;"># xyz </span>) and
+assignations of parameters (<span style="font-style: italic;">parameter
+= value</span>). When an assignation is commented
+( <span style="font-style: italic;"># parameter = value</span>), the
+default value of the parameter is taken. The parameters are:<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">absoluteFlag
+</span>1 if time is counted from 1/1/1970, 0 if time is counted from
+the start of the recording session.<br>
+<br>
+<span style="font-weight: bold;">dayStartS</span> : for
+clock-controlled logging. Start time of daily recording in seconds
+counted from 0:00. Deactivated if &lt; 0. In versions 2010 03 31 and
+further.<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-style: italic;">Warning</span>.
+logger shouild be already running at the time of start.<br>
+</div>
+<br>
+<span style="font-weight: bold;">dayStopS</span> : for clock-controlled
+logging. Stop time of daily recording in
+seconds counted from 0:00. Deactivated if &lt; 0. In versions 2010 03
+31 and further.<br>
+<br>
+<span style="font-weight: bold;"># bufferSize</span> : size of&nbsp;
+buffer used to write log files by blocks, in bytes (recommended to keep
+default value)<br>
+<br>
+<span style="font-weight: bold;">buttonReleaseFlag</span> : when set to
+1,
+a C operation is generated when a button is released, and the duration
+of the press is indicated. When set to 0, C operations are generated
+only for button presses ( default = 0 )<br>
+<br>
+<span style="font-weight: bold;">continuityThresholdS</span> : maximal
+delay between consecutive events of same type ( e.g. mouse wheel) to
+consider them continuous (default 100 ms)<br>
+<br>
+<span style="font-weight: bold;">fieldDelimiter</span> : tab, comma etc.<br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">keyReleaseFlag
+</span>: when set to 1, a K operation is generated when a key is
+released,
+and the duration of the press is indicated. When set to 0, K operations
+are generated only for key presses ( default = 0 )<br>
+<br>
+<span style="font-weight: bold;"># keyStopLogger,
+keySynchronization,&nbsp; keySynchronization1, keySynchronization2,
+keyStartSession, keyStopSession, keyStartBlock, keyStopBlock,
+keyStartTrial, keyStopTrial, keySuspendLogger, keyResumeLogger</span> :
+special "keys" used to tag the log (recommended to keep these values).<br>
+<br>
+<span style="font-weight: bold;">kpcPath</span>: path to KPC log(s)
+file.
+Default is logKpc.csv in the directory of Basic Key Logger.<br>
+<br>
+<span style="font-weight: bold;">logPath</span>
+: path of Key log(s) file. Default is logKey.csv in the directory of
+Basic Key Logger.<br>
+<br>
+<span style="font-weight: bold;">mode </span>: write mode : append or
+write ( default = append ). Write means that the log file is rewritten
+at each execution. Previous logs are lost.<br>
+<span style="font-weight: bold;"></span><br>
+<span style="font-weight: bold;">pauseThresholdS :</span>&nbsp; minimal
+duration to detect a quiet period in seconds ( default 1. )<br>
+<br>
+<span style="font-weight: bold;"># samplingPeriodS </span>: sampling
+period in seconds (default 0.010 ). Recommended to keep this value.<br>
+<br>
+<span style="font-weight: bold;">writeMode</span> : "append" (recording
+is appended to the existing log file ) or "write" ( a new log file is
+created for the recording)<br>
+<br>
+<span style="font-weight: bold;">writePeriodS</span> : to write logs
+periodically to disk. Period in seconds. Deactivated if the value is
+&lt;= 0 (default). (versions 2010 03 31 and further)<br>
+<br>
+<span style="font-weight: bold;"></span><br>
+<span style="font-weight: bold;"></span><br>
+</div>
+<span style="font-weight: bold;">If there is an error in your
+configuration file</span>... <br>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">DON'T
+PANIC</span>. Basic Key Logger will still work
+most of the time, and you can easily restore a correct configuration
+file.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">The default configuration file (<a
+ href="../library/keylog/keylogger_configuration.py">library/keylog/keylogger_configuration.py</a>)
+is used whenever there is a detected error or exception in your file..<br>
+</div>
+<br>
+<div style="margin-left: 40px;">If you cannot fix the error, copy this
+file in configuration/<br>
+</div>
+<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId714258"></a>Program documentation</h1>
+If you need to dig in the program, <span style="font-weight: bold;">generate
+the documentation with the script buildDocumentation.exe. </span><br>
+<br>
+<div style="margin-left: 40px;"><a
+ href="program/documentation_internal.html">documentation</a><br>
+</div>
+<br>
+The documention covers the application and the local copy of python. It
+is composed of 4 (large) html files: <br>
+<br>
+<div style="margin-left: 40px;">readme (collects all readme information
+in directories)<br>
+internal (the content of subfolder library/ : application and the local
+copy of python)<br>
+buildin ( hard-coded in python)<br>
+external (the files defined in other subfolders, e.g., configuration/)
+and eventually, the external dependencies (this occurs only if some
+cases, when you have a preinstalled python that matches the
+installation used for development)<br>
+</div>
+<br>
+<h1><a class="mozTocH1" name="mozTocId158533"></a>Troubleshooting</h1>
+1 - <span style="font-weight: bold;">The icon does not appear in the
+task bar.</span> This occurs when Pygame (and the library SDL ) cannot
+get access to the monitor, e.g., some application put the monitor in
+full screen mode.&nbsp; Basic Key Logger is running&nbsp; in background.<br>
+<br>
+<div style="margin-left: 40px;">Verification: Task Manager, process,
+there is a Python or Pythonw process running.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Solution : execute stopKeyLogger.exe.
+If the Python process is still running, abort it from Task Manager.<br>
+</div>
+<br>
+2 - <span style="font-weight: bold;">The mouse slows down</span>
+AND/OR there are warnings about <span style="font-weight: bold;">low
+virtual memory</span>. Basic Key Logger has been running for a long
+time and uses too much memory.<br>
+<br>
+<div style="margin-left: 40px;">Verification : Task Manager, check
+memory use.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Solution : execute stopKeyLogger.exe.<br>
+<br>
+</div>
+3 <span style="font-weight: bold;">Basic Key Logger refuses to stop</span>.
+<br>
+<br>
+<div style="margin-left: 40px;">Solution : task manager, processes,
+cancel Python processes.<br>
+<br>
+</div>
+<span style="font-weight: bold;">4 The logs are not updated on disk.</span>
+There may be an access conflict, e.g., the
+previous log files are edited in Excel (exclusive access)<br>
+<br>
+<div style="margin-left: 40px;">Verification : try to move or delete
+the previous log under the window explorer<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Solution : close any program using the
+log files<br>
+</div>
+<br>
+<br>
+<h1><a class="mozTocH1" name="mozTocId808869"></a>Version information<br>
+</h1>
+<br>
+<span style="font-weight: bold;">Release 2011-03-01<br>
+<br>
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Extensions<br>
+<br>
+</span>Hidden mode, no icon in task bar (command <span
+ style="font-style: italic;">startHidden.exe</span>)<br>
+<div style="margin-left: 40px;"><br>
+</div>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;">
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Modifications</span><br>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;"><br>
+</span>
+<div style="margin-left: 40px;">Error messages and warnings at
+launching the program do not require a click, they disappear
+automatically after 3 seconds.<br>
+<br>
+<span style="font-weight: bold;">Bugs</span><br>
+<br>
+Creation of work directories failed when intermediate subdirectories
+did not exist.<br>
+</div>
+<span style="font-weight: bold;"><br>
+</span><span style="font-weight: bold;">Release 2010-04-10<br>
+<br>
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Extensions</span><br>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;"><br>
+</span>
+<div style="margin-left: 40px;">command line arguments.<br>
+<br>
+periodic writing of logs (tagged in log with keys startWrite/stopWrite)<br>
+<br>
+daily timer (dayStartS dayStopS)<br>
+<br>
+<span style="font-weight: bold;">Bugs</span><br>
+<br>
+precision of time stamps in absolute format : had only 2 decimals (now,
+all time fields have 3 decimals)<br>
+<br>
+access conflict : freeze when log files are edited in spreadsheet at
+time of write (now, Basic Key Logger ends without writing in case of
+conflict).<br>
+<br>
+</div>
+<span style="font-weight: bold;"><br>
+</span><span style="font-weight: bold;">Release 2009-12-31<br>
+<br>
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Extensions</span><br>
+<span style="font-weight: bold;"></span><br>
+Windows displays a path to the logs.<br>
+<br>
+<span style="font-weight: bold;">Bugs</span>: <br>
+<br>
+Was freezing for some combinations of button clicks.<br>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;"><br>
+</span><span style="font-weight: bold;">Release 2009-10-31<br>
+<br>
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Extensions
+</span><br>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;"><br>
+</span>
+<div style="margin-left: 40px;">Standalone. <br>
+</div>
+<br>
+<div style="margin-left: 40px;">Field delimiter is configurable (tab or
+comma)<br>
+<br>
+Times and durations in seconds (floats)<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Configuration file in Python. Access to
+additional parameters.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Default log names and paths changed.<br>
+<br>
+Control of multiple processes: only one copy of Basic Key Logger can
+run at a time.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Window changed (uses Pygame instead of
+Tkinter, uses leds to indicate the status)<br>
+</div>
+<br>
+<span style="font-weight: bold;">Release 2007-05-22<br>
+<br>
+</span>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Extensions
+</span><br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Parameter
+: absoluteTimeStamp</span> ( default = 0 ). Time stamp is absolute (
+the time stamp of Windows, in milliseconds ) or relative ( starts at 0
+at the beginning of the execution of startKetLogger).<br>
+<br>
+<span style="font-weight: bold;">Parameter buttonRelease</span> (
+default = 0 ). Operations "C" are generated when the buttons are
+released. The difference between button press and button release is an
+additional field for the C corresponding to a release: releaseAfterS
+gives the duration of the button press.<br>
+<br>
+<span style="font-weight: bold;">Parameter keyRelease </span>( default
+= 0 ). Operations "K" are generated
+when the keyboard keys are released. The difference between key press
+and key release is an additional field for the K corresponding to a
+release: releaseAfterS gives the duration of the key press.<br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Bugs
+fixed </span><br>
+</div>
+<br>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Special
+characters in windows'
+names</span>.
+The generation of the KPC log
+blocks when window names contain end-of-line, e.g.,
+"circular reference blah blah blah". Fixed as follows. The end of lines
+and "#" are replaced by spaces in
+the logs ). <br>
+<br>
+<span style="font-weight: bold;">Extended ASCII codes</span>.
+The generation of the KPC log
+blocks when a key press generates an extended ASCII code. Fixed as
+follows: for ASCIIs above 256, the character is not displayed, only the
+identifier ( e.g. num2).<br>
+<br>
+<span style="font-weight: bold;">Pointings and Wheel rollings</span>.
+Now move mouse, button release , move mouse generates a P P sequence.
+Before, it only generated one P ( because button release is not seen ).
+In the new version, a pointing P ends when 1) there is an event
+different from mouse move, and 2) the last mouse move occurred more
+than 100 ms ago ( or whatever the continuity threshold ). Idem for
+Wheel rollings W and mouseWheel events.<br>
+<br>
+<span style="font-weight: bold;">Session, block and trial numbers</span>.
+The start and stop events and operations did not give indication about
+the sequence of sessions, blocks and trials. In the new release, the
+session, block and trial numbers are given for each start/stop. <br>
+<br>
+<span style="font-weight: bold;">Configuration file</span>.&nbsp; Some
+arguments of the configuration file were not read.<br>
+<br>
+</div>
+<span style="font-weight: bold;"></span><br>
+</div>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;"><br>
+<script type="text/javascript">
+document.writeln( "Last update: " , document.lastModified ) ;
+</script>
+<br>
+</body>
+</html>

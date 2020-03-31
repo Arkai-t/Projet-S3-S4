@@ -1,0 +1,2 @@
+this file indicates that the python local copy is sufficient, the application does not have
+external dependencies to global python installation

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+The library contains&nbsp; several packages plus a local copy of python<br>
+<br>
+The following is for Windows. Under Linux, Adapt, Share and Enjoy (it
+works but there is no support).<br>
+.<br>
+<span style="font-weight: bold;">To use the library xxx/library</span>
+(interactive version. You can do the same from a script)<br>
+<br>
+<div style="margin-left: 40px;">Go to directory xxx, <br>
+run python (global installation or local copy library/python/python ) <br>
+import library (configures the sys.path, os.environ variables)<br>
+<br>
+# here, you cam import any package from the library and/or from the
+local copy of pythn.<br>
+<br>
+</div>
+<span style="font-weight: bold;">To prepare an application that uses
+the library.</span><br>
+<br>
+1 - place in one directory (we call it&nbsp;<span
+ style="font-style: italic;"> root</span>) :<br>
+<div style="margin-left: 40px;">configuration : configuration files.
+you can place copy of whatever xxx_configuration.py file of the library
+here. Plus your own files.<br>
+library<br>
+data :&nbsp; input and output data<br>
+program :&nbsp; your program<br>
+execute.bat (copy it from library/bat) and/or python.bat (same script,
+if you want to to fool the command line)<br>
+<br>
+</div>
+2- prepare 3 files to configure the library<br>
+<div style="margin-left: 40px;"><br>
+</div>
+<div style="margin-left: 40px;"> configure the search paths of your
+applications - <span style="font-weight: bold;">library/sysPath.txt</span></div>
+<div style="margin-left: 40px;"><br>
+<div style="margin-left: 40px;">create file library/sysPath.txt with
+the line ../program/ (and whatever search path you want. use absolute
+paths or paths relative to root/library/<br>
+</div>
+</div>
+<br>
+<div style="margin-left: 40px;">are you standalone?-<span
+ style="font-weight: bold;"> library/standalone.txt</span><br>
+</div>
+<br>
+<div style="margin-left: 80px;">if your application DO NOT require
+anything else, create file library/standalone.txt. This means that the
+search paths will be limited to root/, root/library/ and
+subdirectories. <br>
+</div>
+<br>
+<div style="margin-left: 40px;">do you want to launch automatically a
+file?- <span style="font-weight: bold;">library/launch.txt</span><br>
+</div>
+<br>
+<div style="margin-left: 80px;">if you want to execute automatically
+some Python files every time the library is loaded, create a file
+library/launch.txt&nbsp; and place one file per line. Use absolute
+paths or paths relatice to root/library<br>
+</div>
+<br>
+<br>
+<span style="font-weight: bold;">To execute an application that uses
+the library</span><br>
+<br>
+<div style="margin-left: 40px;">Prepare the application and the library
+as seen above. Here are the ways to execute your application<br>
+</div>
+<br>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;">directly from the OS. Run <span
+ style="font-style: italic;">execute.bat </span>(or <span
+ style="font-style: italic;">python.bat</span> ) from directory root/.
+The scripts in&nbsp; library/launch.txt will be executed.<br>
+<br>
+from the console. In root/, type <span style="font-style: italic;">execute
+</span>. It is the same as above.<br>
+<br>
+from the console. In root/, type <span style="font-style: italic;">execute
+my_script.py</span>. This prepares sys.path and os.environ and&nbsp;
+launches your script. Overrides library/launch.txt.<br>
+<br>
+interactively. From the console, in root/ type library\python\python
+(local copy).<br>
+<br>
+from the python shell, type import library, then whatever is necessary
+to run your application.<br>
+</div>
+<br>
+</div>
+<br>
+</body>
+</html>

@@ -1,0 +1,20 @@
+P	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 14:43:41	timeStampS	1585658621.376	durationS	0.437	overlapS	0.000	xPix	203	yPix	1062	xFinalPix	509	yFinalPix	958	distancePix	323.19	lengthPix	324.78	
+C	window	Arborescence	widget	1312276	date	2020 03 31 - 14:43:41	timeStampS	1585658621.813	durationS	0.172	overlapS	0.000	xPix	509	yPix	958	button	left	
+P	window	Arborescence	widget	1312276	date	2020 03 31 - 14:43:41	timeStampS	1585658621.985	durationS	1.760	overlapS	0.291	xPix	509	yPix	958	xFinalPix	1273	yFinalPix	989	distancePix	764.63	lengthPix	1412.54	
+C	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:43	timeStampS	1585658623.454	durationS	1.156	overlapS	0.000	xPix	1284	yPix	985	button	left	
+K	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:44	timeStampS	1585658624.610	durationS	0.078	overlapS	0.000	key	t	
+K	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:44	timeStampS	1585658624.688	durationS	0.063	overlapS	0.000	key	e	
+K	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:44	timeStampS	1585658624.751	durationS	0.172	overlapS	0.000	key	s	
+K	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:44	timeStampS	1585658624.923	durationS	0.500	overlapS	0.000	key	t	
+K	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:45	timeStampS	1585658625.423	durationS	0.921	overlapS	0.000	key	Return	
+P	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:46	timeStampS	1585658626.344	durationS	1.219	overlapS	0.000	xPix	1273	yPix	989	xFinalPix	1632	yFinalPix	915	distancePix	366.55	lengthPix	404.45	
+C	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:47	timeStampS	1585658627.563	durationS	0.172	overlapS	0.000	xPix	1632	yPix	914	button	left	
+P	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:47	timeStampS	1585658627.735	durationS	1.541	overlapS	0.994	xPix	1631	yPix	914	xFinalPix	1110	yFinalPix	611	distancePix	602.7	lengthPix	765.73	
+C	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:48	timeStampS	1585658628.282	durationS	1.031	overlapS	0.000	xPix	1513	yPix	975	button	left	
+C	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:49	timeStampS	1585658629.313	durationS	0.125	overlapS	0.000	xPix	1110	yPix	610	button	left	
+P	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:49	timeStampS	1585658629.438	durationS	0.813	overlapS	0.000	xPix	1109	yPix	610	xFinalPix	382	yFinalPix	1079	distancePix	865.15	lengthPix	1152.84	
+C	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 14:43:50	timeStampS	1585658630.251	durationS	0.125	overlapS	0.000	xPix	382	yPix	1079	button	left	
+P	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 14:43:50	timeStampS	1585658630.376	durationS	1.072	overlapS	0.166	xPix	382	yPix	1079	xFinalPix	261	yFinalPix	265	distancePix	822.94	lengthPix	939.69	
+C	window	Système d'analyse de traces - Arreter l'exercice	widget	2294690	date	2020 03 31 - 14:43:51	timeStampS	1585658631.282	durationS	0.437	overlapS	0.000	xPix	261	yPix	264	button	left	
+stopLogger	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:51	timeStampS	1585658631.719	durationS	0.000	overlapS	0.000	session	0	block	0	trial	0	
+#

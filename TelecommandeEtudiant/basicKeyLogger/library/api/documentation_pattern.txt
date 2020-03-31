@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------
+identifier : (2)
+item : (13)
+type : (3)
+origin : (1)
+file : (4)
+hierarchy :
+(5)
+--------------------
+in line documentation
+(12)
+--------------------
+components - modules
+(8)
+--------------------
+components - classes
+(9)
+--------------------
+components - methods and functions
+(10)
+--------------------
+components - fields
+(11)
+--------------------
+imported - modules 
+(6)
+--------------------
+imported - all references
+(7)

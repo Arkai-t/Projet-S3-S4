@@ -1,0 +1,17 @@
+P	window	FolderView	widget	2752896	date	2009 10 20 - 08:25:57	timeStampS	1256019957.33	durationS	8.18000006676	overlapS	1.20000004768	xPix	348	yPix	331	xFinalPix	360	yFinalPix	315	distancePix	20.0	lengthPix	1640.57615825	
+Q	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:05	timeStampS	1256019964.31	durationS	1.34000015259	overlapS	0.140000104904	
+K	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:05	timeStampS	1256019965.51	durationS	0.240000009537	overlapS	0	key	1	
+K	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:05	timeStampS	1256019965.75	durationS	0.240000009537	overlapS	0	key	2	
+K	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:05	timeStampS	1256019965.99	durationS	1.50999999046	overlapS	1.3599998951	key	3	
+Q	window	FolderView	widget	2752896	date	2009 10 20 - 08:26:07	timeStampS	1256019966.14	durationS	1.51999998093	overlapS	0.160000085831	
+C	window	FolderView	widget	2752896	date	2009 10 20 - 08:26:07	timeStampS	1256019967.5	durationS	0.869999885559	overlapS	0	xPix	360	yPix	315	button	left	
+C	window	FolderView	widget	2752896	date	2009 10 20 - 08:26:08	timeStampS	1256019968.37	durationS	2.22000002861	overlapS	2.04999995232	xPix	360	yPix	315	button	right	
+Q	window	FolderView	widget	3277322	date	2009 10 20 - 08:26:10	timeStampS	1256019968.54	durationS	2.20000004768	overlapS	0.150000095367	
+C	window	FolderView	widget	3277322	date	2009 10 20 - 08:26:10	timeStampS	1256019970.59	durationS	1.61000013351	overlapS	1.45000004768	xPix	360	yPix	315	button	left	
+Q	window	FolderView	widget	3277322	date	2009 10 20 - 08:26:12	timeStampS	1256019970.75	durationS	1.46000003815	overlapS	0.00999999046326	
+P	window	FolderView	widget	3277322	date	2009 10 20 - 08:26:12	timeStampS	1256019972.2	durationS	0.839999914169	overlapS	0	xPix	360	yPix	315	xFinalPix	275	yFinalPix	389	distancePix	112.698713391	lengthPix	117.82226129	
+C	window	FolderView	widget	2752896	date	2009 10 20 - 08:26:13	timeStampS	1256019973.04	durationS	0.140000104904	overlapS	0	xPix	275	yPix	389	button	left	
+C	window	FolderView	widget	2752896	date	2009 10 20 - 08:26:13	timeStampS	1256019973.18	durationS	5.09999990463	overlapS	0.0	xPix	275	yPix	389	button	left	
+Q	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:18	timeStampS	1256019973.29	durationS	0	overlapS	0	
+stopLogger	window	C:\lesia\projects\basic_key_logger\standalone	widget	327932	date	2009 10 20 - 08:26:18	timeStampS	1256019978.28	durationS	0	overlapS	0	session	0	block	0	trial	0	
+#

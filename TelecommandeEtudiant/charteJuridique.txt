@@ -1,0 +1,78 @@
+POLITIQUE DE PROTECTION DES DONNÉES PERSONNELLES
+Dernière mise à jour : 03/12/2019
+L’IUT de Bayonne et du Pays Basque est soucieux de la protection des données personnelles. Il met en œuvre une démarche d'amélioration continue de sa conformité au Règlement général de protection des données (RGPD), à la Directive ePrivacy, ainsi qu'à la loi n° 78-17 du 6 janvier 1978 dite Informatique et Libertés pour assurer le meilleur niveau de protection à vos données personnelles.
+Pour toute information sur la protection des données personnelles, vous pouvez également consulter le site de la Commission Nationale de l'Informatique et des Libertés www.cnil.fr.
+Qui est le responsable du traitement de mes données personnelles ?
+Le responsable de traitement est la société qui définit pour quel usage et comment vos données personnelles sont utilisées.
+Les données personnelles collectées sur l’application d’analyse de traces sont traitées par :
+IUT de Bayonne et du Pays Basque
+Domiciliées: 2 Allée du Parc Montaury, 64600 Anglet
+Ci-après nommé : IUT
+
+Pourquoi l’IUT collecte mes données personnelles ?
+L’IUT utilise vos données personnelles principalement pour les finalités suivantes :
+La pédagogie
+Nous avons besoin des informations qui vous concerne pour améliorer l’évaluation vous concernant lors de votre parcours au sein de l’IUT informatique.
+Quelles sont les données personnelles qui sont collectées me concernant ?
+Quelles données ?
+Nous collectons et traitons notamment vos clics, sites consultés, application, mouvements de souris, textes saisis. Dans certains cas, nous pouvons collecter des données de .
+Toutes ces données sont collectées automatiquement du fait de vos actions sur l’application.
+Quand ?
+Nous collectons les informations que vous nous fournissez quand :
+vous commencez un exercice, et après avoir recueilli votre consentement.
+Quelles sont les communications que je suis susceptible de recevoir ?
+Les informations
+Statistiques
+Suite à un exercice ou d’un contrôle, vous pourriez recevoir un email afin de vous annoncez les statistiques générales dudit exercice ou contrôle; ou bien lors d’un cours en amphithéâtre où le professeur vous fera le retour.
+
+Sur quelle base légale et pour quelles durées mes données personnelles sont-elles traitées ?
+Le traitement de vos données personnelles est justifié par différents fondements (base légale) en fonction de l'usage que nous faisons des données personnelles. Vous trouverez ci-dessous les bases légales et durées de conservation que nous appliquons à nos principaux traitements.
+Bases légales des traitements
+Parmi les bases légales applicables :
+Le contrat : le traitement des données personnelles est nécessaire à l'exécution du contrat auquel vous avez consenti.
+Le consentement : vous acceptez le traitement de vos données personnelles par le biais d'un consentement exprès (case à cocher, clic ....). Vous pouvez retirer ce consentement à tout moment.
+L'intérêt légitime : l’IUT a un intérêt pédagogique à traiter vos données qui est justifié, équilibré et ne vient pas porter atteinte à votre vie privée. Sauf exception, vous pouvez à tout moment vous opposer à un traitement basé sur l'intérêt légitime en le signalant à l’IUT.
+La loi : le traitement de vos données personnelles est rendu obligatoire par un texte de loi.
+Durées de conservation
+La plupart des données sont conservées tant que vous êtes un étudiant au sein de l’IUT et pendant une durée de 5 ans (par exemple)  à compter de votre dernière année. Passé ce délai, elles sont supprimées.
+ 
+Finalité du traitement
+Base légale
+Durée de conservation en base opérationnelle
+Observations utiles
+Production de statistiques de groupes
+Contrat
+5 ans
+Les statistiques de groupes concernent un TP, TD, ou une promotion
+Production de statistiques individuel
+Contrat
+5 ans à compter de la dernière année au sein de l'IUT
+
+
+Replay du travail
+Contrat
+1 ans à compter de la dernière année au sein de l'IUT
+
+
+
+Qui sont les Destinataires de mes données ?
+Transmission de données à professeurs
+Les données que nous collectons peuvent être transmises aux professeurs dans le cadre des finalités mentionnées ci-avant.
+Vous pouvez également paramétrer vos préférences cookies afin de gérer directement les cookies en lien avec le ciblage publicitaire depuis la page d'information sur les cookies.
+Comment exprimer mes choix sur l'usage de mes données ?
+Nous travaillons activement à l'amélioration de notre gestionnaire de choix afin de vous permettre de mieux contrôler l'usage de vos données.
+Quels sont mes droits au regard de l'utilisation des données personnelles ?
+Conformément à la réglementation sur la protection des données personnelles, vous pouvez exercer vos droits (accès, rectification, suppression, opposition, limitation et portabilité le cas échéant) et définir le sort de vos données personnelles « post mortem » l’IUT par email : vieprivee@univ-pau.iutbayonne.fr ou par courrier : IUT Bayonne et du Pays Basque, 2 Allée du Parc Montaury, 64600 Anglet .
+Afin de nous permettre de répondre rapidement, nous vous remercions de nous indiquer vos nom, prénom, e-mail, et préciser l'adresse à laquelle doit vous parvenir la réponse. Nous pourrons procéder à des vérifications d'identité afin de garantir la confidentialité et la sécurité de vos données. Dans certains cas une copie d'un titre d'identité portant votre signature pourra vous être demandée. Une réponse vous sera alors adressée dans un délai d'1 mois suivant la réception de la demande.
+Vous disposez par ailleurs, du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL), notamment sur son site internet www.cnil.fr.
+L’IUT dispose d'un Délégué à la Protection des données personnelles (DPO) chargé de garantir la protection des données personnelles. Vous pouvez contacter le Délégué à la protection des données personnelles de l’IUT à l'adresse dpo@univ-pau.fr (hors exercice de vos droits qui s'effectuent principalement à l'adresse vieprivee@univ-pau.iutbayonne.fr)
+
+Mes données sont-elles transférées en dehors de l'Union Européenne ?
+Vous êtes informé que des données vous concernant ne peuvent pas être transmises pour les besoins des finalités mentionnées plus haut à des sociétés ou institutions situées dans des pays hors Union Européenne. 
+Qu'en est-il des données personnelles des mineurs ?
+Les services de l’IUT ne sont pas destinés principalement aux mineurs en conséquence l’IUT ne traite pas des données concernant spécifiquement les mineurs. 
+Il appartient aux parents et à toute personne exerçant l'autorité parentale de décider si leur enfant mineur est autorisé à utiliser les services l’IUT.
+ 
+ 
+ 
+
