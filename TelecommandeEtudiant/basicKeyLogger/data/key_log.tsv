@@ -377,3 +377,228 @@ mouseLeftDown	window	Système d'analyse de traces - Arreter l'exercice	widget	229
 mouseLeftUp	window	Système d'analyse de traces - Arreter l'exercice	widget	2294690	date	2020 03 31 - 14:43:51	timeStampS	1585658631.376	injected	0	xPix	261	yPix	264	wheel	0	
 mouseMove	window	Chrome Legacy Window	widget	66344	date	2020 03 31 - 14:43:51	timeStampS	1585658631.438	injected	0	xPix	261	yPix	265	wheel	0	
 stopLogger	window	 général-du-sang-?? - Discord	widget	66340	date	2020 03 31 - 14:43:51	timeStampS	1585658631.719	injected	1	session	0	block	0	trial	0	
+mouseMove	window	Arborescence	widget	67310	date	2020 03 31 - 15:35:12	timeStampS	1585661712.176	injected	0	xPix	367	yPix	858	wheel	0	
+mouseMove	window	Arborescence	widget	67310	date	2020 03 31 - 15:35:12	timeStampS	1585661712.191	injected	0	xPix	369	yPix	876	wheel	0	
+mouseMove	window	Arborescence	widget	67310	date	2020 03 31 - 15:35:12	timeStampS	1585661712.207	injected	0	xPix	370	yPix	895	wheel	0	
+mouseMove	window	Arborescence	widget	67302	date	2020 03 31 - 15:35:12	timeStampS	1585661712.222	injected	0	xPix	370	yPix	907	wheel	0	
+mouseMove	window	Arborescence	widget	67302	date	2020 03 31 - 15:35:12	timeStampS	1585661712.238	injected	0	xPix	370	yPix	916	wheel	0	
+mouseMove	window	Arborescence	widget	67302	date	2020 03 31 - 15:35:12	timeStampS	1585661712.254	injected	0	xPix	368	yPix	922	wheel	0	
+mouseMove	window	TelecommandeEtudiant	widget	1770620	date	2020 03 31 - 15:35:12	timeStampS	1585661712.269	injected	0	xPix	364	yPix	927	wheel	0	
+mouseMove	window	TelecommandeEtudiant	widget	1770620	date	2020 03 31 - 15:35:12	timeStampS	1585661712.285	injected	0	xPix	360	yPix	931	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.301	injected	0	xPix	356	yPix	935	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.316	injected	0	xPix	349	yPix	939	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.332	injected	0	xPix	341	yPix	946	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.347	injected	0	xPix	332	yPix	955	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.363	injected	0	xPix	322	yPix	964	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.379	injected	0	xPix	312	yPix	973	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.394	injected	0	xPix	304	yPix	979	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.410	injected	0	xPix	295	yPix	985	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.426	injected	0	xPix	290	yPix	991	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.441	injected	0	xPix	285	yPix	997	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.457	injected	0	xPix	280	yPix	1005	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.472	injected	0	xPix	277	yPix	1015	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.488	injected	0	xPix	274	yPix	1025	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:12	timeStampS	1585661712.504	injected	0	xPix	272	yPix	1036	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.519	injected	0	xPix	272	yPix	1043	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.535	injected	0	xPix	271	yPix	1049	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.551	injected	0	xPix	271	yPix	1053	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.566	injected	0	xPix	271	yPix	1057	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.582	injected	0	xPix	271	yPix	1060	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.597	injected	0	xPix	271	yPix	1064	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.613	injected	0	xPix	271	yPix	1067	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:12	timeStampS	1585661712.629	injected	0	xPix	271	yPix	1068	wheel	0	
+mouseLeftDown	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.582	injected	0	xPix	271	yPix	1069	wheel	0	
+mouseLeftUp	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.691	injected	0	xPix	271	yPix	1069	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.801	injected	0	xPix	271	yPix	1069	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.816	injected	0	xPix	274	yPix	1067	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.832	injected	0	xPix	283	yPix	1062	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.847	injected	0	xPix	295	yPix	1056	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:13	timeStampS	1585661713.863	injected	0	xPix	314	yPix	1047	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.879	injected	0	xPix	336	yPix	1034	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.894	injected	0	xPix	358	yPix	1018	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.910	injected	0	xPix	377	yPix	1001	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.926	injected	0	xPix	391	yPix	986	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.941	injected	0	xPix	403	yPix	973	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.957	injected	0	xPix	415	yPix	961	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.972	injected	0	xPix	424	yPix	952	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:13	timeStampS	1585661713.988	injected	0	xPix	430	yPix	945	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.004	injected	0	xPix	434	yPix	940	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.019	injected	0	xPix	437	yPix	934	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.035	injected	0	xPix	440	yPix	932	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.051	injected	0	xPix	442	yPix	930	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.113	injected	0	xPix	442	yPix	930	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.129	injected	0	xPix	442	yPix	932	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.144	injected	0	xPix	442	yPix	939	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.160	injected	0	xPix	442	yPix	945	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.176	injected	0	xPix	442	yPix	952	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.191	injected	0	xPix	443	yPix	958	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.207	injected	0	xPix	446	yPix	961	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.222	injected	0	xPix	449	yPix	962	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.238	injected	0	xPix	453	yPix	964	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.254	injected	0	xPix	458	yPix	964	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.269	injected	0	xPix	463	yPix	964	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.285	injected	0	xPix	469	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.301	injected	0	xPix	477	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.316	injected	0	xPix	484	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.332	injected	0	xPix	491	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.347	injected	0	xPix	495	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.363	injected	0	xPix	499	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.379	injected	0	xPix	501	yPix	963	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.394	injected	0	xPix	504	yPix	962	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.410	injected	0	xPix	505	yPix	960	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.426	injected	0	xPix	506	yPix	958	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.441	injected	0	xPix	507	yPix	955	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.457	injected	0	xPix	507	yPix	951	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.472	injected	0	xPix	507	yPix	942	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.488	injected	0	xPix	504	yPix	923	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.504	injected	0	xPix	500	yPix	883	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.519	injected	0	xPix	500	yPix	827	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.535	injected	0	xPix	495	yPix	770	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.551	injected	0	xPix	486	yPix	724	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.566	injected	0	xPix	477	yPix	680	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.582	injected	0	xPix	469	yPix	631	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.597	injected	0	xPix	461	yPix	583	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.613	injected	0	xPix	450	yPix	537	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.629	injected	0	xPix	438	yPix	504	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.644	injected	0	xPix	429	yPix	481	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.660	injected	0	xPix	421	yPix	466	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.676	injected	0	xPix	415	yPix	454	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.691	injected	0	xPix	411	yPix	443	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.707	injected	0	xPix	406	yPix	426	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.722	injected	0	xPix	400	yPix	409	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.738	injected	0	xPix	393	yPix	391	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.754	injected	0	xPix	387	yPix	378	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.769	injected	0	xPix	381	yPix	368	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.785	injected	0	xPix	376	yPix	361	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.801	injected	0	xPix	374	yPix	357	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.816	injected	0	xPix	372	yPix	353	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.832	injected	0	xPix	370	yPix	344	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.847	injected	0	xPix	369	yPix	328	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.863	injected	0	xPix	367	yPix	305	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.879	injected	0	xPix	363	yPix	285	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.894	injected	0	xPix	357	yPix	269	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.910	injected	0	xPix	351	yPix	257	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.926	injected	0	xPix	347	yPix	251	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.941	injected	0	xPix	343	yPix	246	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.957	injected	0	xPix	339	yPix	242	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.972	injected	0	xPix	336	yPix	236	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:14	timeStampS	1585661714.988	injected	0	xPix	332	yPix	227	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.004	injected	0	xPix	328	yPix	218	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.019	injected	0	xPix	324	yPix	208	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.035	injected	0	xPix	321	yPix	201	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.051	injected	0	xPix	318	yPix	197	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.066	injected	0	xPix	318	yPix	195	wheel	0	
+mouseLeftDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.207	injected	0	xPix	318	yPix	195	wheel	0	
+mouseLeftUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.316	injected	0	xPix	318	yPix	195	wheel	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.597	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.722	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.816	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.894	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:15	timeStampS	1585661715.894	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.019	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.082	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.176	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.207	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.285	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.363	injected	0	key	Z	ascii	122	scanCode	17	keyId	90	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:16	timeStampS	1585661716.457	injected	0	key	E	ascii	101	scanCode	18	keyId	69	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:17	timeStampS	1585661717.051	injected	0	key	Lcontrol	ascii	0	scanCode	29	keyId	162	extended	0	alt	0	
+keyDown	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:17	timeStampS	1585661717.254	injected	0	key	Z	ascii	26	scanCode	17	keyId	90	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:17	timeStampS	1585661717.457	injected	0	key	Z	ascii	26	scanCode	17	keyId	90	extended	0	alt	0	
+keyUp	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.254	injected	0	key	Lcontrol	ascii	0	scanCode	29	keyId	162	extended	0	alt	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.363	injected	0	xPix	318	yPix	195	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.379	injected	0	xPix	323	yPix	196	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.394	injected	0	xPix	342	yPix	212	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.410	injected	0	xPix	372	yPix	241	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.426	injected	0	xPix	398	yPix	280	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.441	injected	0	xPix	412	yPix	318	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.457	injected	0	xPix	415	yPix	373	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.472	injected	0	xPix	398	yPix	444	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.488	injected	0	xPix	365	yPix	537	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.504	injected	0	xPix	330	yPix	626	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.519	injected	0	xPix	302	yPix	706	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.535	injected	0	xPix	280	yPix	789	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.551	injected	0	xPix	265	yPix	853	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.566	injected	0	xPix	253	yPix	905	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.582	injected	0	xPix	246	yPix	941	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.597	injected	0	xPix	245	yPix	958	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.613	injected	0	xPix	246	yPix	970	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.629	injected	0	xPix	254	yPix	980	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.644	injected	0	xPix	267	yPix	990	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.660	injected	0	xPix	290	yPix	1001	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.676	injected	0	xPix	311	yPix	1007	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.691	injected	0	xPix	328	yPix	1012	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.707	injected	0	xPix	341	yPix	1018	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.722	injected	0	xPix	350	yPix	1025	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:18	timeStampS	1585661718.738	injected	0	xPix	357	yPix	1034	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.754	injected	0	xPix	365	yPix	1049	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.769	injected	0	xPix	372	yPix	1066	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.785	injected	0	xPix	377	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	0	date	2020 03 31 - 15:35:18	timeStampS	1585661718.801	injected	0	xPix	382	yPix	1080	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	0	date	2020 03 31 - 15:35:18	timeStampS	1585661718.816	injected	0	xPix	391	yPix	1080	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.832	injected	0	xPix	407	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.847	injected	0	xPix	422	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.863	injected	0	xPix	433	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.879	injected	0	xPix	441	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	0	date	2020 03 31 - 15:35:18	timeStampS	1585661718.894	injected	0	xPix	447	yPix	1080	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	0	date	2020 03 31 - 15:35:18	timeStampS	1585661718.910	injected	0	xPix	452	yPix	1080	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.926	injected	0	xPix	459	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.941	injected	0	xPix	465	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.957	injected	0	xPix	469	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.972	injected	0	xPix	473	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:18	timeStampS	1585661718.988	injected	0	xPix	475	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.004	injected	0	xPix	476	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.051	injected	0	xPix	477	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.113	injected	0	xPix	477	yPix	1078	wheel	0	
+mouseLeftDown	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.191	injected	0	xPix	477	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.254	injected	0	xPix	478	yPix	1078	wheel	0	
+mouseLeftUp	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.254	injected	0	xPix	478	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.254	injected	0	xPix	478	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.269	injected	0	xPix	480	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.285	injected	0	xPix	487	yPix	1079	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.301	injected	0	xPix	493	yPix	1078	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.316	injected	0	xPix	494	yPix	1075	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.332	injected	0	xPix	493	yPix	1066	wheel	0	
+mouseMove	window	Applications en cours d’exécution	widget	65790	date	2020 03 31 - 15:35:19	timeStampS	1585661719.347	injected	0	xPix	489	yPix	1049	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.363	injected	0	xPix	486	yPix	1027	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.379	injected	0	xPix	481	yPix	993	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.394	injected	0	xPix	479	yPix	949	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.410	injected	0	xPix	491	yPix	898	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.426	injected	0	xPix	512	yPix	851	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.441	injected	0	xPix	539	yPix	804	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.457	injected	0	xPix	555	yPix	760	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.472	injected	0	xPix	559	yPix	715	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.488	injected	0	xPix	553	yPix	673	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.504	injected	0	xPix	534	yPix	625	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.519	injected	0	xPix	510	yPix	582	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.535	injected	0	xPix	475	yPix	533	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.551	injected	0	xPix	441	yPix	487	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.566	injected	0	xPix	409	yPix	443	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.582	injected	0	xPix	382	yPix	405	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.597	injected	0	xPix	357	yPix	369	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.613	injected	0	xPix	333	yPix	334	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.629	injected	0	xPix	314	yPix	303	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.644	injected	0	xPix	297	yPix	280	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.660	injected	0	xPix	283	yPix	261	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.676	injected	0	xPix	276	yPix	248	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.691	injected	0	xPix	272	yPix	237	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.707	injected	0	xPix	270	yPix	231	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.722	injected	0	xPix	270	yPix	228	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.738	injected	0	xPix	271	yPix	228	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.785	injected	0	xPix	271	yPix	227	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.801	injected	0	xPix	271	yPix	222	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.816	injected	0	xPix	268	yPix	212	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.832	injected	0	xPix	265	yPix	200	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.847	injected	0	xPix	263	yPix	190	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.863	injected	0	xPix	261	yPix	180	wheel	0	
+mouseMove	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:19	timeStampS	1585661719.879	injected	0	xPix	260	yPix	172	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	328544	date	2020 03 31 - 15:35:19	timeStampS	1585661719.894	injected	0	xPix	258	yPix	165	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	328544	date	2020 03 31 - 15:35:19	timeStampS	1585661719.910	injected	0	xPix	255	yPix	159	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:19	timeStampS	1585661719.926	injected	0	xPix	252	yPix	152	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:19	timeStampS	1585661719.941	injected	0	xPix	250	yPix	143	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:19	timeStampS	1585661719.957	injected	0	xPix	247	yPix	137	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:19	timeStampS	1585661719.972	injected	0	xPix	246	yPix	133	wheel	0	
+mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:19	timeStampS	1585661719.988	injected	0	xPix	244	yPix	130	wheel	0	
+mouseLeftDown	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:20	timeStampS	1585661720.082	injected	0	xPix	244	yPix	129	wheel	0	
+mouseLeftUp	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:20	timeStampS	1585661720.144	injected	0	xPix	244	yPix	129	wheel	0	
+stopLogger	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:20	timeStampS	1585661720.472	injected	1	session	0	block	0	trial	0	

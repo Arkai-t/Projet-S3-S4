@@ -22,7 +22,7 @@ repertoire = data["repertoireStockageFichiers"]
 
 nomLogTSV = repertoire + "\\" + data["nomFic"] + ".tsv"
 nomXMLPSR = repertoire + "\\" + data["nomFic"] + ".xml" 
-nomFichierFusionne = repertoire + "\\" +data["nomFic"] + "_FichierFusionne.xml"
+nomFichierFusionne = repertoire + "\\" + data["nomFic"] + "_FichierFusionne.xml"
 
 class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
