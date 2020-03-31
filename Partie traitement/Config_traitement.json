@@ -2,7 +2,6 @@
     "parametres":{
         "nomFic": "",
         "repertoirePartieEtudiant": "D:\\Documents\\Python Scripts\\Partie_etudiant"
-    },    
-    "nomFicTempPSR": "",    
+    }, 
     "repertoireStockageFichiers": "D:\\Documents\\Python Scripts\\Stockage Fichiers"
 }
