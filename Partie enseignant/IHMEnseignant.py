@@ -7,7 +7,7 @@ navigateurs = ["Firefox","Microsoft Edge","Internet Explorer","Google Chrome"]
 
 
 menu = tk.Tk() #Création de la fenêtre pour commencer l'exercice
-menu.filename = filedialog.askopenfilename(initialdir="./",title ="Choissisez un fichier")
+menu.filename = filedialog.askopenfilename(initialdir="./",title ="Choissisez un fichier",filetypes=[("Fichiers xml","*.xml")])
 fichier = menu.filename
 
 tree = etree.parse(fichier)
@@ -38,6 +38,7 @@ labelHeureDebut = tk.Label(tabSynthese,text=heureDebut[0].text+'.')
 heureFin = tree.xpath("/Session/HeureFin")
 tabHeureDebut = heureDebut[0].text.split(":")
 tabHeureFin = heureFin[0].text.split(":")
+
 dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
 dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
 dureeSeconde = int(tabHeureFin[2]) - int(tabHeureDebut[2])
@@ -100,9 +101,9 @@ tab.heading("un",text="Durée d'utilisation",anchor=tk.W)
 tab.heading("deux",text="Heure de lancement",anchor=tk.W)
 
 for i in range(len(listeLogiciel)):
-    fabrice = nomsLogiciel[i].getchildren()
-    duree = fabrice[1].text
-    tab.insert("","end",None,text=listeLogiciel[i], values=(duree,fabrice[0].text))
+    enfantLogiciel = nomsLogiciel[i].getchildren()
+    duree = enfantLogiciel[1].text
+    tab.insert("","end",None,text=listeLogiciel[i], values=(duree,enfantLogiciel[0].text))
 
 
 
@@ -113,10 +114,22 @@ ONGLET INTERROGATION
 """
 
 typeRecherche = ["Nombre de"]
-typeRechercheNav = typeRecherche
+typeRechercheNav = []
+typeRechercheNav.append(typeRecherche[0])
 typeRechercheNav.append("Liste des")
+tabInterro = ttk.Treeview(tabInterrogation)
+tabInterro["columns"]=()
+tabInterro.column("#0",width=500,minwidth=100)
+tabInterro.heading("#0",text="")
+
+tabInterro.grid(sticky="W",row=2,column=0,columnspan=5,padx=15,pady=5)
+
 def rechercher():
     labelReponse['text']=""
+    for i in tabInterro.get_children():
+        tabInterro.delete(i)
+    tabInterro.heading("#0",text='')
+    
     if(comboInfo1.current()!=-1):
         if(comboInfo1.get()=="Nombre de"):
             nbActions = 0
@@ -127,6 +140,43 @@ def rechercher():
                 if (lesActions[i].get('nom') == comboInfo2.get()):
                     nbActions += 1
             labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get())
+            if(comboInfo2.get()=="Page visité"):
+                listeRecherche = []
+                logicielChoisi = nomsLogiciel[comboLogiciel.current()]
+                contenuLogiciel = logicielChoisi.getchildren()
+                lesActions = contenuLogiciel[2].getchildren()
+                for i in range(len(lesActions)-1):    
+                    contenuAction = lesActions[i].getchildren()
+                    for i in range (len(contenuAction)):
+                        if (contenuAction[i].tag=="NomPage" and contenuAction[3].text is not None):
+                            tabSite = contenuAction[3].text.split("- Google Chrome")
+                    if(tabSite[0] not in listeRecherche):
+                        listeRecherche.append(tabSite[0])
+                labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" "+str(comboInfo2.get())
+        if(comboInfo1.get()=="Liste des"):
+            if(comboInfo2.get()=="Page visité"):
+                tabInterro.heading("#0",text="Nom de la page")
+                listeRecherche = []
+                logicielChoisi = nomsLogiciel[comboLogiciel.current()]
+                contenuLogiciel = logicielChoisi.getchildren()
+                lesActions = contenuLogiciel[2].getchildren()
+                for i in range(len(lesActions)-1):    
+                    contenuAction = lesActions[i].getchildren()
+                    for i in range (len(contenuAction)):
+                        if (contenuAction[i].tag=="NomPage" and contenuAction[3].text is not None):
+                            if(comboLogiciel.get()=="Google Chrome"):
+                                tabSite = contenuAction[3].text.split("- Google Chrome")
+                    if(tabSite[0] not in listeRecherche):
+                        listeRecherche.append(tabSite[0])
+                print(listeRecherche)
+                
+                print(menu.winfo_width())
+                
+
+                
+                for page in listeRecherche:
+                    tabInterro.insert("","end",None,text=page, values=())                                
+        
 
 labelLogiciel = tk.Label(tabInterrogation,text="Logiciel :")
 comboLogiciel = ttk.Combobox(tabInterrogation,state="readonly", values=listeLogiciel)
@@ -237,17 +287,19 @@ def remplirComboBox(self):
         for i in range(len(lesActions)):
             if lesActions[i].get('nom') not in typesAction:
                 typesAction.append(lesActions[i].get('nom'))
-        
-        typeActionNav = typesAction
-        typeActionNav.append("Site visité")
+        typeActionNav = []
+        typeActionNav.append(typesAction)
+        typeActionNav.append("Page visité")
         comboInfo2['values']=typesAction
         comboInfo1.configure(state="readonly")
         comboInfo2.configure(state="readonly")
-        print(comboLogiciel.get())
-        print(navigateurs)
+
         if(comboLogiciel.get()in navigateurs):
             comboInfo1['values'] = typeRechercheNav
             comboInfo2['values'] = typeActionNav
+        else:
+            comboInfo1['values'] = typeRecherche
+            comboInfo2['values'] = typesAction
     if(comboLogiciel.current()==-1):
         comboInfo1.configure(state="disabled")
         comboInfo2.configure(state="disabled")
