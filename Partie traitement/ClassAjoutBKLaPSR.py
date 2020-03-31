@@ -20,9 +20,9 @@ data = load(file)
 file.close()
 repertoire = data["repertoireStockageFichiers"]
 
-nomLogTSV = repertoire + "\\" + data["nomFic"] + ".tsv"
-nomXMLPSR = repertoire + "\\" + data["nomFic"] + ".xml" 
-nomFichierFusionne = repertoire + "\\" +data["nomFic"] + "_FichierFusionne.xml"
+nomLogTSV = repertoire + "\\" + data["parametres"]["nomFic"] + ".tsv"
+nomXMLPSR = repertoire + "\\" + data["parametres"]["nomFic"] + ".xml" 
+nomFichierFusionne = repertoire + "\\" +data["parametres"]["nomFic"] + "_FichierFusionne.xml"
 
 class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
