@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jan 23 10:53:41 2020
-
 @author: Louison VINCENT, Paul LAFOURCADE, Malo LE MESTRE
 """
 
+from os import remove
 from datetime import timedelta
 from lxml import etree
 from json import load
@@ -56,7 +56,7 @@ class FichierConsolide:
              heureDebutLogiciel = etree.SubElement(logiciel, "HeureDebut")
              heureDebutLogiciel.text = logicielCourant.getHeureDebut()
 
-             tempsPasse = etree.SubElement(logiciel, "TempsPasse")
+             tempsPasse = etree.SubElement(logiciel, "TempsPasse") 
              tempsPasse.text = logicielCourant.getTempsPasse()
 
              actions = etree.SubElement(logiciel, "Actions")
@@ -96,6 +96,8 @@ class FichierConsolide:
 
         #Deplacer fichier dans StockageFichier
         move(nomFic, data["repertoireStockageFichiers"] + '\\' + nomFic)
+        
+        self.__supprimerFichierFusionne(data["repertoireStockageFichiers"] + "\\" + data["parametres"]["nomFic"] + "_FichierFusionne.xml")
         
     def recupererInformations(self):
         """
@@ -254,8 +256,12 @@ class FichierConsolide:
             return True  
         elif texte == "Build":
             return True
+        elif texte == "Build and run":
+            return True
         else:
             return False
+        
+        
         
     def __getSpecificChild(self, element, tag):
        for child in element.getchildren():
@@ -270,7 +276,12 @@ class FichierConsolide:
         for attribut in element.items():
             if attribut[0] == nomAttribut:
                 return attribut[1]
-        
+            
+    def __supprimerFichierFusionne(self, nomFichier):
+        """
+        Supprimer le fichier fusionné
+        """
+        remove(nomFichier)
         
 #monFicConsolide = FichierConsolide()
 #monFicConsolide.recupererInformations()
