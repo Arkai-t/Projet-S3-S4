@@ -20,9 +20,9 @@ data = load(file)
 file.close()
 repertoire = data["repertoireStockageFichiers"]
 
-nomLogTSV = repertoire + "\\" + data["nomFic"] + ".tsv"
-nomXMLPSR = repertoire + "\\" + data["nomFic"] + ".xml" 
-nomFichierFusionne = repertoire + "\\" + data["nomFic"] + "_FichierFusionne.xml"
+nomLogTSV = repertoire + "\\" + data["parametres"]["nomFic"] + ".tsv"
+nomXMLPSR = repertoire + "\\" + data["parametres"]["nomFic"] + ".xml" 
+nomFichierFusionne = repertoire + "\\" +data["parametres"]["nomFic"] + "_FichierFusionne.xml"
 
 class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
@@ -99,13 +99,15 @@ class FichierFusionne:
         etree.ElementTree(root).write(self.nomNouveauFichierXML, pretty_print = True, xml_declaration=True, encoding="utf-8")
         
         #supprimer le TSV
-        self.__supprimerTSV()    
+        self.__supprimerFichiers()    
     
-    def __supprimerTSV(self):
+    def __supprimerFichiers(self):
         """
-        Supprimer le TSV originel
+        Supprimer le TSV et le XML originel
         """
         os.remove(self.nomFicTSV) 
+        os.remove(self.nomFichierPSR) 
+        
         
     def __recupererPhrases(self):
         
