@@ -8,18 +8,18 @@ from subprocess import Popen
 from json import load, dumps
 from os.path import exists
 
-pathConfig = r"D:\Documents\Python Scripts\Config.json"
+pathConfig = r".\Config_etudiant.json"
 
 #Récupérer la configuration
 file = open(pathConfig)
 data = load(file)
 file.close()
-pathPSR = data["PSR"]["pathPSR"]
+pathPSR = data["pathPSR"]
 
 def genererNomFicTemp(pathSauvegarde):
-     """
-     Génère un nom de fichier n'existant pas dans le pathSauvegarde
-     """
+#     """
+#     Génère un nom de fichier n'existant pas dans le pathSauvegarde
+#     """
      nomFicTemp = "AAAA"
      pathComplet = (pathSauvegarde + '\\' + nomFicTemp + '.zip')
      while (True):
@@ -81,35 +81,35 @@ def genererNomFicTemp(pathSauvegarde):
 
 class GestionPSR:
     def __init__(self, cheminEnregistrement):
-        """
-        Définit le chemin où les fichiers produits vont être enregistrées et le nom du fichier enregistré
-        """
+#        """
+#        Définit le chemin où les fichiers produits vont être enregistrées et le nom du fichier enregistré
+#        """
         self.nomFicTemp = genererNomFicTemp(cheminEnregistrement)
         self.sortieZip = r'{0}\{1}.zip'.format(cheminEnregistrement, self.nomFicTemp)
         self.__modifierConfig()
 
     def lancer(self):
-        """
-        Lance le logiciel PSR avec comme paramètres:
-            /start : lancer PSR
-            /arcxml 1 : produire un fichier de traces XML
-            /sc 0 : ne pas faire de capture d'écran
-            /gui 0 : cacher l'interface de PSR
-            /output dossier de sortie des fichiers
-        """
+#        """
+#        Lance le logiciel PSR avec comme paramètres:
+#            /start : lancer PSR
+#            /arcxml 1 : produire un fichier de traces XML
+#            /sc 0 : ne pas faire de capture d'écran
+#            /gui 0 : cacher l'interface de PSR
+#            /output dossier de sortie des fichiers
+#        """
         Popen([pathPSR , "/start" , "/arcxml", "1" , "/sc", "0", "/gui", "0" , "/output" , self.sortieZip], shell=True)
 
     def arreter(self):
-        """
-        Arrête PSR
-        """
+#        """
+#        Arrête PSR
+#        """
         Popen([pathPSR , "/stop"],  shell=True)
 
     def __modifierConfig(self):
-         """
-         Enregistre les noms de fichiers produits par PSR dans le fichier de config
-         """
-         data["PSR"]["nomFicTempPSR"] = self.nomFicTemp
+#         """
+#         Enregistre les noms de fichiers produits par PSR dans le fichier de config
+#         """
+         data["nomFicTempPSR"] = self.nomFicTemp + '.zip'
          file = open(pathConfig, 'w')
          file.write(dumps(data, indent=4))
          file.close()
