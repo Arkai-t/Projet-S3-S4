@@ -64,7 +64,7 @@ class Mot: #Cette classe est utilisée comme stockage lors du traitement
 
    #remarque: demande encore toute une série de test avant d'etre classé comme opérationnel
 
-class GestionBKL:
+class FichierFusionne:
 
     def __init__(self):
         
@@ -176,5 +176,5 @@ class GestionBKL:
         return self.first
 
 
-#bkl = GestionBKL()
+#bkl = FichierFusionne()
 #bkl.ajoutDuBKLaPSR()
