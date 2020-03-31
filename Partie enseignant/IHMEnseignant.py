@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
-from tkinter import ttk,Button
+from tkinter import ttk,Button,Toplevel
 from lxml import etree
 
 
-fichierLabel = open("InfosLabel.txt",'r')
-tree = etree.parse("exempleFicConsolide.xml")
+tree = etree.parse("fichierTestGros.xml")
 
 menu = tk.Tk() #Création de la fenêtre pour commencer l'exercice
 
@@ -35,11 +34,12 @@ labelDebut = tk.Label(tabSynthese,text="Début de l'exercice :")
 labelHeureDebut = tk.Label(tabSynthese,text=heureDebut[0].text+'.')
 
 heureFin = tree.xpath("/Session/HeureFin")
-tabHeureDebut = heureDebut[0].text.split("h")
-tabHeureFin = heureFin[0].text.split("h")
+tabHeureDebut = heureDebut[0].text.split(":")
+tabHeureFin = heureFin[0].text.split(":")
 dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
 dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
-duree = str(dureeHeure)+"h"+str(dureeMinute)
+dureeSeconde = int(tabHeureFin[2]) - int(tabHeureDebut[2])
+duree = str(dureeHeure)+":"+str(dureeMinute)+":"+str(dureeSeconde)
 labelDuree = tk.Label(tabSynthese,text="Durée de l'exercice :")
 labelDureeExo = tk.Label(tabSynthese,text=duree)
 
@@ -50,7 +50,7 @@ logiciels = tree.find('Logiciels')
 nomsLogiciel = logiciels.getchildren()
 listeLogiciel = []
 for i in range(len(nomsLogiciel)):
-    listeLogiciel.append(nomsLogiciel[i].tag)
+    listeLogiciel.append(nomsLogiciel[i].get("nom"))
 stringLogiciels = ', '.join(listeLogiciel)+'.'
 labelLogiciel = tk.Label(tabSynthese,text="Logiciels utilisés :")
 labelListeLogiciel = tk.Label(tabSynthese,text=stringLogiciels)
@@ -60,9 +60,9 @@ labelPremierLogiciel = tk.Label(tabSynthese,text="Premier logiciel utilisé :")
 labelNomPremierLogiciel = tk.Label(tabSynthese,text=listeLogiciel[0]+'.')
 
 actions = tree.find(".//Actions")
-jsp = actions[0].getchildren()
+premiereAction = actions[0].getchildren()
 labelPremiereAction = tk.Label(tabSynthese,text="Premiere action faite :")
-labelNomPremiereAction = tk.Label(tabSynthese,text=actions[0].tag+', '+jsp[2].text)
+labelNomPremiereAction = tk.Label(tabSynthese,text=premiereAction[1].text)
 """
 Placement des éléments
 """
@@ -98,15 +98,7 @@ tab.heading("deux",text="Heure de lancement",anchor=tk.W)
 
 for i in range(len(listeLogiciel)):
     fabrice = nomsLogiciel[i].getchildren()
-    tabHeureDebut = fabrice[0].text.split("h")
-    tabHeureFin = fabrice[1].text.split("h")
-    dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
-    dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
-    if dureeMinute < 0:
-        dureeHeure = dureeHeure - 1
-        dureeMinute = 60 + dureeMinute
-        
-    duree = str(dureeHeure)+"h"+str(dureeMinute)
+    duree = fabrice[1].text
     tab.insert("","end",None,text=listeLogiciel[i], values=(duree,fabrice[0].text))
 
 
@@ -140,6 +132,86 @@ ONGLET REPLAY
 """
 labelReplay = tk.Label(tabReplay,text="Ceci est l'onglet du replay")
 labelReplay.pack()
+def infomationsLogiciel(logiciel):
+    enfants = logiciel.getchildren()
+    print(enfants)
+    lesActions = enfants[2].getchildren()
+    uneAction = lesActions[1].getchildren()
+    print(uneAction)
+    print(uneAction[1].text)
+
+    """
+    Informations générales d'un logiciel
+    """
+    fenetreInformations = Toplevel()
+    fenetreInformations.geometry("700x300")
+    fenetreInformations.title("Informations - " + logiciel.get('nom'))
+    lblNomLogiciel = tk.Label(fenetreInformations,text=logiciel.get('nom')).pack()
+    lblHeureOuverture = tk.Label(fenetreInformations,text="Heure d'ouverture : " + enfants[0].text).pack()
+    lblDureeOuvert = tk.Label(fenetreInformations,text="Temps d'utilisation : " + enfants[1].text).pack()
+    tabOuverture = enfants[0].text.split(':')
+    tabDuree = enfants[1].text.split(':')
+    dureeHeure = int(tabOuverture[0])+int(tabDuree[0])
+    dureeMinute = int(tabOuverture[1])+int(tabDuree[1])
+    dureeSeconde = int(tabOuverture[2])+int(tabDuree[2])
+    
+    if (dureeSeconde > 60):
+        dureeMinute+=1
+        dureeSeconde-=60
+    if (dureeMinute > 60):
+        dureeHeure+=1
+        dureeMinute-=60
+    duree = str(dureeHeure)+":"+str(dureeMinute)+":"+str(dureeSeconde)
+    lblFinLogiciel = tk.Label(fenetreInformations,text="Heure de fermeture : "+duree).pack()
+
+    """
+    Tableau d'actions d'un logiciel
+    """
+    tabActions = ttk.Treeview(fenetreInformations)
+    tabActions["columns"]=("un","deux","trois","quatre")
+    tabActions.column("#0",width=70,minwidth=50)
+    tabActions.column("un",width=100,minwidth=100)
+    tabActions.column("deux",width=100,minwidth=100)
+    tabActions.column("trois",width=100,minwidth=100)
+    tabActions.column("quatre",width=100,minwidth=100)
+
+    
+    tabActions.heading("#0",text="TypeAction",anchor=tk.W)
+    tabActions.heading("un",text="Description",anchor=tk.W)
+    tabActions.heading("deux",text="Heure",anchor=tk.W)
+    tabActions.heading("trois",text="Nom de la page",anchor=tk.W)
+    tabActions.heading("quatre",text="Saisie",anchor=tk.W)
+
+    for i in range(len(lesActions)):
+        uneAction = lesActions[i].getchildren()
+        description = str(uneAction[1].text)
+        hDebut = str(uneAction[2].text)
+        nomPage = str(uneAction[3].text)
+        print(len(uneAction))
+        print(uneAction)
+        if (len(uneAction)==4):
+            tabActions.insert("","end",None,text=lesActions[i].get("nom"), values=(description,hDebut,nomPage,""))
+            
+        else:
+            saisie = str(uneAction[4].text)
+            tabActions.insert("","end",None,text=lesActions[i].get("nom"), values=(description,hDebut,nomPage,saisie))
+
+
+    
+    tabActions.pack(side=tk.TOP,fill=tk.X)
+
+
+def test(evt):
+    if(tab_parent.index(tab_parent.select()) == 1 and evt.y >= 26):
+        print("ça marche")
+        cx=evt.x
+        cy=evt.y-26
+        index = int(cy/19)
+        print("x = ",cx,",y = ",cy)
+        print("index = ",index)
+        infomationsLogiciel(nomsLogiciel[index])
+    
+menu.bind("<Button 1>",test)
 
 tab_parent.pack(expand=1,fill='both')
 menu.mainloop()
