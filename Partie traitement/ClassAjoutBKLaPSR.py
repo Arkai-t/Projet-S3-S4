@@ -4,18 +4,15 @@ Created on Thu Jan 23 19:03:22 2020
 @author: Paul Lafourcade
 """
 
-
 from lxml import etree
 import csv #utilisation de la bibliothèque native csv
 from json import load
 import os
 
-
-
 """
 Chemins des paramètres du projet
 """
-pathConfig = r".\..\Config.json"
+pathConfig = r".\Config_traitement.json"
 
 #Récupérer la configuration
 file = open(pathConfig)
@@ -27,9 +24,6 @@ nomLogTSV = repertoire + "\\" + data["nomFic"] + ".tsv"
 nomXMLPSR = repertoire + "\\" + data["nomFic"] + ".xml" 
 nomFichierFusionne = repertoire + "\\" +data["nomFic"] + "_FichierFusionne.xml"
 
-
-
-
 class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
         
@@ -37,8 +31,7 @@ class Mot: #Cette classe est utilisée comme stockage lors du traitement
         
         self.motFinal = ''
         self.heureDebut = None
-        self.heureFin = None
-       
+        self.heureFin = None       
         
     def ajouterLettre(self,lettre):
         """
@@ -67,12 +60,9 @@ class Mot: #Cette classe est utilisée comme stockage lors du traitement
         return self.heureDebut
     
     def getHeureFin(self):
-        return self.heureFin
-        
-    
+        return self.heureFin 
 
    #remarque: demande encore toute une série de test avant d'etre classé comme opérationnel
-
 
 class GestionBKL:
 
@@ -87,8 +77,7 @@ class GestionBKL:
         self.txtBool = False
         
         self.nouveauMot = None #contiendra le mot qui sera en train d'etre créé dans la boucle
-        self.listeMots = []
-    
+        self.listeMots = []    
        
     def ajoutDuBKLaPSR(self):
         """
@@ -110,23 +99,19 @@ class GestionBKL:
         etree.ElementTree(root).write(self.nomNouveauFichierXML, pretty_print = True, xml_declaration=True, encoding="utf-8")
         
         #supprimer le TSV
-        self.__supprimerTSV()
-    
+        self.__supprimerTSV()    
     
     def __supprimerTSV(self):
         """
         Supprimer le TSV originel
         """
-        os.remove(self.nomFicTSV)
-    
-
-
+        os.remove(self.nomFicTSV) 
+        
     def __recupererPhrases(self):
         
         """
         On parcours le tableau  entièrement afin d'en récupérer les suites de lettres qui formeront des phrases
-        """
-        
+        """        
         with open(self.nomFicTSV,encoding="utf8", errors='ignore') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t') #ouverture en tsv
         
@@ -145,13 +130,9 @@ class GestionBKL:
             
             self.listeMots.reverse() #Permet de mettre dans l'ordre chronologique
     
-    
-    
     def __heureToNb(self,heure): #string sous forme de date en nb
         (h, m, s) = heure.split(':')
         return int(h) * 3600 + int(m) * 60 + int(s)    
-    
-    
     
     def __traitementDeUnePhrase(self,root, texteAction):
         parent = texteAction.getparent().getparent() #Balise EachAction de l'action récupérée
@@ -163,7 +144,6 @@ class GestionBKL:
         parentSuivant = parent.getnext()
         nextActionPSR = parentSuivant.get("Time")
         
-        
         for mot in self.listeMots:
             if (self.__heureToNb(mot.getHeureDebut()) >= self.__heureToNb(debutActionPSR) and (self.__heureToNb(mot.getHeureFin()) <= self.__heureToNb(nextActionPSR))):
                 
@@ -174,8 +154,6 @@ class GestionBKL:
                 baliseTxt.text = mot.getMot()
 
                 parent.insert(parent.index(action)+1, baliseTxt) #insertion après l'action
-    
-        
     
     def __majStatutTexte(self,lettre):
         '''
