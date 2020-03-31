@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
-from tkinter import ttk,Button,Toplevel
+from tkinter import ttk,Button,Toplevel,filedialog
 from lxml import etree
 
+navigateurs = ["Firefox","Microsoft Edge","Internet Explorer","Google Chrome"]
 
-tree = etree.parse("fichierTestGros.xml")
 
 menu = tk.Tk() #Création de la fenêtre pour commencer l'exercice
+menu.filename = filedialog.askopenfilename(initialdir="./",title ="Choissisez un fichier")
+fichier = menu.filename
 
-
+tree = etree.parse(fichier)
 #menu.geometry("500x300")
 menu.title("Système d'analyse de traces - Enseignant")
 tab_parent = ttk.Notebook(menu)
@@ -86,6 +88,7 @@ labelNomPremiereAction.grid(sticky="W",row=5,column=1,pady=5)
 """
 ONGLET ACTIVITE
 """
+
 tab = ttk.Treeview(tabActivite)
 tab["columns"]=("un","deux")
 tab.column("#0",width=100,minwidth=100)
@@ -109,37 +112,59 @@ tab.pack(side=tk.TOP,fill=tk.X)
 ONGLET INTERROGATION
 """
 
+typeRecherche = ["Nombre de"]
+typeRechercheNav = typeRecherche
+typeRechercheNav.append("Liste des")
+def rechercher():
+    labelReponse['text']=""
+    if(comboInfo1.current()!=-1):
+        if(comboInfo1.get()=="Nombre de"):
+            nbActions = 0
+            logicielChoisi = nomsLogiciel[comboLogiciel.current()]
+            contenuLogiciel = logicielChoisi.getchildren()
+            lesActions = contenuLogiciel[2].getchildren()
+            for i in range(len(lesActions)):
+                if (lesActions[i].get('nom') == comboInfo2.get()):
+                    nbActions += 1
+            labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get())
+
 labelLogiciel = tk.Label(tabInterrogation,text="Logiciel :")
-comboLogiciel = ttk.Combobox(tabInterrogation,values=listeLogiciel)
+comboLogiciel = ttk.Combobox(tabInterrogation,state="readonly", values=listeLogiciel)
 
 labelLogiciel.grid(sticky="W",row=0,column=0,padx=15,pady=5)
 comboLogiciel.grid(sticky="W",row=0,column=1,pady=5)
 
 labelInfo = tk.Label(tabInterrogation,text="Types d'informations :")
-comboInfo1 = ttk.Combobox(tabInterrogation,values=["Tous","a","b","c"])
-comboInfo2 = ttk.Combobox(tabInterrogation,values=["Tous","a","b","c"])
+comboInfo1 = ttk.Combobox(tabInterrogation,state="readonly", values=typeRecherche)
+comboInfo1.configure(state="disabled")
+comboInfo2 = ttk.Combobox(tabInterrogation,state="readonly")
+comboInfo2.configure(state="disabled")
+        
 
 labelInfo.grid(sticky="W",row=0,column=2,padx=15,pady=5)
 comboInfo1.grid(sticky="W",row=0,column=3,pady=5)
 comboInfo2.grid(sticky="W",row=0,column=4,padx = 15,pady=5)
 
-boutonRechercher = Button(tabInterrogation,text="Rechercher")
+boutonRechercher = Button(tabInterrogation,text="Rechercher", command=rechercher)
 boutonRechercher.grid(sticky="W",row=0,column=5,padx = 15,pady=5)
 
+labelReponse = tk.Label(tabInterrogation,text="")
+labelReponse.grid(sticky="W",row=1,column=0,columnspan=5,padx=15,pady=5)
+        
 
 """
 ONGLET REPLAY
 """
 labelReplay = tk.Label(tabReplay,text="Ceci est l'onglet du replay")
 labelReplay.pack()
+
+
+
+
+
 def infomationsLogiciel(logiciel):
     enfants = logiciel.getchildren()
-    print(enfants)
     lesActions = enfants[2].getchildren()
-    uneAction = lesActions[1].getchildren()
-    print(uneAction)
-    print(uneAction[1].text)
-
     """
     Informations générales d'un logiciel
     """
@@ -184,11 +209,9 @@ def infomationsLogiciel(logiciel):
 
     for i in range(len(lesActions)):
         uneAction = lesActions[i].getchildren()
-        description = str(uneAction[1].text)
+        description = deEmojify(str(uneAction[1].text))
         hDebut = str(uneAction[2].text)
-        nomPage = str(uneAction[3].text)
-        print(len(uneAction))
-        print(uneAction)
+        nomPage = deEmojify(str(uneAction[3].text))
         if (len(uneAction)==4):
             tabActions.insert("","end",None,text=lesActions[i].get("nom"), values=(description,hDebut,nomPage,""))
             
@@ -200,18 +223,44 @@ def infomationsLogiciel(logiciel):
     
     tabActions.pack(side=tk.TOP,fill=tk.X)
 
+def deEmojify(inputString):
+    return inputString.encode('ascii', 'ignore').decode('ascii')
 
-def test(evt):
+
+    
+def remplirComboBox(self):
+    if(comboLogiciel.current()!=-1):
+        logicielChoisi = nomsLogiciel[comboLogiciel.current()]
+        contenuLogiciel = logicielChoisi.getchildren()
+        lesActions = contenuLogiciel[2].getchildren()
+        typesAction = []
+        for i in range(len(lesActions)):
+            if lesActions[i].get('nom') not in typesAction:
+                typesAction.append(lesActions[i].get('nom'))
+        
+        typeActionNav = typesAction
+        typeActionNav.append("Site visité")
+        comboInfo2['values']=typesAction
+        comboInfo1.configure(state="readonly")
+        comboInfo2.configure(state="readonly")
+        print(comboLogiciel.get())
+        print(navigateurs)
+        if(comboLogiciel.get()in navigateurs):
+            comboInfo1['values'] = typeRechercheNav
+            comboInfo2['values'] = typeActionNav
+    if(comboLogiciel.current()==-1):
+        comboInfo1.configure(state="disabled")
+        comboInfo2.configure(state="disabled")
+
+
+def onClick(evt):
     if(tab_parent.index(tab_parent.select()) == 1 and evt.y >= 26):
-        print("ça marche")
-        cx=evt.x
         cy=evt.y-26
         index = int(cy/19)
-        print("x = ",cx,",y = ",cy)
-        print("index = ",index)
         infomationsLogiciel(nomsLogiciel[index])
-    
-menu.bind("<Button 1>",test)
 
+    
+menu.bind("<Button 1>",onClick)
+comboLogiciel.bind("<<ComboboxSelected>>",remplirComboBox)
 tab_parent.pack(expand=1,fill='both')
 menu.mainloop()
