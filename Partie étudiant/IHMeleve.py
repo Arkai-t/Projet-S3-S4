@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from tkinter import Tk,Button,Label,LEFT,RIGHT,WORD,BOTH,INSERT
 import tkinter.font as tkFont
 import tkinter.scrolledtext as tkst
@@ -5,18 +6,18 @@ from ClassGestionBKL import GestionBKL
 from ClassGestionPSR import GestionPSR
 from json import load
 
-pathConfig = r"D:\Documents\Python Scripts\Config.json"
+pathConfig = r".\Config_etudiant.json"
 
 #Récupérer la configuration
 file = open(pathConfig)
 data = load(file)
 file.close()
-cheminDossierPSR = data["repertoirePartieEtudiant"]
+cheminDossierPSR = ".\\"
 
 def fenetreEnSavoirPlus(self):
-    """
-    Cette méthode permet d'afficher la fenêtre montrant la charte juridique du projet
-    """
+#    """
+#    Cette méthode permet d'afficher la fenêtre montrant la charte juridique du projet
+#    """
     monFichier = open("charteJuridique.txt","r",encoding="utf-8") #Ouverture en mode lecture du fichier contenant la charte juridique
     fenetreESP = Tk() #création de la fenêtre
     fenetreESP.attributes("-topmost",True) #Permet de donner le focus à cette fenêtre
@@ -30,11 +31,11 @@ def fenetreEnSavoirPlus(self):
     monFichier.close() #Fermeture du fichier
 
 def affichageFenetreAutorisation():
-    """
-    Cette méthode permet d'afficher la fenêtre demandant l'autorisation de l'étudiant sur la collecte de ces traces.
-    Si l'étudiant accepte, cette méthode affichera la fenêtre permettant de mettre en pause la collecte et lancera les différents logiciels de capture de traces
-    Sinon cette méthode fermera l'application
-    """
+#    """
+#    Cette méthode permet d'afficher la fenêtre demandant l'autorisation de l'étudiant sur la collecte de ces traces.
+#    Si l'étudiant accepte, cette méthode affichera la fenêtre permettant de mettre en pause la collecte et lancera les différents logiciels de capture de traces
+#    Sinon cette méthode fermera l'application
+#    """
     fenetreCommencerExercice.destroy() #Ferme la fenêtre précédente
     fenetreAutorisation = Tk() #Création de la fenêtre demandant l'autorisation
     fenetreAutorisation.title("New Window")
@@ -56,9 +57,9 @@ def affichageFenetreAutorisation():
     fenetreAutorisation.mainloop()
 
 def fenetreArreterExercice(fenetreAutorisation):
-    """
-    Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
-    """
+#    """
+#    Cette méthode permet d'afficher la fenêtre pour arreter l'exercice et les logiciels de capture de traces
+#    """
     monBKL = GestionBKL()
     monPSR = GestionPSR(cheminDossierPSR)
     monPSR.lancer()
