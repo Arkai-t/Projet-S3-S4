@@ -119,8 +119,8 @@ class FichierConsolide:
         attrSession = session[0].items() #get all recordsession attributes
         
         
-        self.sessionTP.heureDebut = attrSession[1][1]
-        self.sessionTP.heureFin = attrSession[2][1]
+        self.sessionTP.heureDebut = self.__getSpecificAttribute(session[0],"StartTime")
+        self.sessionTP.heureFin = self.__getSpecificAttribute(session[0],"StopTime")
         
         listeEachActions = session[0].getchildren()
         
@@ -129,8 +129,8 @@ class FichierConsolide:
             attributsActions = action.items()
             
             #get nom et creation du logiciel
-            nomLogiciel = attributsActions[6][1]
-            heureAction = attributsActions[1][1]
+            nomLogiciel = self.__getSpecificAttribute(action, "FileDescription")
+            heureAction = self.__getSpecificAttribute(action, "Time")
             nouveauLogiciel = Logiciel(nomLogiciel)
             
             #remplir les actions
@@ -272,13 +272,20 @@ class FichierConsolide:
             (h, m, s) = heure.split(':')
             return int(h) * 3600 + int(m) * 60 + int(s)    
         
-    def __getSpecificAttribute(self, element, nomAttribut): 
+    def __getSpecificAttribute(self, element, nomAttribut):
+        result = "None"
         for attribut in element.items():
             if attribut[0] == nomAttribut:
-                return attribut[1]
+                result = attribut[1]
+        return result
             
     def __supprimerFichierFusionne(self, nomFichier):
         """
         Supprimer le fichier fusionné
         """
         remove(nomFichier)
+        
+#monFicConsolide = FichierConsolide()
+#monFicConsolide.recupererInformations()
+#monFicConsolide.creerArborescence()
+#monFicConsolide.sauvegardeFichier()
