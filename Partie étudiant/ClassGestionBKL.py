@@ -11,7 +11,7 @@ from json import load
 pathConfig = r".\Config_etudiant.json"
 
 #Récupérer la configuration
-file = open(pathConfig)
+file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
 

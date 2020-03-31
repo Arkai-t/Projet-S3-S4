@@ -15,7 +15,7 @@ Chemins des paramètres du projet
 pathConfig = r".\Config_traitement.json"
 
 #Récupérer la configuration
-file = open(pathConfig)
+file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
 repertoire = data["repertoireStockageFichiers"]

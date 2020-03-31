@@ -11,7 +11,7 @@ from os.path import exists
 pathConfig = r".\Config_etudiant.json"
 
 #Récupérer la configuration
-file = open(pathConfig)
+file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
 pathPSR = data["pathPSR"]
