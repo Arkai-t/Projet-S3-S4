@@ -5,7 +5,7 @@ Created on Thu Jan 23 10:53:41 2020
 @author: Louison VINCENT, Paul LAFOURCADE, Malo LE MESTRE
 """
 
-import datetime
+from datetime import timedelta
 from lxml import etree
 from json import load
 from shutil import move
@@ -272,7 +272,7 @@ class FichierConsolide:
                 return attribut[1]
         
         
-#monFicConsolide = FichierConsolide()
-#monFicConsolide.recupererInformations()
-#monFicConsolide.creerArborescence()
-#monFicConsolide.sauvegardeFichier()
+monFicConsolide = FichierConsolide()
+monFicConsolide.recupererInformations()
+monFicConsolide.creerArborescence()
+monFicConsolide.sauvegardeFichier()
