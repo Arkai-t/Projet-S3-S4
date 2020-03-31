@@ -17,11 +17,13 @@ Chemins des paramètres du projet
 pathConfig = r".\Config_traitement.json"
 
 #Récupérer la configuration du traitement
-file = open(pathConfig)
+file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
 repertoirePartieEtudiant = data["parametres"]["repertoirePartieEtudiant"]
+print(repertoirePartieEtudiant)
 repertoireStockageFichiers = data["repertoireStockageFichiers"]
+nomFic = data["parametres"]["nomFic"]
 
 """
 Nom du fichier BKL
@@ -35,7 +37,7 @@ class PreparationFichiers:
      """
      def __init__(self):
         #Le nom du fichier de PSR pourra peut être être lue depuis un fichier de configuration/information
-        self.nomFic = data["parametres"]["nomFic"]
+        self.nomFic = nomFic
         self.pathToPSR = repertoirePartieEtudiant
         self.pathToBKL = repertoirePartieEtudiant + r"\basicKeyLogger\data"
 
@@ -53,7 +55,7 @@ class PreparationFichiers:
             - nomFicBKL
             - .xml dans le zip généré par PSR
         """
-        assert self.nomFic != "" #Si le nom de fichier est vide, le repertoire de la partie étudiante est supprimée
+        assert self.nomFic != ""
         return ((path.exists(self.pathToBKL + '\\' + nomFicBKL)) and (path.exists(self.pathToPSR + '\\' + self.nomZipPSR)))
 
      def __deziperPSR(self):
