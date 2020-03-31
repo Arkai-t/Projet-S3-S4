@@ -21,7 +21,6 @@ file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
 repertoirePartieEtudiant = data["parametres"]["repertoirePartieEtudiant"]
-print(repertoirePartieEtudiant)
 repertoireStockageFichiers = data["repertoireStockageFichiers"]
 nomFic = data["parametres"]["nomFic"]
 
