@@ -230,7 +230,7 @@ class FichierConsolide:
                         if logiciel.nom == nomLogiciel:
                             logiciel.setHeureDebut()
                             logiciel.listeActions += nouveauLogiciel.listeActions
-                            logiciel.tempsPasse = str(datetime.timedelta(seconds=   (  self.__heureToNb(logiciel.tempsPasse) + self.__heureToNb(nouveauLogiciel.getTempsPasse()) )  )) #Permet d'additionner deux heures de formes hh:mm:ss
+                            logiciel.tempsPasse = str(timedelta(seconds=   (  self.__heureToNb(logiciel.tempsPasse) + self.__heureToNb(nouveauLogiciel.getTempsPasse()) )  )) #Permet d'additionner deux heures de formes hh:mm:ss
                             break
                 else:
                     self.sessionTP.listeLogiciels.append(nouveauLogiciel)        
