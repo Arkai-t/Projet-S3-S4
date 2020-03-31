@@ -8,30 +8,30 @@ from subprocess import Popen
 from os import chdir
 from json import load
 
-pathConfig = r"D:\Documents\Python Scripts\Config.json"
+pathConfig = r".\Config_etudiant.json"
 
 #Récupérer la configuration
 file = open(pathConfig)
 data = load(file)
 file.close()
-pathBKL = data["repertoirePartieEtudiant"]
 
 
 class GestionBKL:
     def __init__(self):
-        chdir(pathBKL + r"\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
+        pass
 
     def lancer(self):
-        """
-        Lance le logiciel BKL
-        """
+#        """
+#        Lance le logiciel BKL
+#        """
+        chdir(r".\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
         Popen(["startHidden.exe"], shell=True)
-
-
-
+        chdir(r".\..")
 
     def arreter(self):
-        """
-        Arrête BKL
-        """
+#        """
+#        Arrête BKL
+#        """
+        chdir(r".\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
         Popen(["stopKeyLogger.exe"], shell=True)
+        chdir(r".\..")
