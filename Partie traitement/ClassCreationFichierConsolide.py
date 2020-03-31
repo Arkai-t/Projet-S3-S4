@@ -86,7 +86,7 @@ class FichierConsolide:
         Permet la sauvegarde de l'arborescence créée dans un fichier
         """
         #Récupérer la configuration
-        file = open(pathConfig)
+        file = open(pathConfig, encoding='utf-8')
         data = load(file)
         file.close()
 
@@ -101,7 +101,7 @@ class FichierConsolide:
         """
         Permet de récupérer les informations du ficher 
         """
-        file = open(pathConfig)
+        file = open(pathConfig, encoding='utf-8')
         data = load(file)
         file.close()
 
