@@ -272,7 +272,7 @@ class FichierConsolide:
                 return attribut[1]
         
         
-monFicConsolide = FichierConsolide()
-monFicConsolide.recupererInformations()
-monFicConsolide.creerArborescence()
-monFicConsolide.sauvegardeFichier()
+#monFicConsolide = FichierConsolide()
+#monFicConsolide.recupererInformations()
+#monFicConsolide.creerArborescence()
+#monFicConsolide.sauvegardeFichier()
