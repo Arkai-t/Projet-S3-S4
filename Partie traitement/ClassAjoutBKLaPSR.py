@@ -13,6 +13,7 @@ import os
 Chemins des paramètres du projet
 """
 pathConfig = r".\Config_traitement.json"
+pathKeys = r".\Keys.json"
 
 #Récupérer la configuration
 file = open(pathConfig, encoding='utf-8')
@@ -20,30 +21,35 @@ data = load(file)
 file.close()
 repertoire = data["repertoireStockageFichiers"]
 
+
+#Recupérer le json de recodage de caractères
+file = open(pathKeys, encoding='utf-8')
+newChar = load(file)
+file.close()
+
+
+
 nomLogTSV = repertoire + "\\" + data["parametres"]["nomFic"] + ".tsv"
 nomXMLPSR = repertoire + "\\" + data["parametres"]["nomFic"] + ".xml" 
-nomFichierFusionne = repertoire + "\\" + data["parametres"]["nomFic"] + "_FichierFusionne.xml"
+nomFichierFusionne = repertoire + "\\" +data["parametres"]["nomFic"] + "_FichierFusionne.xml"
 
 class Mot: #Cette classe est utilisée comme stockage lors du traitement
     def __init__(self):
-        
-        self.charInvisibles = ['Rshift', 'Lcontrol', 'Rcontrol', 'Lshift'] #Ces caractères ne seront pas affichés
+         #Ces caractères ne seront pas affichés
         
         self.motFinal = ''
         self.heureDebut = None
         self.heureFin = None       
+        self.newChar = newChar
+        self.charInvisibles = self.newChar["CaracteresEnleves"]
         
     def ajouterLettre(self,lettre):
         """
         Ajoute une lettre au mot qui est en train d'etre créé, lettre est ajouté à la fin de motFinal
         """
         if lettre not in self.charInvisibles:
-            if lettre == "Space":
-                lettre = ' (Espace) '
-            if lettre == "Return":
-                lettre = ' (Entrée) '
-            if lettre == "Back":
-                lettre = ' (Retour) '  #Va falloir recoder tout le reste
+            if lettre in self.newChar:
+                lettre = self.newChar[lettre]
             
             self.motFinal = self.motFinal + lettre
     
@@ -118,17 +124,18 @@ class FichierFusionne:
             reader = csv.reader(tsvfile, delimiter='\t') #ouverture en tsv
         
             for row in reader:
-                self.__majStatutTexte(row[0])
-                if self.__isCurrentlyText() == True :
-                    if self.__isFirst() == True :
-                        self.nouveauMot = Mot()
-                        self.nouveauMot.setHeureDebut(row[6][13:])
-                    self.nouveauMot.setHeureFin(row[6][13:])
-                    self.nouveauMot.ajouterLettre(row[14])
-                else :
-                    if self.nouveauMot is not None:
-                        self.listeMots.append(self.nouveauMot)
-                        self.nouveauMot = None
+                if row[0] != "Q": #On s'occupe pas des attentes
+                    self.__majStatutTexte(row[0])
+                    if self.__isCurrentlyText() == True :
+                        if self.__isFirst() == True :
+                            self.nouveauMot = Mot()
+                            self.nouveauMot.setHeureDebut(row[6][13:])
+                        self.nouveauMot.setHeureFin(row[6][13:])
+                        self.nouveauMot.ajouterLettre(row[14])
+                    else :
+                        if self.nouveauMot is not None:
+                            self.listeMots.append(self.nouveauMot)
+                            self.nouveauMot = None
             
             self.listeMots.reverse() #Permet de mettre dans l'ordre chronologique
     
@@ -161,7 +168,7 @@ class FichierFusionne:
         '''
         permet de maj les booléens permettant de connaitre le statut actuel du texte
         '''
-        if lettre == 'K':
+        if lettre == 'K' or lettre == 'A': #A = appuyé, si l'étudiant reste appuyé ca va spamer les A
             if self.txtBool == False:
                 self.first = True
             else:
@@ -177,3 +184,6 @@ class FichierFusionne:
     def __isFirst(self):
         return self.first
 
+
+#bkl = FichierFusionne()
+#bkl.ajoutDuBKLaPSR()
