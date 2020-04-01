@@ -148,7 +148,10 @@ def rechercher():
             for i in range(len(lesActions)):
                 if (lesActions[i].get('nom') == comboInfo2.get()):
                     nbActions += 1
-            labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get())
+            if(nbActions > 1):
+                labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()+"s"
+            else:
+                labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()
             if(comboInfo2.get()=="Page visité"):
                 listeRecherche = []
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
@@ -166,7 +169,10 @@ def rechercher():
                                 tabSite = contenuAction[3].text.split("- Mozilla Firefox")
                     if(tabSite[0] not in listeRecherche):
                         listeRecherche.append(tabSite[0])
-                labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
+                if(len(listeRecherche) > 1):
+                    labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
+                else:
+                    labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" page"
         if(comboInfo1.get()=="Liste des"):
             if(comboInfo2.get()=="Page visité"):
                 tabInterro.heading("#0",text="Nom de la page")
