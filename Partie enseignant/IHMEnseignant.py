@@ -41,7 +41,15 @@ tabHeureFin = heureFin[0].text.split(":")
 
 dureeHeure = int(tabHeureFin[0]) - int(tabHeureDebut[0])
 dureeMinute = int(tabHeureFin[1]) - int(tabHeureDebut[1])
+
 dureeSeconde = int(tabHeureFin[2]) - int(tabHeureDebut[2])
+if (dureeSeconde < 0):
+    dureeMinute-=1
+    dureeSeconde = 60 + dureeSeconde
+if (dureeMinute < 0):
+    dureeHeure-=1
+    dureeMinute = 60 + dureeMinute
+
 duree = str(dureeHeure)+":"+str(dureeMinute)+":"+str(dureeSeconde)
 labelDuree = tk.Label(tabSynthese,text="Durée de l'exercice :")
 labelDureeExo = tk.Label(tabSynthese,text=duree)
@@ -115,14 +123,15 @@ ONGLET INTERROGATION
 
 typeRecherche = ["Nombre de"]
 typeRechercheNav = []
-typeRechercheNav.append(typeRecherche[0])
+for i in range(len(typeRecherche)):
+    typeRechercheNav.append(typeRecherche[i])
 typeRechercheNav.append("Liste des")
 tabInterro = ttk.Treeview(tabInterrogation)
 tabInterro["columns"]=()
-tabInterro.column("#0",width=500,minwidth=100)
+tabInterro.column("#0",width=1000,minwidth=100)
 tabInterro.heading("#0",text="")
 
-tabInterro.grid(sticky="W",row=2,column=0,columnspan=5,padx=15,pady=5)
+tabInterro.grid(sticky="W",row=2,column=0,columnspan=6,padx=15,pady=5)
 
 def rechercher():
     labelReponse['text']=""
@@ -149,10 +158,15 @@ def rechercher():
                     contenuAction = lesActions[i].getchildren()
                     for i in range (len(contenuAction)):
                         if (contenuAction[i].tag=="NomPage" and contenuAction[3].text is not None):
-                            tabSite = contenuAction[3].text.split("- Google Chrome")
+                            if(comboLogiciel.get()=="Google Chrome"):
+                                tabSite = contenuAction[3].text.split("- Google Chrome")
+                            if(comboLogiciel.get()=="Internet Explorer"):
+                                tabSite = contenuAction[3].text.split("- Internet Explorer")
+                            if(comboLogiciel.get()=="Firefox"):
+                                tabSite = contenuAction[3].text.split("- Mozilla Firefox")
                     if(tabSite[0] not in listeRecherche):
                         listeRecherche.append(tabSite[0])
-                labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" "+str(comboInfo2.get())
+                labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
         if(comboInfo1.get()=="Liste des"):
             if(comboInfo2.get()=="Page visité"):
                 tabInterro.heading("#0",text="Nom de la page")
@@ -288,7 +302,8 @@ def remplirComboBox(self):
             if lesActions[i].get('nom') not in typesAction:
                 typesAction.append(lesActions[i].get('nom'))
         typeActionNav = []
-        typeActionNav.append(typesAction)
+        for i in range(len(typesAction)):
+            typeActionNav.append(typesAction[i])
         typeActionNav.append("Page visité")
         comboInfo2['values']=typesAction
         comboInfo1.configure(state="readonly")
