@@ -11,7 +11,8 @@ menu.filename = filedialog.askopenfilename(initialdir="./",title ="Choissisez un
 fichier = menu.filename
 
 tree = etree.parse(fichier)
-#menu.geometry("500x300")
+menu.minsize(900,350)
+menu.resizable(False,False)
 menu.title("Système d'analyse de traces - Enseignant")
 tab_parent = ttk.Notebook(menu)
 
@@ -32,7 +33,7 @@ Ajout des éléments
 """
 heureDebut = tree.xpath("/Session/HeureDebut")
 labelDebut = tk.Label(tabSynthese,text="Début de l'exercice :")
-labelHeureDebut = tk.Label(tabSynthese,text=heureDebut[0].text+'.')
+labelHeureDebut = tk.Label(tabSynthese,text=heureDebut[0].text)
 
 heureFin = tree.xpath("/Session/HeureFin")
 tabHeureDebut = heureDebut[0].text.split(":")
