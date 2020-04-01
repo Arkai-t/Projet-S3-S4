@@ -1,3 +1,3 @@
-Projet n°16
+Projet tutoré n°16
 
-IUT de Bayonne et du Pays Basque
+IUT de Bayonne et du Pays Basque.
