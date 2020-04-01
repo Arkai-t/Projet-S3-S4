@@ -25,7 +25,6 @@ tabReplay = ttk.Frame(tab_parent)
 tab_parent.add(tabSynthese,text="Synthèse")
 tab_parent.add(tabActivite,text="Activité")
 tab_parent.add(tabInterrogation,text="Interrogation")
-tab_parent.add(tabReplay,text="Replay")
 
 """
 ONGLET SYNTHESE
@@ -148,7 +147,10 @@ def rechercher():
             for i in range(len(lesActions)):
                 if (lesActions[i].get('nom') == comboInfo2.get()):
                     nbActions += 1
-            labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get())
+            if(nbActions > 1):
+                labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()+"s"
+            else:
+                labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()
             if(comboInfo2.get()=="Page visité"):
                 listeRecherche = []
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
@@ -166,7 +168,10 @@ def rechercher():
                                 tabSite = contenuAction[3].text.split("- Mozilla Firefox")
                     if(tabSite[0] not in listeRecherche):
                         listeRecherche.append(tabSite[0])
-                labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
+                if(len(listeRecherche) > 1):
+                    labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
+                else:
+                    labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" page"
         if(comboInfo1.get()=="Liste des"):
             if(comboInfo2.get()=="Page visité"):
                 tabInterro.heading("#0",text="Nom de la page")
@@ -209,17 +214,7 @@ boutonRechercher.grid(sticky="W",row=0,column=5,padx = 15,pady=5)
 
 labelReponse = tk.Label(tabInterrogation,text="")
 labelReponse.grid(sticky="W",row=1,column=0,columnspan=5,padx=15,pady=5)
-        
-
-"""
-ONGLET REPLAY
-"""
-labelReplay = tk.Label(tabReplay,text="Ceci est l'onglet du replay")
-labelReplay.pack()
-
-
-
-
+       
 
 def infomationsLogiciel(logiciel):
     enfants = logiciel.getchildren()
