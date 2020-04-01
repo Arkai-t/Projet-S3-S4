@@ -204,7 +204,7 @@ class FichierConsolide:
                         
                         
                         #Determiner si c'est un enregistrement en cherchant "CTRL-S" dans la chaine de caracteres
-                        if len(str(baliseTexte.text)) < 1: #non vide
+                        if len(str(baliseTexte.text)) > 0: #non vide
                             if "Ctrl+S" in baliseTexte.text:
                                 
                                 nouvelleActionEnregistrer = ActionEnregistrer()
@@ -242,12 +242,10 @@ class FichierConsolide:
         
 
     def __isEnregistrer(self,texte):
-        if texte == "Enregistrer":
+        if "Enregistrer" in texte:
             return True  
-        elif texte == "Save":
+        elif "Save" in texte:
             return True  
-        elif texte == "Enregistrer Sous":
-            return True
         else:
             return False
     
@@ -284,3 +282,8 @@ class FichierConsolide:
         Supprimer le fichier fusionné
         """
         remove(nomFichier)
+        
+#monFicConsolide = FichierConsolide()
+#monFicConsolide.recupererInformations()
+#monFicConsolide.creerArborescence()
+#monFicConsolide.sauvegardeFichier()
