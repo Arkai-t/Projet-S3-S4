@@ -182,11 +182,6 @@ def rechercher():
                                 tabSite = contenuAction[3].text.split("- Google Chrome")
                     if(tabSite[0] not in listeRecherche):
                         listeRecherche.append(tabSite[0])
-                print(listeRecherche)
-                
-                print(menu.winfo_width())
-                
-
                 
                 for page in listeRecherche:
                     tabInterro.insert("","end",None,text=page, values=())                                
@@ -291,8 +286,13 @@ def deEmojify(inputString):
     return inputString.encode('ascii', 'ignore').decode('ascii')
 
 
-    
-def remplirComboBox(self):
+def choixInfo2(evt):
+    remplirComboBox(evt)
+    if comboInfo1.get()=="Liste des":
+        comboInfo2['values'] = ["Page visité"]
+
+
+def remplirComboBox(evt):
     if(comboLogiciel.current()!=-1):
         logicielChoisi = nomsLogiciel[comboLogiciel.current()]
         contenuLogiciel = logicielChoisi.getchildren()
@@ -329,5 +329,6 @@ def onClick(evt):
     
 menu.bind("<Button 1>",onClick)
 comboLogiciel.bind("<<ComboboxSelected>>",remplirComboBox)
+comboInfo1.bind("<<ComboboxSelected>>",choixInfo2)
 tab_parent.pack(expand=1,fill='both')
 menu.mainloop()
