@@ -4,14 +4,15 @@ from cx_Freeze import setup, Executable
 # fine tuning.
 buildOptions = dict(packages = [], excludes = [])
 
-base = 'Console'
+import sys
+base = 'Win32GUI' if sys.platform=='win32' else None
 
 executables = [
-    Executable('Lancement.py', base=base, targetName = 'Traitement')
+    Executable('Lancement.py', base=base)
 ]
 
 setup(name='EduKeys',
       version = '1.0',
-      description = 'Tous le traitement des fichiers de traces',
+      description = 'Traitement global',
       options = dict(build_exe = buildOptions),
       executables = executables)

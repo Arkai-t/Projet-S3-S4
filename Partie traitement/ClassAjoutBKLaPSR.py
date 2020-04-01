@@ -143,7 +143,7 @@ class FichierFusionne:
         (h, m, s) = heure.split(':')
         return int(h) * 3600 + int(m) * 60 + int(s)    
     
-    def __traitementDeUnePhrase(self,root, texteAction):
+    def __traitementDeUnePhrase(self, root, texteAction):
         parent = texteAction.getparent().getparent() #Balise EachAction de l'action récupérée
 
         action = texteAction.getparent() #Balise action en elle meme
@@ -183,7 +183,3 @@ class FichierFusionne:
     
     def __isFirst(self):
         return self.first
-
-
-#bkl = FichierFusionne()
-#bkl.ajoutDuBKLaPSR()
