@@ -284,8 +284,3 @@ class FichierConsolide:
         Supprimer le fichier fusionné
         """
         remove(nomFichier)
-        
-#monFicConsolide = FichierConsolide()
-#monFicConsolide.recupererInformations()
-#monFicConsolide.creerArborescence()
-#monFicConsolide.sauvegardeFichier()
