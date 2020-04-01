@@ -14,9 +14,6 @@ class Action:
    
     def setDescription(self, desc):
         self.description = desc
-        
-    def getType(self):
-         return self.type
 
     def getHeureDebut(self):
          return self.heureDebut   
