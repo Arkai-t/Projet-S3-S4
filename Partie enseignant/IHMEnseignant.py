@@ -25,7 +25,6 @@ tabReplay = ttk.Frame(tab_parent)
 tab_parent.add(tabSynthese,text="Synthèse")
 tab_parent.add(tabActivite,text="Activité")
 tab_parent.add(tabInterrogation,text="Interrogation")
-tab_parent.add(tabReplay,text="Replay")
 
 """
 ONGLET SYNTHESE
@@ -215,17 +214,7 @@ boutonRechercher.grid(sticky="W",row=0,column=5,padx = 15,pady=5)
 
 labelReponse = tk.Label(tabInterrogation,text="")
 labelReponse.grid(sticky="W",row=1,column=0,columnspan=5,padx=15,pady=5)
-        
-
-"""
-ONGLET REPLAY
-"""
-labelReplay = tk.Label(tabReplay,text="Ceci est l'onglet du replay")
-labelReplay.pack()
-
-
-
-
+       
 
 def infomationsLogiciel(logiciel):
     enfants = logiciel.getchildren()
