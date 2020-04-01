@@ -67,7 +67,7 @@ def fenetreArreterExercice(fenetreAutorisation):
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
-    boutonArreterExercice = Button(fenetreArret, text="Arreter exercice", command=lambda: arreterExercice(monPSR,monBKL,fenetreArret))
+    boutonArreterExercice = Button(fenetreArret, text="Arrêter exercice", command=lambda: arreterExercice(monPSR,monBKL,fenetreArret))
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
     monBKL.lancer()
