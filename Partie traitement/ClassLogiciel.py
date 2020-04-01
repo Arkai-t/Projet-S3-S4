@@ -127,19 +127,13 @@ class Logiciel:
     
     def _heureToNb(self,heure):
         (h, m, s) = heure.split(':')
-        return int(h) * 3600 + int(m) * 60 + int(s)  
-    
-    #def _secToHeure(self,secondes):
-        
+        return int(h) * 3600 + int(m) * 60 + int(s)          
     
     def getNom(self):
          return self.nom
 
     def getHeureDebut(self):
          return self.heureDebut
-
-    def getHeureFin(self):
-         return self.heureFin
 
     def getActions(self):
          return self.listeActions
