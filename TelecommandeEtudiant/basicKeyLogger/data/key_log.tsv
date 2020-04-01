@@ -602,3 +602,17 @@ mouseMove	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772
 mouseLeftDown	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:20	timeStampS	1585661720.082	injected	0	xPix	244	yPix	129	wheel	0	
 mouseLeftUp	window	Système d'analyse de traces - Arreter l'exercice	widget	2819772	date	2020 03 31 - 15:35:20	timeStampS	1585661720.144	injected	0	xPix	244	yPix	129	wheel	0	
 stopLogger	window	Spyder (Python 3.7)	widget	983650	date	2020 03 31 - 15:35:20	timeStampS	1585661720.472	injected	1	session	0	block	0	trial	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.199	injected	0	xPix	493	yPix	672	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.214	injected	0	xPix	500	yPix	692	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.230	injected	0	xPix	508	yPix	717	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.246	injected	0	xPix	515	yPix	741	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.261	injected	0	xPix	519	yPix	765	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.277	injected	0	xPix	521	yPix	787	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.293	injected	0	xPix	522	yPix	807	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.308	injected	0	xPix	521	yPix	821	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.324	injected	0	xPix	520	yPix	832	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.339	injected	0	xPix	518	yPix	845	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.355	injected	0	xPix	517	yPix	856	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.371	injected	0	xPix	517	yPix	865	wheel	0	
+mouseMove	window	Chrome Legacy Window	widget	328530	date	2020 04 01 - 10:02:34	timeStampS	1585728154.386	injected	0	xPix	516	yPix	873	wheel	0	
+stopLogger	window	Chrome Legacy Window	widget	65718	date	2020 04 01 - 10:02:34	timeStampS	1585728154.386	injected	1	session	0	block	0	trial	0	

@@ -7,11 +7,11 @@ buildOptions = dict(packages = [], excludes = [])
 base = 'Console'
 
 executables = [
-    Executable('PreparationFichiers.py', base=base)
+    Executable('AjoutBKLaPSR.py', base=base)
 ]
 
 setup(name='EduKeys',
       version = '1.0',
-      description = 'Executable de la preparation des fichiers',
+      description = 'Executable de la production du fichier fusionne',
       options = dict(build_exe = buildOptions),
       executables = executables)
