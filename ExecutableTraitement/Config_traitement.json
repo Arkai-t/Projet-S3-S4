@@ -1,0 +1,7 @@
+{
+    "parametres":{
+        "nomFic": "",
+        "repertoirePartieEtudiant": "D:\\Documents\\Python Scripts\\Partie_etudiant"
+    }, 
+    "repertoireStockageFichiers": "D:\\Documents\\Python Scripts\\Stockage Fichiers"
+}

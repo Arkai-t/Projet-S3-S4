@@ -7,11 +7,11 @@ buildOptions = dict(packages = [], excludes = [])
 base = 'Console'
 
 executables = [
-    Executable('Lancement.py', base=base, targetName = 'EduKeys_traitement')
+    Executable('PreparationFichiers.py', base=base)
 ]
 
 setup(name='EduKeys',
       version = '1.0',
-      description = "Partie traitement de l'application EduKeys",
+      description = 'Executable de la preparation des fichiers',
       options = dict(build_exe = buildOptions),
       executables = executables)
