@@ -152,7 +152,7 @@ def rechercher():
                 labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()+"s"
             else:
                 labelReponse['text'] = "L'étudiant a effectué "+str(nbActions)+" "+str(comboInfo2.get()).lower()
-            if(comboInfo2.get()=="Page visité"):
+            if(comboInfo2.get()=="Pages visités"):
                 listeRecherche = []
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
                 contenuLogiciel = logicielChoisi.getchildren()
@@ -174,7 +174,7 @@ def rechercher():
                 else:
                     labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" page"
         if(comboInfo1.get()=="Liste des"):
-            if(comboInfo2.get()=="Page visité"):
+            if(comboInfo2.get()=="Pages visités"):
                 tabInterro.heading("#0",text="Nom de la page")
                 listeRecherche = []
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
@@ -285,7 +285,7 @@ def deEmojify(inputString):
 def choixInfo2(evt):
     remplirComboBox(evt)
     if comboInfo1.get()=="Liste des":
-        comboInfo2['values'] = ["Page visité"]
+        comboInfo2['values'] = ["Pages visités"]
 
 
 def remplirComboBox(evt):
@@ -300,7 +300,7 @@ def remplirComboBox(evt):
         typeActionNav = []
         for i in range(len(typesAction)):
             typeActionNav.append(typesAction[i])
-        typeActionNav.append("Page visité")
+        typeActionNav.append("Pages visités")
         comboInfo2['values']=typesAction
         comboInfo1.configure(state="readonly")
         comboInfo2.configure(state="readonly")
