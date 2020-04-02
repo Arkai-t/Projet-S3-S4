@@ -237,7 +237,6 @@ class FichierConsolide:
                 else:
                     self.sessionTP.listeLogiciels.append(nouveauLogiciel)        
             else:
-                nouvelleAction.setNom()
                 self.sessionTP.listeLogiciels.append(nouveauLogiciel)
         
 
