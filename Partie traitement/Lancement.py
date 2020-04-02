@@ -9,12 +9,16 @@ from ClassPreparationFichiers import PreparationFichiers
 from ClassAjoutBKLaPSR import FichierFusionne
 from ClassCreationFichierConsolide import FichierConsolide
 
+
+#1
 gest = PreparationFichiers()
 gest.preparerFichiers()
 
+#2
 bkl = FichierFusionne()
 bkl.ajoutDuBKLaPSR()
 
+#3
 monFicConsolide = FichierConsolide()
 monFicConsolide.recupererInformations()
 monFicConsolide.creerArborescence()
