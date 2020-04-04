@@ -71,6 +71,7 @@ def fenetreArreterExercice(fenetreAutorisation):
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
     monBKL.lancer()
+    fenetreArret.protocol("WM_DELETE_WINDOW", arreterExercice)
     fenetreArret.mainloop()
 
 def arreterExercice(monPSR,monBKL,fenetreArret):
