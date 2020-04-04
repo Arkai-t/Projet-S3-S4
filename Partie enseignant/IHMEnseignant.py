@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+from sys import exit
 import tkinter as tk
-from tkinter import ttk,Button,Toplevel,filedialog
+from tkinter import ttk,Button,Toplevel,filedialog,messagebox
 from lxml import etree
 
 navigateurs = ["Firefox","Microsoft Edge","Internet Explorer","Google Chrome"]
@@ -10,7 +11,18 @@ menu = tk.Tk() #Création de la fenêtre pour commencer l'exercice
 menu.filename = filedialog.askopenfilename(initialdir="./",title ="Choissisez un fichier",filetypes=[("Fichiers xml","*.xml")])
 fichier = menu.filename
 
+if(fichier==""):
+    messagebox.showinfo("Erreur","Aucun fichier n'a été choisi")
+    menu.destroy()
+    exit()
 tree = etree.parse(fichier)
+
+racine = tree.getroot()
+if racine.find('Logiciels/Logiciel/Actions/Action/TypeAction') is None:
+    messagebox.showinfo("Erreur","Le fichier choisi n'est pas correctement structuré")
+    menu.destroy()
+    exit()
+
 menu.minsize(900,350)
 menu.resizable(False,False)
 menu.title("Système d'analyse de traces - Enseignant")
