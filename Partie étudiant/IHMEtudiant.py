@@ -5,6 +5,7 @@ import tkinter.scrolledtext as tkst
 from ClassGestionBKL import GestionBKL
 from ClassGestionPSR import GestionPSR
 from json import load
+from system import exit
 
 pathConfig = r".\Config_etudiant.json"
 
@@ -67,18 +68,22 @@ def fenetreArreterExercice(fenetreAutorisation):
     fenetreArret = Tk() #Création de la fenetre
     fenetreArret.geometry('200x50')
     fenetreArret.title("Système d'analyse de traces - Arreter l'exercice")
+    fenetreArret.protocol("WM_DELETE_WINDOW", arreterExercice)
     boutonArreterExercice = Button(fenetreArret, text="Arrêter exercice", command=lambda: arreterExercice(monPSR,monBKL,fenetreArret))
     boutonArreterExercice.config(height =150,width=40)
     boutonArreterExercice.pack()
     monBKL.lancer()
-    fenetreArret.protocol("WM_DELETE_WINDOW", arreterExercice)
     fenetreArret.mainloop()
 
 def arreterExercice(monPSR,monBKL,fenetreArret):
+#    """
+#    Cette méthode permet d'arreter les keyloggers et de fermer le programme
+#    """
     monBKL.arreter()
     monPSR.arreter()
     fenetreArret.destroy()
-
+    exit()
+    
 fenetreCommencerExercice = Tk() #Création de la fenêtre pour commencer l'exercice
 fenetreCommencerExercice.geometry('200x50')
 fenetreCommencerExercice.title("Système d'analyse de traces - Commencer l'exercice")
