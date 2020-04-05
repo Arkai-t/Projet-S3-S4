@@ -103,6 +103,8 @@ class FichierConsolide:
         """
         Permet de récupérer les informations du ficher 
         """
+        
+        #Recuperer dans le Config_traitements.json
         file = open(pathConfig, encoding='utf-8')
         data = load(file)
         file.close()
@@ -116,7 +118,7 @@ class FichierConsolide:
         
         #infos de session
         session = tree.xpath("/Report/UserActionData/RecordSession")
-        attrSession = session[0].items() #get all recordsession attributes
+        attrSession = session[0].items() #récupérer tous les attributs de la balsie recordsession 
         
         
         self.sessionTP.heureDebut = self.__getSpecificAttribute(session[0],"StartTime")
@@ -124,7 +126,7 @@ class FichierConsolide:
         
         listeEachActions = session[0].getchildren()
         
-        for i,action in enumerate(listeEachActions):
+        for i,action in enumerate(listeEachActions): #chaque action: (enumerate permet de compter le nombre de tours du for et de le mettre dans i)
             
             attributsActions = action.items()
             
@@ -138,10 +140,10 @@ class FichierConsolide:
             
             balisesDeEachAction = action.getchildren()
             
-            isActionSpeciale = False
+            isActionSpeciale = False #permettra de savoir si c'est un clic normal ou spécial (sauvegarde, compilation)
             
             baliseAction = self.__getSpecificChild(action,"Action")
-            typeAction = baliseAction.text.split(" ",1)[0]
+            typeAction = baliseAction.text.split(" ",1)[0] #Recupérer premier mot du texte de la balise Action
             if typeAction == "Clic": #Savoir si c'est clic
                 #Savoir de quel type d'action de clic est l'action
                 UIAStack = self.__getSpecificChild(action, "UIAStack")
@@ -171,15 +173,15 @@ class FichierConsolide:
                 
                 nouvelleAction.heureDebut = heureAction
                 nouvelleAction.setNom()
-                if i != 0:
-                    nouveauLogiciel.addAction(nouvelleAction,self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time")))
+                if i != 0: #Si on est pas dans le premier tour (on va chercher l'heure de l'action précédente donc pour la première action il n'y a pas d'action précédente
+                    nouveauLogiciel.addAction(nouvelleAction,self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time"))) #self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time")) permet de récupérer le temps passé sur l'action en faisant temps de l'action - temps de l'action précédente
                 else:
                     nouveauLogiciel.listeActions.append(nouvelleAction)
                 nouveauLogiciel.setHeureDebut()
                 
             #Si c'est un texte
             if typeAction == "Saisie":
-                for baliseTexte in balisesDeEachAction:
+                for baliseTexte in balisesDeEachAction: #On utilise pas getSpecificChild car il peut y avoir plusieurs balises texte
                     if baliseTexte.tag == "texte":
                         #Création et remplissage de l'actionSaisie
                         nouvelleAction = ActionSaisie()
@@ -192,10 +194,10 @@ class FichierConsolide:
                         #Traitement du UIAStack
                         nouvelleAction.setNomPageFromUIAStack(balise)
                         
-                        nouvelleAction.heureDebut = attributsTextes[0][1]  
+                        nouvelleAction.heureDebut = attributsTextes[0][1]  #heure de debut de l'action
                         nouvelleAction.phrase = baliseTexte.text
                         nouvelleAction.setNom()
-                        if i != 0:
+                        if i != 0: #Meme commentaire qu'au dessus (meme code)
                             nouveauLogiciel.addAction(nouvelleAction,self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time")))
                         else:
                             nouveauLogiciel.listeActions.append(nouvelleAction)
@@ -225,18 +227,18 @@ class FichierConsolide:
         
         
             #ajout (ou modif du logiciel)
-            if (self.sessionTP.listeLogiciels):
-                if(nouveauLogiciel.nom in self.sessionTP.getNoms()):
+            if (self.sessionTP.listeLogiciels): #si sessionTP.listeLogiciels non vide
+                if(nouveauLogiciel.nom in self.sessionTP.getNoms()): #si logiciel existe déjà
                     #Ajouter les actions de nouveauLogiciel au logiciel déjà présent dans listeLogiciels
                     for logiciel in self.sessionTP.listeLogiciels:
                         if logiciel.nom == nomLogiciel:
                             logiciel.setHeureDebut()
                             logiciel.listeActions += nouveauLogiciel.listeActions
-                            logiciel.tempsPasse = str(timedelta(seconds=   (  self.__heureToNb(logiciel.tempsPasse) + self.__heureToNb(nouveauLogiciel.getTempsPasse()) )  )) #Permet d'additionner deux heures de formes hh:mm:ss
+                            logiciel.tempsPasse = str(timedelta(seconds=   (  self.__heureToNb(logiciel.tempsPasse) + self.__heureToNb(nouveauLogiciel.getTempsPasse()) )  )) #Permet d'additionner deux heures de formes hh:mm:ss en les convertissant en secodnes puis à nouveau en hh:mm:ss
                             break
-                else:
+                else: #sinon ajouter le nouveau logiciel
                     self.sessionTP.listeLogiciels.append(nouveauLogiciel)        
-            else:
+            else: #sinon ajouter le nouveau logiciel
                 self.sessionTP.listeLogiciels.append(nouveauLogiciel)
         
 
@@ -261,6 +263,9 @@ class FichierConsolide:
         
         
     def __getSpecificChild(self, element, tag):
+        """
+        Recupérer une balise enfant ayant un nom spécial
+        """
        for child in element.getchildren():
            if child.tag == tag:
                return child
@@ -270,6 +275,9 @@ class FichierConsolide:
             return int(h) * 3600 + int(m) * 60 + int(s)    
         
     def __getSpecificAttribute(self, element, nomAttribut):
+        """
+        Recupérer la valeur d'un attribut depuis une balise
+        """
         result = "None"
         for attribut in element.items():
             if attribut[0] == nomAttribut:
