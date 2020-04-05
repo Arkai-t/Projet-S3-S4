@@ -38,6 +38,9 @@ class Action:
                         
     def getNom(self):
          return self.nom
+		 
+	 def getType(self):
+         return self.type
 
     def getDescription(self):
          return self.description
