@@ -15,8 +15,6 @@ class Action:
     def setDescription(self, desc):
         self.description = desc
 
-    def getHeureDebut(self):
-         return self.heureDebut   
      
     def setNomPageFromUIAStack(self, balise):
         levels = balise.getchildren()
@@ -39,8 +37,8 @@ class Action:
     def getNom(self):
          return self.nom
 		 
-	def getType(self):
-         return self.type
+    def getType(self):
+        return self.type
 
     def getDescription(self):
          return self.description
