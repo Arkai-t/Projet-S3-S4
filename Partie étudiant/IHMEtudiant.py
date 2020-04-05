@@ -5,7 +5,7 @@ import tkinter.scrolledtext as tkst
 from ClassGestionBKL import GestionBKL
 from ClassGestionPSR import GestionPSR
 from json import load
-from system import exit
+from sys import exit
 
 pathConfig = r".\Config_etudiant.json"
 
