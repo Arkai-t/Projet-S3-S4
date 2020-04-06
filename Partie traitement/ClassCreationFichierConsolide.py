@@ -251,8 +251,8 @@ class FichierConsolide:
         """
         Recupérer une balise enfant ayant un nom spécial
         """
-       for child in element.getchildren():
-           if child.tag == tag:
+        for child in element.getchildren():
+            if child.tag == tag:
                return child
            
     def __heureToNb(self, heure):
