@@ -10,7 +10,7 @@ from os.path import exists
 
 pathConfig = r".\Config_etudiant.json"
 
-#Récupérer la configuration
+#Récupérer la configuration du fichier pathConfig
 file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
@@ -107,7 +107,7 @@ class GestionPSR:
 
     def __modifierConfig(self):
 #         """
-#         Enregistre les noms de fichiers produits par PSR dans le fichier de config
+#         Enregistre le nom du fichier temporaire produit par PSR dans le fichier de configuration
 #         """
          data["nomFicTempPSR"] = self.nomFicTemp + '.zip'
          file = open(pathConfig, 'w')
