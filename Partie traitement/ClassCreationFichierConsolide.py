@@ -122,7 +122,7 @@ class FichierConsolide:
         
         for i,action in enumerate(listeEachActions): #chaque action: (enumerate permet de compter le nombre de tours du for et de le mettre dans i)
             
-            attributsActions = action.items()
+            attributsActions = action.items() # .items renvoie les attributs sous forme de [[nom, valeur],[nom, valeur],[nom, valeur]]
             
             #get nom et creation du logiciel
             nomLogiciel = self.__getSpecificAttribute(action, "FileDescription")
@@ -139,10 +139,10 @@ class FichierConsolide:
             if typeAction == "Clic": #Savoir si c'est clic
                 #Savoir de quel type d'action de clic est l'action
                 UIAStack = self.__getSpecificChild(action, "UIAStack")
-                for level in UIAStack.getchildren(): #Chaque balise level
+                for level in UIAStack.getchildren(): #Chaque balise level contenu dans la balise UIAStack
                     for attribut in level.items():  #chaque attributs de la balise level
-                        if attribut[0] == "Name":
-                            if self.__isEnregistrer(attribut[1]):
+                        if attribut[0] == "Name": #chercher si il y a un nom
+                            if self.__isEnregistrer(attribut[1]): 
                                 nouvelleAction = ActionEnregistrer()
                                 isActionSpeciale = True
                                 break
@@ -164,12 +164,12 @@ class FichierConsolide:
                 nouvelleAction.setNomPageFromUIAStack(balise)
                 
                 nouvelleAction.heureDebut = heureAction
-                nouvelleAction.setNom()
+                nouvelleAction.setNom() #setNom met a jour le nom autaumatiquement selon quel type de clic nouvelleAction est
                 if i != 0: #Si on est pas dans le premier tour (on va chercher l'heure de l'action précédente donc pour la première action il n'y a pas d'action précédente
                     nouveauLogiciel.addAction(nouvelleAction,self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time"))) #self.__heureToNb(heureAction)-self.__heureToNb(self.__getSpecificAttribute(action.getprevious(),"Time")) permet de récupérer le temps passé sur l'action en faisant temps de l'action - temps de l'action précédente
                 else:
                     nouveauLogiciel.listeActions.append(nouvelleAction)
-                nouveauLogiciel.setHeureDebut()
+                nouveauLogiciel.setHeureDebut() #cherche l'heureDebut min en cherchant dans toutes les actions du logiciel
                 
             #Si c'est un texte
             if typeAction == "Saisie":
@@ -268,7 +268,7 @@ class FichierConsolide:
         """
         result = "None"
         for attribut in element.items():
-            if attribut[0] == nomAttribut:
+            if attribut[0] == nomAttribut: #attribut[0] = nom de l'attribut, attribut[1] = valeur de l'attribut
                 result = attribut[1]
         return result
             
