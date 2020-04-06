@@ -14,12 +14,11 @@ from lxml import etree
 import time
 nomlogiciel = "Bloc-notes"
 fichierConsolidé = "aaaa_FichierConsolide.xml"
-tabSaisie = [] # creation d'un tableau de stockage des saisie a esnuite afficher
-nomFichierNotePad = "bbbb.txt"
+tabSaisie = [] # creation d'un tableau de stockage des saisie a afficher
+nomFichierNotePad = "fic.txt"
 
 
-# /// récuparation des saisies dans le 
-
+# /// récuparation des saisies dans le fichier consolidé
 tree = etree.parse(fichierConsolidé)
 
 session = tree.xpath("Logiciels")
@@ -35,6 +34,7 @@ for logiciel in session[0].getchildren():
             if balise.tag == 'Actions':
                 # determiner ses enfants (les actions)
                 actions = balise.getchildren()
+                
                 # parcourir les enfants
                 for action in actions:
                     attributActionCourante = action.getchildren()
@@ -42,24 +42,18 @@ for logiciel in session[0].getchildren():
                     for typeAction in attributActionCourante:
                         if typeAction.tag == 'Saisie': #si l'action est de type 'saisie'
                             # on récupère ses enfants
-                            #print(typeAction.text)
                             tabSaisie.append(typeAction.text)
                             
                    
                     
-# ///  exploitation                            
-                    
+# ///  exploitation                   
 app = Application().start("notepad.exe")
 for saisie in tabSaisie:
-    #app.UntitledNotepad.Edit.type_keys("pywinauto marche!", with_spaces = True)
     app.UntitledNotepad.Edit.type_keys(saisie, with_spaces = True)
     app.UntitledNotepad.Edit.type_keys('{ENTER}', with_spaces = True)
+    
 #sauvegarde du fichier 
 time.sleep(1)    
 app.Notepad.menu_select("Fichier ->Enregistrer sous")    
 app.dialog.Edit.SetText(nomFichierNotePad)
 app.dialog.EnregistrerButton.Click()
-
-                                   
-        
-
