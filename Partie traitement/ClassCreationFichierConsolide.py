@@ -9,13 +9,8 @@ from datetime import timedelta
 from lxml import etree
 from json import load
 from shutil import move
-from ClassLogiciel import Session
-from ClassLogiciel import Logiciel
-from ClassLogiciel import Action
-from ClassLogiciel import ActionEnregistrer
-from ClassLogiciel import ActionCompiler
-from ClassLogiciel import ActionClic
-from ClassLogiciel import ActionSaisie
+from ClassLogiciel import Session, Logiciel, Action, ActionEnregistrer, ActionCompiler, ActionClic, ActionSaisie
+
 """
 Chemins des paramètres du projet
 """
@@ -47,7 +42,7 @@ class FichierConsolide:
         heureFin.text = self.sessionTP.getHeureFin()
 
         logiciels = etree.SubElement(self.root, "Logiciels")
-
+        #Parcourir les logiciels
         for logicielCourant in self.sessionTP.getLogiciels():
              #Créer un logiciel
              logiciel = etree.SubElement(logiciels, "Logiciel")
@@ -60,7 +55,7 @@ class FichierConsolide:
              tempsPasse.text = logicielCourant.getTempsPasse()
 
              actions = etree.SubElement(logiciel, "Actions")
-
+             #Parcourir les actions
              for actionCourante in logicielCourant.getActions():
                   action = etree.SubElement(actions, "Action")
                   action.set("nom", actionCourante.getNom())
@@ -85,7 +80,7 @@ class FichierConsolide:
         """
         Permet la sauvegarde de l'arborescence créée dans un fichier
         """
-        #Récupérer la configuration
+        #Récupérer la configuration dans pathConfig
         file = open(pathConfig, encoding='utf-8')
         data = load(file)
         file.close()
@@ -97,6 +92,7 @@ class FichierConsolide:
         #Deplacer fichier dans StockageFichier
         move(nomFic, data["repertoireStockageFichiers"] + '\\' + nomFic)
         
+        #Supprimer le fichier fusionné
         self.__supprimerFichierFusionne(data["repertoireStockageFichiers"] + "\\" + data["parametres"]["nomFic"] + "_FichierFusionne.xml")
         
     def recupererInformations(self):
@@ -112,14 +108,12 @@ class FichierConsolide:
         fichier = data["repertoireStockageFichiers"] + '\\' + data["parametres"]["nomFic"] + "_FichierFusionne.xml"
         
 
-        #ouverture du xml
-        
+        #ouverture du xml        
         tree = etree.parse(fichier)
         
         #infos de session
         session = tree.xpath("/Report/UserActionData/RecordSession")
-        attrSession = session[0].items() #récupérer tous les attributs de la balsie recordsession 
-        
+        attrSession = session[0].items() #récupérer tous les attributs de la balsie recordsession         
         
         self.sessionTP.heureDebut = self.__getSpecificAttribute(session[0],"StartTime")
         self.sessionTP.heureFin = self.__getSpecificAttribute(session[0],"StopTime")
@@ -135,9 +129,7 @@ class FichierConsolide:
             heureAction = self.__getSpecificAttribute(action, "Time")
             nouveauLogiciel = Logiciel(nomLogiciel)
             
-            #remplir les actions
-            
-            
+            #remplir les actions 
             balisesDeEachAction = action.getchildren()
             
             isActionSpeciale = False #permettra de savoir si c'est un clic normal ou spécial (sauvegarde, compilation)
@@ -221,10 +213,6 @@ class FichierConsolide:
                                 nouvelleActionEnregistrer.setNom()                    
                                 nouveauLogiciel.listeActions.append(nouvelleActionEnregistrer)
                                 nouveauLogiciel.setHeureDebut()
-                        
-            
-         
-        
         
             #ajout (ou modif du logiciel)
             if (self.sessionTP.listeLogiciels): #si sessionTP.listeLogiciels non vide
@@ -240,7 +228,6 @@ class FichierConsolide:
                     self.sessionTP.listeLogiciels.append(nouveauLogiciel)        
             else: #sinon ajouter le nouveau logiciel
                 self.sessionTP.listeLogiciels.append(nouveauLogiciel)
-        
 
     def __isEnregistrer(self,texte):
         if "Enregistrer" in texte:
@@ -260,8 +247,6 @@ class FichierConsolide:
         else:
             return False
         
-        
-        
     def __getSpecificChild(self, element, tag):
         """
         Recupérer une balise enfant ayant un nom spécial
@@ -271,8 +256,11 @@ class FichierConsolide:
                return child
            
     def __heureToNb(self, heure):
-            (h, m, s) = heure.split(':')
-            return int(h) * 3600 + int(m) * 60 + int(s)    
+        """
+        Convertit une string représentant une heure en secondes
+        """
+        (h, m, s) = heure.split(':')
+        return int(h) * 3600 + int(m) * 60 + int(s)    
         
     def __getSpecificAttribute(self, element, nomAttribut):
         """
@@ -289,8 +277,3 @@ class FichierConsolide:
         Supprimer le fichier fusionné
         """
         remove(nomFichier)
-        
-#monFicConsolide = FichierConsolide()
-#monFicConsolide.recupererInformations()
-#monFicConsolide.creerArborescence()
-#monFicConsolide.sauvegardeFichier()
