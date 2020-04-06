@@ -35,14 +35,13 @@ class PreparationFichiers:
      dans le repertoireStockageFichiers
      """
      def __init__(self):
-        #Le nom du fichier de PSR pourra peut être être lue depuis un fichier de configuration/information
         self.nomFic = nomFic
         self.pathToPSR = repertoirePartieEtudiant
         self.pathToBKL = repertoirePartieEtudiant + r"\basicKeyLogger\data"
 
      @property
      def nomZipPSR(self):
-          #Ouvrir le fichier Config_etudiant.json pour récupérer le nom du Fichier temporaire de PSR
+          #Récupération du nom du Fichier temporaire de PSR dans le fichier de configuration de la partie étudiante
           fileEtud = open(data["parametres"]["repertoirePartieEtudiant"] + r"\Config_etudiant.json")
           dataEtud = load(fileEtud)
           fileEtud.close()
