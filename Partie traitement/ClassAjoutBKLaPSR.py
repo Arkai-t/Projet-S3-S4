@@ -40,7 +40,7 @@ class Mot: #Cette classe est utilisée comme stockage lors du traitement
         self.motFinal = ''
         self.heureDebut = None
         self.heureFin = None       
-        self.newChar = newChar
+        self.newChar = newChar #disctionnaire permettant de recodage du texte de BKL
         self.charInvisibles = self.newChar["CaracteresEnleves"]
         
     def ajouterLettre(self,lettre):
@@ -78,11 +78,10 @@ class FichierFusionne:
         self.nomFichierPSR = nomXMLPSR
         self.nomNouveauFichierXML = nomFichierFusionne
         
-        # FIRST OU PAS
-        self.first = False
-        self.txtBool = False
-        
+        self.first = False #premiere lettre d'une chaine ?
+        self.txtBool = False #est une lettre ?
         self.nouveauMot = None #contiendra le mot qui sera en train d'etre créé dans la boucle
+        
         self.listeMots = []    
        
     def ajoutDuBKLaPSR(self):
@@ -97,14 +96,14 @@ class FichierFusionne:
         root = tree.getroot()
         etree.tostring(root)
         
-        for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'):
+        for texteAction in root.xpath('/Report/UserActionData/RecordSession/EachAction/Action/text()'): #Pour chaque balise action de type saisie au clavier
             if texteAction == "Saisie au clavier":
                 self.__traitementDeUnePhrase(root, texteAction)
                         
         #enregistrement de l'xml modifié
         etree.ElementTree(root).write(self.nomNouveauFichierXML, pretty_print = True, xml_declaration=True, encoding="utf-8")
         
-        #supprimer le TSV
+        #supprimer le TSV et le XML de PSR
         self.__supprimerFichiers()    
     
     def __supprimerFichiers(self):
@@ -123,7 +122,7 @@ class FichierFusionne:
         with open(self.nomFicTSV,encoding="utf8", errors='ignore') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t') #ouverture en tsv
         
-            for row in reader:
+            for row in reader: #algorithme sur le manuel de maintenance
                 if row[0] != "Q": #On s'occupe pas des attentes
                     self.__majStatutTexte(row[0])
                     if self.__isCurrentlyText() == True :
