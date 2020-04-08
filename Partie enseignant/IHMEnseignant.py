@@ -200,7 +200,7 @@ def rechercher():
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
                 contenuLogiciel = logicielChoisi.getchildren()
                 lesActions = contenuLogiciel[2].getchildren()
-                for i in range(len(lesActions)-1):
+                for i in range(len(lesActions)):
                     #Récupération du contenu de la i-ème action
                     contenuAction = lesActions[i].getchildren()
                     for i in range (len(contenuAction)):
@@ -215,6 +215,7 @@ def rechercher():
                     #Ajout dans la liste de recherche si la page n'y est pas déjà
                     if(tabSite[0] not in listeRecherche):
                         listeRecherche.append(tabSite[0])
+                    print(listeRecherche)
                 #Affichage du nombre de pages visitées
                 if(len(listeRecherche) > 1):
                     labelReponse['text'] = "L'étudiant a visité "+str(len(listeRecherche))+" pages"
@@ -228,7 +229,7 @@ def rechercher():
                 logicielChoisi = nomsLogiciel[comboLogiciel.current()]
                 contenuLogiciel = logicielChoisi.getchildren()
                 lesActions = contenuLogiciel[2].getchildren()
-                for i in range(len(lesActions)-1):    
+                for i in range(len(lesActions)):    
                     #Récupération du contenu de la i-ème action
                     contenuAction = lesActions[i].getchildren()
                     for i in range (len(contenuAction)):
